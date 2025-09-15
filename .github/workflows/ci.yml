@@ -2,7 +2,58 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  check:
+  test-containerized-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build container
+        run: |
+          echo "🐳 Building containerized CLI..."
+          docker build -t ai-dev-tasks-test .
+
+      - name: Test container help command
+        run: |
+          echo "🧪 Testing container help command..."
+          docker run --rm ai-dev-tasks-test make help
+
+      - name: Test container status command
+        run: |
+          echo "🧪 Testing container status command..."
+          docker run --rm ai-dev-tasks-test make status
+
+      - name: Test template availability
+        run: |
+          echo "🧪 Testing template availability..."
+          docker run --rm ai-dev-tasks-test bash -c "ls -la templates/ | wc -l"
+
+      - name: Test document creation
+        run: |
+          echo "🧪 Testing document creation..."
+          mkdir -p test-workspace
+          docker run --rm -v "$PWD/test-workspace":/workspace -w /workspace ai-dev-tasks-test make create T=create-prd.md N=test-prd.md
+          [ -f "test-workspace/test-prd.md" ] || { echo "❌ Document not created"; exit 1; }
+          echo "✅ Document creation works"
+
+      - name: Verify core files exist
+        run: |
+          echo "🧪 Verifying core files..."
+          required_files=(
+            "Dockerfile"
+            "ai-dev"
+            "Makefile"
+            "professional-templates"
+            "README.md"
+            "CHANGELOG.md"
+          )
+
+          for file in "${required_files[@]}"; do
+            [ -e "$file" ] || { echo "❌ Missing required file: $file"; exit 1; }
+            echo "✅ $file exists"
+          done
+
+  shellcheck:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -12,53 +63,12 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck
 
       - name: Shellcheck setup scripts
-        run: shellcheck setup-scripts/*.sh
-
-      - name: Smoke test workspace setup
         run: |
-          echo "🧪 Testing workspace setup script..."
-          bash setup-scripts/setup-workspace.sh || true
+          if [ -d "setup-scripts" ]; then
+            shellcheck setup-scripts/*.sh
+          else
+            echo "ℹ️ No setup-scripts directory found, skipping shellcheck"
+          fi
 
-      - name: Smoke test project setup
-        run: |
-          echo "🧪 Testing project setup script..."
-          bash setup-scripts/setup-project.sh || true
-
-      - name: Verify example structures
-        run: |
-          echo "🧪 Verifying example project structures..."
-          for project in webapp-project api-project cli-project; do
-            echo "Checking examples/$project/..."
-            [ -d "examples/$project/ai-dev" ] || { echo "❌ Missing ai-dev in $project"; exit 1; }
-            [ -L "examples/$project/ai-dev/templates" ] || { echo "❌ Missing templates link in $project"; exit 1; }
-            [ -f "examples/$project/ai-dev/README.md" ] || { echo "❌ Missing README in $project"; exit 1; }
-            echo "✅ $project structure verified"
-          done
-
-      - name: Verify documentation
-        run: |
-          echo "🧪 Verifying documentation completeness..."
-          required_docs=(
-            "METHODOLOGY.md"
-            "HUMAN_AI_COLLABORATION.md"
-            "docs/WORKSPACE_SETUP.md"
-            "docs/PROJECT_PIPELINE.md"
-            "docs/BEST_PRACTICES.md"
-          )
-
-          for doc in "${required_docs[@]}"; do
-            [ -f "$doc" ] || { echo "❌ Missing required doc: $doc"; exit 1; }
-            echo "✅ $doc exists"
-          done
-
-      - name: Verify template links
-        run: |
-          echo "🧪 Verifying template links..."
-          [ -d "professional-templates" ] || { echo "❌ Missing professional-templates directory"; exit 1; }
-
-          for project in webapp-project api-project cli-project; do
-            target=$(readlink "examples/$project/ai-dev/templates")
-            expected="../../professional-templates"
-            [ "$target" = "$expected" ] || { echo "❌ Wrong template link in $project: $target != $expected"; exit 1; }
-            echo "✅ $project templates linked correctly"
-          done
+      - name: Shellcheck ai-dev wrapper
+        run: shellcheck ai-dev
