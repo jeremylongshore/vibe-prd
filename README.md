@@ -1,173 +1,137 @@
-# 🚀 AI Dev Tasks Template for Cursor 🤖
+# Professional Documentation Made Easy
 
-**Note: This is a template repository. Clone this to start new projects with structured AI development workflow.**
+**Stop starting from blank documents. Get professional templates instantly.**
 
-## 🎯 How to Use This Template
+## What This Does
 
-1. **Clone this repository** for your new project:
-   ```bash
-   git clone https://github.com/your-username/vibe-prd.git my-new-project
-   cd my-new-project
-   ```
+You know how you always start documentation with a blank page and think "wtf do I write?" This fixes that.
 
-2. **Follow the workflow below** to generate your PRD and task list
+**You get:** 22+ professional document templates (PRDs, API docs, tech specs, etc.)
+**You run:** One command
+**You get:** A pre-filled document with all the right sections
 
-3. **Project files will be updated** automatically during task generation:
-   - **README.md** will be rewritten for your specific project (this template content will be replaced)
-   - **LICENSE** will be updated with your preferred license or removed if not needed
+No more googling "how to write a PRD" or copying random templates from the internet.
 
-4. **Important**: The first tasks generated will always be setup tasks to create your project-specific README and handle the license file
+## Install (30 seconds)
 
-### 📁 What Your Final Project Structure Will Look Like
-
-After using this template, your project will have:
+**Step 1:** Copy this, paste in terminal:
+```bash
+curl -fsSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/ai-dev -o /usr/local/bin/ai-dev && chmod +x /usr/local/bin/ai-dev
 ```
-my-new-project/
-├── README.md (rewritten for your specific project)
-├── LICENSE (updated with your chosen license or removed)
-├── .cursorrules/ (AI workflow files - keep these)
-├── tasks/
-│   ├── prd-your-feature.md (your PRD)
-│   └── tasks-prd-your-feature.md (your task list)
-├── src/ (your actual project code)
-├── package.json (if applicable)
-└── ... (other project files)
+
+**Step 2:** Test it works:
+```bash
+ai-dev make help
 ```
+
+**Done.** (Needs Docker installed, but you probably have that)
+
+## How To Use It
+
+### Create Any Professional Document
+```bash
+# Go to your project folder
+cd ~/my-startup
+
+# Create a Product Requirements Document (PRD)
+ai-dev make create T=create-prd.md N=user-login-feature.md
+
+# Boom! You now have "user-login-feature.md" with proper PRD structure
+```
+
+### What You Get In That Document
+- Problem statement section
+- Success metrics section
+- User stories section
+- Technical requirements section
+- Risk assessment section
+- All the stuff that makes you look like you know what you're doing
+
+### Other Useful Documents You Can Create
+```bash
+# Technical specification (how to actually build it)
+ai-dev make create T=create-tech-spec.md N=login-api-spec.md
+
+# API documentation (document your endpoints)
+ai-dev make create T=create-api-spec.md N=users-api.md
+
+# Architecture decision (why you chose React over Vue)
+ai-dev make create T=adr-template.md N=why-we-use-postgres.md
+
+# Project breakdown (turn big ideas into tasks)
+ai-dev make create T=generate-tasks.md N=sprint-planning.md
+```
+
+## Why This Is Actually Useful
+
+### Before This Tool:
+1. Google "how to write a PRD"
+2. Find some random blog post
+3. Copy/paste into blank doc
+4. Spend 2 hours figuring out what sections you need
+5. End up with amateur-looking docs
+
+### With This Tool:
+1. Run one command
+2. Get professional template instantly
+3. Fill in the blanks
+4. Look like you know what you're doing
+
+## What Documents You Can Create
+
+**The stuff every startup/project needs:**
+
+- **PRD** (Product Requirements) - What you're building and why
+- **Tech Spec** - How you're actually going to build it
+- **API Docs** - Document your endpoints so people can use them
+- **User Stories** - Features from the user's perspective
+- **Project Plans** - Break big ideas into actual tasks
+- **Decision Records** - Why you chose X over Y (for future you)
+- **Runbooks** - How to fix things when they break
+- **Post-mortems** - What went wrong and how to prevent it
+
+**And 14 more** for when you get fancy.
+
+## See All Available Templates
+```bash
+ai-dev make help
+```
+
+## Real Example
+
+Let's say you're building a login feature:
+
+```bash
+# 1. Write the requirements
+ai-dev make create T=create-prd.md N=login-feature.md
+
+# 2. Figure out how to build it
+ai-dev make create T=create-tech-spec.md N=login-implementation.md
+
+# 3. Document the API
+ai-dev make create T=create-api-spec.md N=auth-api.md
+
+# 4. Break it into tasks
+ai-dev make create T=generate-tasks.md N=login-sprint.md
+```
+
+Now you have 4 professional documents that make you look organized AF.
+
+## Who This Is For
+
+- **Startup founders** who need to look professional to investors
+- **Solo developers** who want to document stuff properly
+- **Small teams** who don't have dedicated PMs/tech writers
+- **Anyone** who's tired of starting docs from scratch
+
+## What You Need
+
+- A computer with Docker (Mac/Windows/Linux all work)
+- 5 minutes to install
+- Basic ability to edit text files
+
+That's it. No coding skills needed.
 
 ---
 
-## 📖 About This Template
-
-Welcome to **AI Dev Tasks**! This repository provides a collection of `.mdc` (Markdown Command) files designed to supercharge your feature development workflow within the Cursor editor. By leveraging these commands with Cursor's AI Agent, you can systematically approach building features, from ideation to implementation, with built-in checkpoints for verification.
-
-Stop wrestling with monolithic AI requests and start guiding your AI collaborator step-by-step!
-
-## ✨ The Core Idea
-
-Building complex features with AI can sometimes feel like a black box. This workflow aims to bring structure, clarity, and control to the process by:
-
-1. **Defining Scope:** Clearly outlining what needs to be built with a Product Requirement Document (PRD).
-2. **Detailed Planning:** Breaking down the PRD into a granular, actionable task list.
-3. **Iterative Implementation:** Guiding the AI to tackle one task at a time, allowing you to review and approve each change.
-
-This structured approach helps ensure the AI stays on track, makes it easier to debug issues, and gives you confidence in the generated code.
-
-## Workflow: From Idea to Implemented Feature 💡➡️💻
-
-Here's the step-by-step process using the `.mdc` files in this repository:
-
-### 1️⃣ Create a Product Requirement Document (PRD)
-
-First, lay out the blueprint for your feature. A PRD clarifies what you're building, for whom, and why.
-
-You can create a lightweight PRD directly within Cursor:
-
-1. Ensure you have the `.cursorrules/01-create-prd.mdc` file from this repository accessible.
-2. In Cursor's Agent chat, initiate PRD creation:  
-```  
-Use @.cursorrules/01-create-prd.mdc  
-Here's the feature I want to build: [Describe your feature in detail]  
-Reference these files to help you: [Optional: @file1.py @file2.ts]  
-```  
-_(Pro Tip: For complex PRDs, using MAX mode in Cursor is highly recommended if your budget allows for more comprehensive generation.)_
-
-### 2️⃣ Database Assessment (Optional)
-
-After creating your PRD, determine if your feature needs database functionality:
-
-1. Use the database assessment prompt:
-```
-Use @.cursorrules/02-setup-postgres-mcp.mdc
-Reference my PRD: @tasks/prd-MyFeature.md
-```
-
-2. If you need database functionality, follow the PostgreSQL MCP setup guide in `.cursorrules/setup-postgres-mcp.md`
-3. If not, skip to step 3
-
-### 3️⃣ Generate Your Task List from the PRD
-
-With your PRD drafted (e.g., `prd-MyFeature.md`), the next step is to generate a detailed, step-by-step implementation plan for your AI Developer.
-
-1. Ensure you have `.cursorrules/03-generate-tasks.mdc` accessible.
-2. In Cursor's Agent chat, use the PRD to create tasks:  
-```  
-Now take @tasks/prd-MyFeature.md and create tasks using @.cursorrules/03-generate-tasks.mdc  
-```  
-_(Note: Replace `@prd-MyFeature.md` with the actual filename of the PRD you generated in step 1.)_
-
-### 4️⃣ Examine Your Task List
-
-You'll now have a well-structured task list, often with tasks and sub-tasks, ready for the AI to start working on. This provides a clear roadmap for implementation.
-
-### 5️⃣ Instruct the AI to Work Through Tasks (and Mark Completion)
-
-To ensure methodical progress and allow for verification, we'll use `task-list.mdc`. This command instructs the AI to focus on one task at a time and wait for your go-ahead before moving to the next.
-
-1. Create or ensure you have the `.cursorrules/04-task-list.mdc` file accessible.
-2. In Cursor's Agent chat, tell the AI to start with the first task (e.g., `1.1`):  
-```  
-Please start on task 1.1 and use @.cursorrules/04-task-list.mdc  
-```  
-_(Important: You only need to reference `@.cursorrules/04-task-list.mdc` for the first task. The instructions within it guide the AI for subsequent tasks.)_
-
-The AI will attempt the task and then prompt you to review.
-
-### 6️⃣ Review, Approve, and Progress ✅
-
-As the AI completes each task, you review the changes.
-
-* If the changes are good, simply reply with "yes" (or a similar affirmative) to instruct the AI to mark the task complete and move to the next one.
-* If changes are needed, provide feedback to the AI to correct the current task before moving on.
-
-You'll see a satisfying list of completed items grow, providing a clear visual of your feature coming to life!
-
-While it's not always perfect, this method has proven to be a very reliable way to build out larger features with AI assistance.
-
-## 🗂️ Files in this Repository
-
-### Core Workflow Files (Sequential Order)
-* **`.cursorrules/01-create-prd.mdc`**: Guides the AI in generating a Product Requirement Document for your feature.
-* **`.cursorrules/02-setup-postgres-mcp.mdc`**: Database assessment prompt - asks if your feature needs database functionality and guides PostgreSQL MCP setup.
-* **`.cursorrules/03-generate-tasks.mdc`**: Takes a PRD markdown file as input and helps the AI break it down into a detailed, step-by-step implementation task list.
-* **`.cursorrules/04-task-list.mdc`**: Instructs the AI on how to process the generated task list, tackling one task at a time and waiting for your approval before proceeding.
-
-### Database Integration (Optional)
-* **`.cursorrules/setup-postgres-mcp.md`**: Detailed guide for PostgreSQL MCP integration with Cursor.
-* **`.cursorrules/postgres-mcp-config.example.json`**: Example PostgreSQL MCP configuration for Cursor.
-
-### Output Directory
-* **`tasks/`**: Directory where PRDs and task lists will be saved.
-
-## 🌟 Benefits
-
-* **Structured Development:** Enforces a clear process from idea to code.
-* **Step-by-Step Verification:** Allows you to review and approve AI-generated code at each small step, ensuring quality and control.
-* **Manages Complexity:** Breaks down large features into smaller, digestible tasks for the AI, reducing the chance of it getting lost or generating overly complex, incorrect code.
-* **Improved Reliability:** Offers a more dependable approach to leveraging AI for significant development work compared to single, large prompts.
-* **Clear Progress Tracking:** Provides a visual representation of completed tasks, making it easy to see how much has been done and what's next.
-
-## 🛠️ How to Use
-
-1. **Clone or Download:** Get these `.mdc` files into your project or a central location where Cursor can access them.
-2. **Follow the Workflow:** Systematically use the `.mdc` files in Cursor's Agent chat as described in the 5-step workflow above.
-3. **Adapt and Iterate:**  
-   * Feel free to modify the prompts within the `.mdc` files to better suit your specific needs or coding style.  
-   * If the AI struggles with a task, try rephrasing your initial feature description or breaking down tasks even further.
-
-## 💡 Tips for Success
-
-* **Be Specific:** The more context and clear instructions you provide (both in your initial feature description and any clarifications), the better the AI's output will be.
-* **MAX Mode for PRDs:** As mentioned, using MAX mode in Cursor for PRD creation (`.cursorrules/01-create-prd.mdc`) can yield more thorough and higher-quality results if your budget supports it.
-* **Correct File Tagging:** Always ensure you're accurately tagging the PRD filename (e.g., `@tasks/prd-MyFeature.md`) when generating tasks.
-* **Patience and Iteration:** AI is a powerful tool, but it's not magic. Be prepared to guide, correct, and iterate. This workflow is designed to make that iteration process smoother.
-
-## 🤝 Contributing
-
-Got ideas to improve these `.mdc` files or have new ones that fit this workflow? Contributions are welcome! Please feel free to:
-
-* Open an issue to discuss changes or suggest new features.
-* Submit a pull request with your enhancements.
-
----
-
-Happy AI-assisted developing! 
+**Stop looking amateur. Get professional docs in 30 seconds.**
