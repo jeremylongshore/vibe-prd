@@ -1,150 +1,137 @@
-# AI Development Tasks - Containerized CLI
+# Professional Documentation Made Easy
 
-**Professional technical documentation templates delivered as a zero-ops containerized CLI.**
+**Stop starting from blank documents. Get professional templates instantly.**
 
-## Quick Install
+## What This Does
 
-### One-Line Install
+You know how you always start documentation with a blank page and think "wtf do I write?" This fixes that.
+
+**You get:** 22+ professional document templates (PRDs, API docs, tech specs, etc.)
+**You run:** One command
+**You get:** A pre-filled document with all the right sections
+
+No more googling "how to write a PRD" or copying random templates from the internet.
+
+## Install (30 seconds)
+
+**Step 1:** Copy this, paste in terminal:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/ai-dev -o /usr/local/bin/ai-dev
-chmod +x /usr/local/bin/ai-dev
+curl -fsSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/ai-dev -o /usr/local/bin/ai-dev && chmod +x /usr/local/bin/ai-dev
+```
+
+**Step 2:** Test it works:
+```bash
 ai-dev make help
 ```
 
-### Alternative: Custom Image
+**Done.** (Needs Docker installed, but you probably have that)
+
+## How To Use It
+
+### Create Any Professional Document
 ```bash
-AI_DEV_IMAGE=ghcr.io/jeremylongshore/ai-dev-tasks:latest ai-dev make help
+# Go to your project folder
+cd ~/my-startup
+
+# Create a Product Requirements Document (PRD)
+ai-dev make create T=create-prd.md N=user-login-feature.md
+
+# Boom! You now have "user-login-feature.md" with proper PRD structure
 ```
 
-## Quick Start
+### What You Get In That Document
+- Problem statement section
+- Success metrics section
+- User stories section
+- Technical requirements section
+- Risk assessment section
+- All the stuff that makes you look like you know what you're doing
 
-### Create Documentation
+### Other Useful Documents You Can Create
 ```bash
-# Create a PRD in your current project
-ai-dev make create T=create-prd.md N=feature-x-prd.md
+# Technical specification (how to actually build it)
+ai-dev make create T=create-tech-spec.md N=login-api-spec.md
 
-# Check status
-ai-dev make status
+# API documentation (document your endpoints)
+ai-dev make create T=create-api-spec.md N=users-api.md
 
-# See available templates
+# Architecture decision (why you chose React over Vue)
+ai-dev make create T=adr-template.md N=why-we-use-postgres.md
+
+# Project breakdown (turn big ideas into tasks)
+ai-dev make create T=generate-tasks.md N=sprint-planning.md
+```
+
+## Why This Is Actually Useful
+
+### Before This Tool:
+1. Google "how to write a PRD"
+2. Find some random blog post
+3. Copy/paste into blank doc
+4. Spend 2 hours figuring out what sections you need
+5. End up with amateur-looking docs
+
+### With This Tool:
+1. Run one command
+2. Get professional template instantly
+3. Fill in the blanks
+4. Look like you know what you're doing
+
+## What Documents You Can Create
+
+**The stuff every startup/project needs:**
+
+- **PRD** (Product Requirements) - What you're building and why
+- **Tech Spec** - How you're actually going to build it
+- **API Docs** - Document your endpoints so people can use them
+- **User Stories** - Features from the user's perspective
+- **Project Plans** - Break big ideas into actual tasks
+- **Decision Records** - Why you chose X over Y (for future you)
+- **Runbooks** - How to fix things when they break
+- **Post-mortems** - What went wrong and how to prevent it
+
+**And 14 more** for when you get fancy.
+
+## See All Available Templates
+```bash
 ai-dev make help
 ```
 
-### Project Setup (Local Development)
+## Real Example
+
+Let's say you're building a login feature:
+
 ```bash
-cd ~/projects/new-project
-~/ai-dev/setup-scripts/setup-project.sh
+# 1. Write the requirements
+ai-dev make create T=create-prd.md N=login-feature.md
+
+# 2. Figure out how to build it
+ai-dev make create T=create-tech-spec.md N=login-implementation.md
+
+# 3. Document the API
+ai-dev make create T=create-api-spec.md N=auth-api.md
+
+# 4. Break it into tasks
+ai-dev make create T=generate-tasks.md N=login-sprint.md
 ```
 
-## What You Get
+Now you have 4 professional documents that make you look organized AF.
 
-### 22+ Professional Templates
-- **Core Development:** PRDs, Tech Specs, API Docs, Test Plans
-- **Project Management:** Project Charters, Risk Registers, RACI Matrices
-- **Business Documents:** BRDs, User Stories, Design Docs
-- **Operations:** Runbooks, SOPs, RFCs, Post-Mortems
+## Who This Is For
 
-### Zero-Ops Deployment
-- **Containerized CLI** - No local dependencies beyond Docker
-- **One-line install** - Works on any system with Docker
-- **Version controlled** - Reproducible builds and releases
+- **Startup founders** who need to look professional to investors
+- **Solo developers** who want to document stuff properly
+- **Small teams** who don't have dedicated PMs/tech writers
+- **Anyone** who's tired of starting docs from scratch
 
-## Available Templates
+## What You Need
 
-### Core Development (6 templates)
-- `create-prd.md` - Product Requirements Document
-- `adr-template.md` - Architecture Decision Record
-- `create-tech-spec.md` - Technical Specification
-- `create-api-spec.md` - API Documentation
-- `create-database-schema.md` - Database Design
-- `create-test-plan.md` - Testing Strategy
+- A computer with Docker (Mac/Windows/Linux all work)
+- 5 minutes to install
+- Basic ability to edit text files
 
-### Project Management (4 templates)
-- `create-project-charter.md` - Project Charter
-- `create-raci-matrix.md` - Responsibility Matrix
-- `create-risk-register.md` - Risk Management
-- `generate-tasks.md` - Task Breakdown
-
-### Business Documents (4 templates)
-- `create-brd.md` - Business Requirements
-- `create-user-story.md` - User Stories
-- `create-design-doc.md` - Design Documentation
-- `create-post-mortem.md` - Incident Analysis
-
-### Operations (4 templates)
-- `create-runbook.md` - Operational Procedures
-- `create-sop.md` - Standard Operating Procedures
-- `create-rfc.md` - Request for Comments
-- `process-task-list.md` - Task Processing
-
-## Usage Examples
-
-### Common Use Cases
-```bash
-# Create a Product Requirements Document
-ai-dev make create T=create-prd.md N=new-feature-prd.md
-
-# Create an Architecture Decision Record
-ai-dev make create T=adr-template.md N=adr-001-database-choice.md
-
-# Create a Technical Specification
-ai-dev make create T=create-tech-spec.md N=api-integration-spec.md
-
-# Generate implementation tasks
-ai-dev make create T=generate-tasks.md N=sprint-tasks.md
-
-# Check your documentation status
-ai-dev make status
-```
-
-### For Local Development
-```bash
-# Set up project integration (if you want local workflow)
-./setup-scripts/setup-project.sh     # Single project
-./setup-scripts/setup-workspace.sh   # All projects in workspace
-```
-
-## How It Works
-
-### File Creation Flow
-```bash
-# 1. Run the command
-ai-dev make create T=create-prd.md N=my-feature-prd.md
-
-# 2. Document is created in your current directory
-./my-feature-prd.md  # Ready to edit!
-
-# 3. Edit with your favorite editor
-vim my-feature-prd.md
-code my-feature-prd.md
-```
-
-### Template System
-- **Read-only templates** stored in container
-- **Working documents** created in your current directory
-- **No local installation** required beyond Docker
-- **Version controlled** through container tags
-
-## Repository & Container Registry
-
-- **Source:** https://github.com/jeremylongshore/vibe-prd
-- **Container:** `ghcr.io/jeremylongshore/ai-dev-tasks`
-- **Latest:** Always use `:latest` for most recent templates
-
-## System Requirements
-
-- Docker installed and running
-- Internet connection (for initial image pull)
-- That's it! No local dependencies.
-
-## Key Benefits
-
-- **Zero Setup:** Works immediately after one-line install
-- **Consistent:** Professional format across all projects
-- **Portable:** Same templates on any Docker-enabled system
-- **Always Updated:** Pull latest container for newest templates
-- **No Conflicts:** Isolated environment prevents dependency issues
+That's it. No coding skills needed.
 
 ---
 
-**Professional documentation workflow in a container. Install once, use everywhere.**
+**Stop looking amateur. Get professional docs in 30 seconds.**
