@@ -1,4 +1,4 @@
-WORKSPACE=/workspace
+WORKSPACE?=/workspace
 TPL=templates
 T?=create-prd.md
 N?=new-doc.md
