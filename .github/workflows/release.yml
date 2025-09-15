@@ -13,6 +13,8 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Login to GHCR
@@ -21,20 +23,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Compute tags
-        id: meta
-        run: |
-          REF="${GITHUB_REF#refs/tags/}"
-          IMAGE="ghcr.io/${GITHUB_REPOSITORY##*/}"
-          # force repo owner namespace
-          IMAGE="ghcr.io/${GITHUB_REPOSITORY_OWNER}/ai-dev-tasks"
-          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
-          echo "VERSION=${REF#v}" >> $GITHUB_OUTPUT
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
           push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           tags: |
-            ${{ steps.meta.outputs.IMAGE }}:${{ steps.meta.outputs.VERSION }}
-            ${{ steps.meta.outputs.IMAGE }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ${{ startsWith(github.ref, 'refs/tags/') && format('ghcr.io/{0}:{1}', github.repository, github.ref_name) || '' }}
+            ${{ startsWith(github.ref, 'refs/tags/') && format('ghcr.io/{0}:latest', github.repository) || '' }}
