@@ -3,28 +3,32 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 **Last Updated:** 2025-09-15
-**System Status:** ✅ Operational Foundational System
+**System Status:** ✅ Production Ready v0.2.0
+**Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
 
 ## System Overview
 
-This is Jeremy's foundational AI development workflow system. It provides professional templates, automation scripts, and standardized processes for all development projects.
+This is a **containerized AI development workflow system with AI assistant integration**. It provides professional templates via Docker container and includes guided AI prompts for users of all skill levels - from complete beginners to experienced developers.
 
 ## Directory Structure
 
 ```
-~/ai-dev/                    # 🎯 CONSOLIDATED AI DEVELOPMENT SYSTEM
-├── professional-templates/  # Master template library (22 templates)
-├── setup-scripts/          # Project automation scripts
-├── examples/               # Usage examples and demos
-├── system-docs/            # System documentation
-├── docs/                   # Working documents (YOUR CONTENT)
-├── sop/                    # Working SOPs (YOUR CONTENT)
-├── templates/              # → symlink to professional-templates/
-├── CLAUDE.md               # This file - AI assistant guidance
-├── SOP.md                  # Standard procedures
-├── README.md               # User manual and quick start
-├── USER_MANUAL.md          # Comprehensive usage guide
-└── Makefile                # Document creation commands
+~/ai-dev/                         # 🎯 CONTAINERIZED AI DEVELOPMENT SYSTEM
+├── professional-templates/       # Master template library (22 templates)
+├── .github/workflows/            # CI/CD: Container build + release automation
+├── examples/                     # Usage examples and demos
+├── archive/                     # Legacy directories (cli-workflow, etc.)
+├── docs-archive/                # Extra documentation (GETTING_STARTED, etc.)
+├── CLAUDE.md                    # This file - AI assistant guidance
+├── README.md                    # Quick start + AI prompt integration
+├── SOP.md                       # Standard procedures (containerized)
+├── USER_MANUAL.md               # Complete user guide (containerized)
+├── AI_ASSISTANT_PROMPTS.md      # 🤖 6 AI prompts for different skill levels
+├── BEGINNER_SETUP.md           # 🤖 Complete beginner AI guidance
+├── Dockerfile                   # Container definition
+├── Makefile                     # Document creation logic (WORKSPACE?= fix)
+├── ai-dev                       # CLI wrapper script
+└── templates -> professional-templates/
 ```
 
 ## Templates Available
@@ -59,29 +63,39 @@ make status                   # Show system status
 make create T=template N=name # Create document from template
 ```
 
-### Project Setup
+### Containerized Usage (Current)
 ```bash
-# Set up new project with ai-dev pipeline
-./setup-scripts/setup-project.sh
+# Using global ai-dev command (if installed)
+ai-dev make help                          # Show all templates
+ai-dev make create T=create-prd.md N=my-feature.md
 
-# Set up entire workspace (all projects)
-./setup-scripts/setup-workspace.sh
+# Or direct container usage
+docker run --rm -v "$PWD":/workspace -w /workspace \
+  ghcr.io/jeremylongshore/vibe-prd:v0.2.0 \
+  make create T=create-prd.md N=my-feature.md
 ```
 
 ## AI Assistant Guidelines
 
 ### When Working with This System
-1. **Templates are READ-ONLY** - Never modify template files
-2. **Working docs go in ~/ai-dev/docs/** - Single central workspace
-3. **This is the source of truth** for all template workflows
-4. **Projects route to ~/ai-dev** - No project-level ai-dev directories
+1. **Templates are READ-ONLY** - Never modify professional-templates/ files
+2. **Containerized workflow** - Documents created via Docker container
+3. **AI Assistant Integration** - Use AI_ASSISTANT_PROMPTS.md for user guidance
+4. **Multiple user types supported** - Beginners to expert developers
 
-### Template Usage Pattern
+### AI Assistant User Support
+When users need help with this system:
+1. **Complete Beginners**: Direct them to BEGINNER_SETUP.md or the README AI prompt
+2. **Developers**: Use the technical prompts in AI_ASSISTANT_PROMPTS.md
+3. **Troubleshooting**: Guide them through the troubleshooting prompts
+4. **Team Setup**: Use the organizational prompts for multiple users
+
+### Template Usage Pattern (Containerized)
 ```bash
 # User requests: "Create PRD for new feature"
-cd ~/ai-dev
-make create T=create-prd.md N=feature-prd.md
-# Edit the created file in ~/ai-dev/docs/feature-prd.md
+# Modern approach:
+ai-dev make create T=create-prd.md N=feature-prd.md
+# Document appears in user's current directory
 
 # OR from any project with setup-project.sh integration:
 cd ~/projects/my-project
