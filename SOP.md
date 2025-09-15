@@ -1,10 +1,18 @@
 # Standard Operating Procedures - AI Development Tasks System
 
 **Created:** 2025-09-15
-**Version:** v0.1.1 (Containerized)
-**System:** Professional Documentation CLI
+**Version:** v0.2.0 (AI-Assisted)
+**System:** Professional Documentation CLI with AI Integration
 
 ## SOP-001: Template Usage Workflow
+
+### Note: AI Assistant Available
+For users unfamiliar with command line tools, **use AI assistance first**:
+- Copy repository URL: `https://github.com/jeremylongshore/vibe-prd`
+- Use beginner prompt from README.md or AI_ASSISTANT_PROMPTS.md
+- Get guided step-by-step help from Claude/ChatGPT
+
+## SOP-002: Standard Document Creation
 
 ### Purpose
 Standardized process for creating project documentation using the master template system.
