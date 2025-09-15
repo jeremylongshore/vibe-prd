@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "🧪 Testing document creation..."
           mkdir -p test-workspace
-          docker run --rm -v "$PWD/test-workspace":/workspace -w /workspace ai-dev-tasks-test make create T=create-prd.md N=test-prd.md
+          docker run --rm -v "$PWD/test-workspace":/workspace ai-dev-tasks-test bash -c "cd /app && make create T=create-prd.md N=test-prd.md"
           [ -f "test-workspace/test-prd.md" ] || { echo "❌ Document not created"; exit 1; }
           echo "✅ Document creation works"
 
