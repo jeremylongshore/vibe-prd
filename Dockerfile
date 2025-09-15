@@ -17,6 +17,5 @@ COPY . /app
 # Add setup scripts to PATH
 ENV PATH="/app/setup-scripts:${PATH}"
 
-# Set default entrypoint and command
-ENTRYPOINT ["bash", "-c"]
-CMD ["make help"]
+# Set default command
+CMD ["make", "help"]
