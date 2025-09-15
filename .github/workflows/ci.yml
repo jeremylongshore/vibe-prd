@@ -1,0 +1,63 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Shellcheck setup scripts
+        uses: ludeeus/action-shellcheck@v2
+        with:
+          scandir: setup-scripts
+
+      - name: Smoke test workspace setup
+        run: |
+          echo "🧪 Testing workspace setup script..."
+          bash setup-scripts/setup-workspace.sh || true
+
+      - name: Smoke test project setup
+        run: |
+          echo "🧪 Testing project setup script..."
+          bash setup-scripts/setup-project.sh || true
+
+      - name: Verify example structures
+        run: |
+          echo "🧪 Verifying example project structures..."
+          for project in webapp-project api-project cli-project; do
+            echo "Checking examples/$project/..."
+            [ -d "examples/$project/ai-dev" ] || { echo "❌ Missing ai-dev in $project"; exit 1; }
+            [ -L "examples/$project/ai-dev/templates" ] || { echo "❌ Missing templates link in $project"; exit 1; }
+            [ -f "examples/$project/ai-dev/README.md" ] || { echo "❌ Missing README in $project"; exit 1; }
+            echo "✅ $project structure verified"
+          done
+
+      - name: Verify documentation
+        run: |
+          echo "🧪 Verifying documentation completeness..."
+          required_docs=(
+            "METHODOLOGY.md"
+            "HUMAN_AI_COLLABORATION.md"
+            "docs/WORKSPACE_SETUP.md"
+            "docs/PROJECT_PIPELINE.md"
+            "docs/BEST_PRACTICES.md"
+          )
+
+          for doc in "${required_docs[@]}"; do
+            [ -f "$doc" ] || { echo "❌ Missing required doc: $doc"; exit 1; }
+            echo "✅ $doc exists"
+          done
+
+      - name: Verify template links
+        run: |
+          echo "🧪 Verifying template links..."
+          [ -d "professional-templates" ] || { echo "❌ Missing professional-templates directory"; exit 1; }
+
+          for project in webapp-project api-project cli-project; do
+            target=$(readlink "examples/$project/ai-dev/templates")
+            expected="../../professional-templates"
+            [ "$target" = "$expected" ] || { echo "❌ Wrong template link in $project: $target != $expected"; exit 1; }
+            echo "✅ $project templates linked correctly"
+          done

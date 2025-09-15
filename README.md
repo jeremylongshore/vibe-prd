@@ -1,37 +1,56 @@
-# 🚀 AI Dev Tasks Template for Cursor 🤖
+# vibe-prd — AI Development Workflow System
 
-**Note: This is a template repository. Clone this to start new projects with structured AI development workflow.**
+**Professional AI-assisted development with structured templates and automated pipeline setup**
 
-## 🎯 How to Use This Template
+## 🎯 Three Usage Modes
 
-1. **Clone this repository** for your new project:
-   ```bash
-   git clone https://github.com/your-username/vibe-prd.git my-new-project
-   cd my-new-project
-   ```
-
-2. **Follow the workflow below** to generate your PRD and task list
-
-3. **Project files will be updated** automatically during task generation:
-   - **README.md** will be rewritten for your specific project (this template content will be replaced)
-   - **LICENSE** will be updated with your preferred license or removed if not needed
-
-4. **Important**: The first tasks generated will always be setup tasks to create your project-specific README and handle the license file
-
-### 📁 What Your Final Project Structure Will Look Like
-
-After using this template, your project will have:
+### 1. **Templates Only** (Original vibe-prd)
+Use vibe-prd directly for single project:
+```bash
+git clone https://github.com/jeremylongshore/vibe-prd.git my-project
+cd my-project
+# Follow original Cursor workflow
 ```
-my-new-project/
-├── README.md (rewritten for your specific project)
-├── LICENSE (updated with your chosen license or removed)
-├── .cursorrules/ (AI workflow files - keep these)
-├── tasks/
-│   ├── prd-your-feature.md (your PRD)
-│   └── tasks-prd-your-feature.md (your task list)
-├── src/ (your actual project code)
-├── package.json (if applicable)
-└── ... (other project files)
+
+### 2. **Single-Project Pipeline**
+Add ai-dev structure to existing project:
+```bash
+cd my-existing-project
+curl -sSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/setup-scripts/setup-project.sh | bash
+```
+
+### 3. **Workspace-Wide Setup**
+Central templates serving multiple projects:
+```bash
+git clone https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev-templates
+~/ai-dev-templates/setup-scripts/setup-workspace.sh
+```
+
+## 🚀 Quick Start
+
+**First time?** Start here: 📖 [docs/WORKSPACE_SETUP.md](docs/WORKSPACE_SETUP.md)
+
+**Add to existing project?** See: 📖 [docs/PROJECT_PIPELINE.md](docs/PROJECT_PIPELINE.md)
+
+## 📚 What's Included
+
+- **16 Professional Templates** - Complete SDLC coverage (PRD, ADR, Tech Spec, etc.)
+- **Automated Setup Scripts** - One-command pipeline installation
+- **Human-AI Collaboration Patterns** - Proven workflows for AI-assisted development
+- **Example Projects** - Real-world demonstrations
+- **Complete Documentation** - Methodology, best practices, troubleshooting
+
+## 🎯 Project Structure After Setup
+
+```
+your-project/
+├── ai-dev/                    # AI development pipeline
+│   ├── README.md             # Pipeline status tracker
+│   ├── docs/                 # Working documents (PRDs, specs, etc.)
+│   ├── sop/                  # Standard operating procedures
+│   └── templates/            # Link to professional templates
+├── Makefile                  # Document automation commands
+└── (your existing project files)
 ```
 
 ---
