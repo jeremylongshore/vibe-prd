@@ -2,16 +2,33 @@ name: Release
 on:
   push:
     tags: ['v*.*.*']
+
 permissions:
   contents: write
   packages: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - uses: ncipollo/release-action@v1
+
+      # Optional: read image digest built by container-ci on tag
+      - name: Compute image ref
+        id: img
+        run: |
+          owner_lc="${GITHUB_REPOSITORY_OWNER,,}"
+          name_lc="${GITHUB_REPOSITORY##*/}"
+          echo "ref=ghcr.io/${owner_lc}/${name_lc}:${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
           generateReleaseNotes: true
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }} # treat v1.2.3-rc as prerelease
+          body: |
+            Container image: `${{ steps.img.outputs.ref }}`
+            Changes are auto-generated below.
