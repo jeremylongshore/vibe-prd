@@ -4,8 +4,8 @@
 
 [![Container CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml) [![Release](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml)
 
-**Current Status:** ✅ **v0.1.1 - Container CI fixed, all green checks**
-📦 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.1.1`
+**Current Status:** ✅ **v0.2.0 - AI-Assisted Setup for Beginners**
+📦 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
 📋 **Latest:** [View releases →](https://github.com/jeremylongshore/vibe-prd/releases)
 
 ## What This Does
