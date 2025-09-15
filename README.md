@@ -18,7 +18,21 @@ You know how you always start documentation with a blank page and think "wtf do 
 
 No more googling "how to write a PRD" or copying random templates from the internet.
 
-## Install (30 seconds)
+## 🤖 Complete Beginner? Let AI Help You
+
+**Never used GitHub or Docker?** Copy this repo URL and this prompt to Claude/ChatGPT:
+
+```
+I'm a complete beginner and found this repository: https://github.com/jeremylongshore/vibe-prd
+
+I want to use this "AI Development Tasks" system but don't know how to install or use it. Please walk me through everything step-by-step, assuming I know nothing about command line tools.
+
+My computer: [Mac/Windows/Linux]
+```
+
+The AI will guide you through installation and first use. **[More AI prompts →](./AI_ASSISTANT_PROMPTS.md)**
+
+## ⚡ Quick Install (30 seconds)
 
 **Step 1:** Copy this, paste in terminal:
 ```bash
