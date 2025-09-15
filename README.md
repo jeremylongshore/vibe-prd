@@ -2,6 +2,12 @@
 
 **Stop starting from blank documents. Get professional templates instantly.**
 
+[![Container CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml) [![Release](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml)
+
+**Current Status:** ✅ **v0.1.1 - Container CI fixed, all green checks**
+📦 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.1.1`
+📋 **Latest:** [View releases →](https://github.com/jeremylongshore/vibe-prd/releases)
+
 ## What This Does
 
 You know how you always start documentation with a blank page and think "wtf do I write?" This fixes that.
