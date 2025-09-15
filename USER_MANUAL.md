@@ -1,9 +1,9 @@
-# User Manual - AI Development Tasks Master System
+# User Manual - AI Development Tasks System
 
 **Created:** 2025-09-15
-**Version:** 1.0
-**For:** Jeremy Longshore
-**System:** Foundational AI Development Workflow
+**Version:** v0.1.1 (Containerized)
+**Status:** ✅ Production Ready
+**Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.1.1`
 
 ## Table of Contents
 1. [Quick Start](#quick-start)
@@ -16,18 +16,31 @@
 
 ## Quick Start
 
-### 30-Second Setup for New Project
+### Option 1: One-Line Install (Recommended)
 ```bash
-cd ~/my-new-project
-~/ai-dev-tasks-master/setup-scripts/setup-project.sh
-# Choose: 1) Symlink (recommended)
-make create T=create-prd.md N=prd.md
+# Install ai-dev command globally
+curl -fsSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/ai-dev -o /usr/local/bin/ai-dev && chmod +x /usr/local/bin/ai-dev
+
+# Use anywhere
+cd ~/my-project
+ai-dev make create T=create-prd.md N=my-feature.md
+```
+
+### Option 2: Direct Container Usage
+```bash
+# No installation needed
+docker run --rm -v "$PWD":/workspace -w /workspace \
+  ghcr.io/jeremylongshore/vibe-prd:v0.1.1 \
+  make create T=create-prd.md N=my-feature.md
 ```
 
 ### Daily Commands
 ```bash
-# Check what templates are available
-make help
+# See all available templates
+ai-dev make help
+
+# Check system status
+ai-dev make status
 
 # Create a document
 make create T=create-prd.md N=feature-prd.md
@@ -39,50 +52,50 @@ make status
 ## System Overview
 
 ### What This System Does
-- **Provides 22+ professional templates** for all development documentation
-- **Automates project setup** with consistent ai-dev pipelines
-- **Maintains clean separation** between templates (public) and working docs (private)
-- **Integrates with GitHub** for sharing methodology while keeping projects private
+- **Provides 22+ professional templates** via containerized CLI
+- **Works anywhere** - no local installation required (just Docker)
+- **One-line install** for global `ai-dev` command
+- **Consistent workflow** across all projects and environments
+- **Auto-published** container images via GitHub Actions
 
 ### What This System Doesn't Do
-- **Replace existing comprehensive systems** (like Bob's Brain CLAUDE.md)
-- **Store working documents** (those stay in individual projects)
+- **Replace existing project documentation** (adds to it)
+- **Store your working documents** (you keep those in your projects)
 - **Manage project code** (pure documentation workflow)
 
-### Directory Structure
+### How It Works
 ```
-~/ai-dev-tasks-master/               # 🏗️ FOUNDATIONAL SYSTEM
-├── professional-templates/          # 📚 Master template library
-│   ├── create-prd.md               # Product Requirements Document
-│   ├── adr-template.md             # Architecture Decision Record
-│   ├── create-tech-spec.md         # Technical Specification
-│   └── ... (19 more templates)
-├── setup-scripts/                  # 🔧 Automation scripts
-│   ├── setup-project.sh            # Single project setup
-│   └── setup-workspace.sh          # Workspace-wide setup
-├── examples/                       # 📖 Usage examples
-│   └── webapp-project/             # Complete example implementation
-├── docs/                           # 📄 System documentation
-├── CLAUDE.md                       # 🤖 AI assistant guidance
-├── SOP.md                          # 📋 Standard procedures
-├── README.md                       # 📘 Quick reference
-└── USER_MANUAL.md                  # 📚 This comprehensive guide
+🐳 Container: ghcr.io/jeremylongshore/vibe-prd:v0.1.1
+├── 📚 22+ professional templates built-in
+├── 🔧 Makefile-driven document creation
+├── 📁 Mounts your project directory as workspace
+└── ✅ Creates documents directly in your project
+
+Your workflow:
+1. cd ~/my-project
+2. ai-dev make create T=template.md N=my-doc.md
+3. my-doc.md appears in your project directory
 ```
 
 ## Daily Usage
 
 ### Creating Documents
 
-#### Step 1: Navigate to Your Project
+#### Step 1: Go to Your Project
 ```bash
 cd ~/projects/my-project
-# NOT ~/ai-dev-tasks-master (that's the template library)
+# Or any directory where you want the document
 ```
 
 #### Step 2: Create Document from Template
 ```bash
-# Basic syntax
-make create T=[template-name].md N=[your-document-name].md
+# Using ai-dev command (if installed)
+ai-dev make create T=create-prd.md N=my-feature-prd.md
+
+# Or direct container usage
+docker run --rm -v "$PWD":/workspace -w /workspace \
+  ghcr.io/jeremylongshore/vibe-prd:v0.1.1 \
+  make create T=create-prd.md N=my-feature-prd.md
 
 # Examples
 make create T=create-prd.md N=user-dashboard-prd.md

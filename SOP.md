@@ -1,8 +1,8 @@
-# Standard Operating Procedures - AI Development Tasks Master
+# Standard Operating Procedures - AI Development Tasks System
 
 **Created:** 2025-09-15
-**Version:** 1.0
-**System:** AI Development Workflow Foundation
+**Version:** v0.1.1 (Containerized)
+**System:** Professional Documentation CLI
 
 ## SOP-001: Template Usage Workflow
 
@@ -14,30 +14,31 @@ All development projects requiring structured documentation.
 
 ### Procedure
 
-#### Step 1: Project Assessment
+#### Step 1: Navigate to Project
 ```bash
-# Check if project needs ai-dev pipeline
-cd [project-directory]
-ls -la CLAUDE.md  # If exists, project has its own system
+cd ~/projects/my-project
+# Or any directory where you want documentation
 ```
 
-#### Step 2: Document Creation
+#### Step 2: Create Document
 ```bash
-# Navigate to project (not master system)
-cd [project-directory]
+# Using ai-dev command (recommended)
+ai-dev make create T=[template].md N=[document-name].md
 
-# Create document from template
-make create T=[template-name].md N=[output-name].md
+# Or direct container usage
+docker run --rm -v "$PWD":/workspace -w /workspace \
+  ghcr.io/jeremylongshore/vibe-prd:v0.1.1 \
+  make create T=[template].md N=[document-name].md
 
 # Example: Create PRD
-make create T=create-prd.md N=feature-dashboard-prd.md
+ai-dev make create T=create-prd.md N=feature-dashboard-prd.md
 ```
 
 #### Step 3: Document Editing
-- Edit created file in project's `ai-dev/docs/` directory
+- Edit the created file in your project directory
 - Follow template structure and prompts
 - Fill in all required sections
-- Update project's `ai-dev/README.md` checklist
+- Commit to your project's git repository
 
 #### Step 4: Review and Approval
 - Technical review by appropriate team member
