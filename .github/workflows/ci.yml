@@ -24,8 +24,13 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck
 
       - name: Shellcheck scripts
-        if: hashFiles('**/*.sh') != ''
-        run: shellcheck -S warning $(git ls-files '*.sh')
+        if: hashFiles('setup-scripts/*.sh') != '' || hashFiles('ai-dev') != ''
+        run: |
+          # Only check setup scripts and ai-dev wrapper, skip cli-workflow (legacy)
+          if [ -d setup-scripts ]; then
+            shellcheck -S warning setup-scripts/*.sh
+          fi
+          shellcheck -S warning ai-dev
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
