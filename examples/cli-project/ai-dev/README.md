@@ -1,26 +1,20 @@
-# Example AI Dev Pipeline
+# AI Development Pipeline — cli-project
+Status: Ready ✅  | Templates: `ai-dev/templates` → ../../professional-templates
 
-**Status:** Demo-ready ✅
-**Templates:** ai-dev/templates → ../../professional-templates
-**Purpose:** Show complete ai-dev workflow in action
+## Checklist
+- [ ] PRD → docs/prd.md
+- [ ] ADR-001 → docs/adr-001.md
+- [ ] Tech Spec → docs/tech-spec.md
+- [ ] Tasks → docs/tasks.md
+- [ ] API Spec → docs/api-spec.md
+- [ ] Test Plan → docs/test-plan.md
+- [ ] Runbook → docs/runbook.md
+- [ ] Risk Register → docs/risk-register.md
+- [ ] SOP → sop/standard-operating-procedures.md
+- [ ] DB Schema → docs/database-schema.md
 
-## Pipeline Status
-- [x] **Templates linked** - Available for document creation
-- [ ] **PRD** → docs/prd.md (Product Requirements)
-- [ ] **Tech Spec** → docs/tech-spec.md (Technical Specification)
-- [ ] **Tasks** → docs/tasks.md (Implementation Breakdown)
-- [ ] **API Spec** → docs/api-spec.md (API Documentation)
+**Rules:** Templates live centrally. Working docs live here.
 
-## Quick Start
-```bash
-# Create documents from templates
-cp ai-dev/templates/create-prd.md ai-dev/docs/prd.md
-cp ai-dev/templates/create-tech-spec.md ai-dev/docs/tech-spec.md
-
-# Edit documents for your project
-$EDITOR ai-dev/docs/prd.md
-```
-
-## Example Usage
-This directory demonstrates how ai-dev pipeline integrates with real projects.
-See parent directories for actual project code and structure.
+## Example Project
+This is an example demonstrating complete ai-dev pipeline integration.
+See parent directory for actual project code and structure.
