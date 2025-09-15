@@ -8,10 +8,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
       - name: Shellcheck setup scripts
-        uses: ludeeus/action-shellcheck@v2
-        with:
-          scandir: setup-scripts
+        run: shellcheck setup-scripts/*.sh
 
       - name: Smoke test workspace setup
         run: |
