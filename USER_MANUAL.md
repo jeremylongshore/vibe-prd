@@ -1,18 +1,19 @@
 # User Manual - AI Development Tasks System
 
 **Created:** 2025-09-15
-**Version:** v0.1.1 (Containerized)
-**Status:** ✅ Production Ready
-**Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.1.1`
+**Version:** v0.2.0 (AI-Assisted)
+**Status:** ✅ Production Ready with AI Integration
+**Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
 
 ## Table of Contents
 1. [Quick Start](#quick-start)
-2. [System Overview](#system-overview)
-3. [Daily Usage](#daily-usage)
-4. [Template Reference](#template-reference)
-5. [Project Setup](#project-setup)
-6. [Advanced Features](#advanced-features)
-7. [Troubleshooting](#troubleshooting)
+2. [AI Assistant Help](#ai-assistant-help) 🤖
+3. [System Overview](#system-overview)
+4. [Daily Usage](#daily-usage)
+5. [Template Reference](#template-reference)
+6. [Project Setup](#project-setup)
+7. [Advanced Features](#advanced-features)
+8. [Troubleshooting](#troubleshooting)
 
 ## Quick Start
 
@@ -48,6 +49,43 @@ make create T=create-prd.md N=feature-prd.md
 # Check project status
 make status
 ```
+
+## AI Assistant Help
+
+### 🤖 Complete Beginner? Get AI Guidance
+
+**Never used command line tools?** Copy this prompt to Claude, ChatGPT, or any AI assistant:
+
+```
+I'm a complete beginner and found this repository: https://github.com/jeremylongshore/vibe-prd
+
+I want to use this "AI Development Tasks" system but don't know how to install or use it. Please walk me through everything step-by-step, assuming I know nothing about command line tools.
+
+My computer: [Mac/Windows/Linux]
+```
+
+The AI will guide you through installation and first use.
+
+### 📋 More AI Prompts Available
+
+We have **6 different AI prompts** for different situations:
+
+- **🟢 Complete Beginner**: Step-by-step installation and first use
+- **🟡 Developer**: Technical implementation details
+- **🔵 Team Setup**: Organizational rollout planning
+- **🟠 Troubleshooting**: Fix specific problems
+- **🟣 Template Creation**: Add custom templates
+- **🔴 Quick Help**: Specific questions and commands
+
+**[See all prompts →](./AI_ASSISTANT_PROMPTS.md)**
+
+### Why Use AI Assistance?
+
+- **No prerequisites**: You don't need to know Docker, GitHub, or command line
+- **Personalized help**: AI adapts to your skill level and specific situation
+- **Step-by-step guidance**: Clear instructions with explanations
+- **Troubleshooting**: Help when things go wrong
+- **Available 24/7**: Get help anytime
 
 ## System Overview
 
