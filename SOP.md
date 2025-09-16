@@ -194,6 +194,11 @@ ls -la Makefile
 - Contact Jeremy for template improvements
 - Document solutions in this SOP
 
+### BMAD Pin Policy
+- `.bmad-version` pins image tag.
+- `.bmad-lock` stores the pulled digest.
+- Any change to `.bmad-version` must update `.bmad-lock` in the same PR.
+
 ---
 
 **These SOPs ensure consistent, reliable operation of the foundational development system.**
