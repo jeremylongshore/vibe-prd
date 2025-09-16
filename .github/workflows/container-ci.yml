@@ -5,6 +5,10 @@ on:
     tags: ['v*']
   pull_request:
 
+defaults:
+  run:
+    working-directory: ./
+
 permissions:
   contents: read
   packages: write
@@ -21,15 +25,31 @@ jobs:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
 
-      - name: Read BMAD version
-        id: ver
-        run: echo "image=$(cat .bmad-version)" >> $GITHUB_OUTPUT
+      - name: Generate docs
+        run: |
+          make ai-dev <<EOF
+          Quick demo
+          Seniors; pain: complexity, trust, support
+          Reliable deliveries with simple UX
+          - Onboard 500 users
+          - 95% on-time delivery
+          - <$10k MoM
+          10k budget, 6 months; web+mobile
+          HIPAA-lite
+          - Adoption
+          - Logistics
+          - Data
+          Validate demand; partners; CAC
+          MVP in one city, NPS>=50
+          EOF
+          make prd
 
-      - name: Pull BMAD image
-        run: docker pull "${{ steps.ver.outputs.image }}"
-
-      - name: Generate PRD via vibe-prd wrapper
-        run: make prd
+      - name: Verify suite
+        run: |
+          test -d docs/bmad
+          n=$(find docs/templates -maxdepth 1 -type f | wc -l | tr -d ' ')
+          exp=$(awk '/^- /{print $2}' map.yaml | wc -l | tr -d ' ')
+          [ "$n" = "$exp" ] || { echo "Need $exp templates, got $n"; exit 1; }
 
       - name: Upload docs artifact
         uses: actions/upload-artifact@v4

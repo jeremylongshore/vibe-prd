@@ -1,0 +1,23 @@
+templates:
+  - prd.md
+  - architecture.md
+  - implementation-plan.md
+  - requirements-traceability.md
+  - user-stories.md
+  - personas.md
+  - competitive-analysis.md
+  - roadmap.md
+  - release-plan.md
+  - test-plan.md
+  - risk-register.md
+  - ops-runbook.md
+  - api-design.md
+  - data-model.md
+  - security-review.md
+  - compliance-plan.md
+  - infra-diagram.md
+  - sdlc-checklist.md
+  - deployment-plan.md
+  - metrics-kpis.md
+  - postmortem-template.md
+  - faq.md
