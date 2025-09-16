@@ -32,9 +32,10 @@ verify-outputs:
 	@test -d $(BMAD_OUT)
 	@expected=$$(awk '/^\s*-\s+/{print $$2}' form-system/map.yaml | wc -l); \
 	actual=$$(find $(TPL_OUT) -maxdepth 1 -type f | wc -l | tr -d ' '); \
-	[ "$$actual" = "$$expected" ] || (echo "FAIL: need $$expected templates, got $$actual"; exit 1); \
-	diff -u <(ls -1 $(TPL_OUT) | sort) <(awk '/^\s*-\s+/{print $$2}' form-system/map.yaml | sort) >/dev/null || \
-	 (echo "FAIL: template names mismatch"; exit 1); \
+	[ "$$actual" = "$$expected" ] || { echo "FAIL: need $$expected templates, got $$actual"; exit 1; }; \
+	ls -1 $(TPL_OUT) | sort > /tmp/actual.txt; \
+	awk '/^\s*-\s+/{print $$2}' form-system/map.yaml | sort > /tmp/expected.txt; \
+	diff -q /tmp/actual.txt /tmp/expected.txt >/dev/null || { echo "FAIL: template names mismatch"; exit 1; }; \
 	touch $(TPL_OUT)/.permcheck && rm -f $(TPL_OUT)/.permcheck; \
 	echo "✅ Verification passed: BMAD natives + 22 templates"
 
@@ -62,7 +63,7 @@ release-check:
 	$(MAKE) verify-outputs; \
 	echo "== Package"; \
 	zip -qr artifacts.zip docs || { echo "WARN: zip failed (empty?)"; true; }; \
-	[ -f artifacts.zip ] && echo "READY: artifacts.zip contains BMAD natives + 22 templates" || (echo "FAIL: no artifacts.zip"; exit 1)
+	[ -f artifacts.zip ] && echo "READY: artifacts.zip contains BMAD natives + 22 templates" || { echo "FAIL: no artifacts.zip"; exit 1; }
 
 release-pack:
 	@zip -qr artifacts.zip docs && echo "Packed -> artifacts.zip"
