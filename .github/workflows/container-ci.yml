@@ -48,7 +48,7 @@ jobs:
         run: |
           test -d docs/bmad
           n=$(find docs/templates -maxdepth 1 -type f | wc -l | tr -d ' ')
-          exp=$(awk '/^- /{print $2}' map.yaml | wc -l | tr -d ' ')
+          exp=$(awk '/^\s*-\s+/{print $2}' map.yaml | wc -l | tr -d ' ')
           [ "$n" = "$exp" ] || { echo "Need $exp templates, got $n"; exit 1; }
 
       - name: Upload docs artifact
