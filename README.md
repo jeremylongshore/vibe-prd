@@ -1,73 +1,42 @@
-# 📘 vibe-prd — One-Paste Claude Docs Generator
+# 🚀 vibe-prd — One-Paste Claude Docs Pipeline
 
-**Description:** One-paste Claude Code docs pipeline: paste prompt → 22 enterprise docs → `completed-docs/`.
-**BMAD:** Archived under `archive/bmad-method/` with restoration guide.
+Generate **22 enterprise-grade project documents** from a single summary using Claude Code (CLI).
 
----
+## Quick Start (2 steps)
 
-## 🚀 How It Works (Zero Setup)
-
-1. **Clone**
-   ```bash
-   git clone https://github.com/jeremylongshore/vibe-prd.git
-   cd vibe-prd
-   ```
-
-2. Open Claude Code CLI in your terminal.
-3. Copy/paste the One-Paste block from below into Claude.
-4. Answer one question (project description).
-5. Get 22 enterprise-grade docs in `completed-docs/<your-project>/`.
-
-## ⚡ One-Paste Block
-
-> Open Claude Code CLI and paste this:
-
-```
-You are Claude Code running in my terminal.
-Goal: Generate a full set of 22 enterprise-grade docs from a project description.
-Output: Place results in completed-docs/<project-name>/.
-
-Instructions:
-1. Ask me once: "Describe your project. Provide as much or as little detail as you want (a sentence, a paragraph, or even a full page)."
-2. Take that description and auto-complete all reasoning steps yourself (deductive logic, no further questions).
-3. Use the professional-templates/ (22 files, 01–22) as blueprints.
-4. Generate final documents in completed-docs/<project-name>/.
-5. Ensure each doc follows enterprise template structure.
-6. Provide a final index.md summarizing the set.
-
-Rules:
-- Don't modify professional-templates/.
-- Save everything only to completed-docs/.
-- If errors occur, fix automatically and retry.
-- Always confirm final output folder path to me.
+1) **Clone**
+```bash
+git clone https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev
+cd ~/ai-dev
 ```
 
----
-
-## 📂 Repo Structure
+2) **Open Claude Code CLI and paste this:**
 
 ```
-vibe-prd/
-├── professional-templates/   # 22 enhanced templates (READ-ONLY)
-├── completed-docs/           # AI-generated docs per project (output)
-├── archive/
-│   └── bmad-method/          # Preserved BMAD (optional, not active)
-├── .github/
-│   └── workflows/
-│       └── ci.yml            # Simplified CI (template sanity + completed-docs smoke)
-├── working-mds/              # Phase reports, smoke test, summaries
-└── README.md
+Create a new folder in completed-docs/ named after my project, then generate all 22 docs using the templates in professional-templates/. Ask me for a single free-form project summary (I can paste as much as I want). Use deductive reasoning to fill gaps. Output all final docs into completed-docs/<my-project>/ and include an index.md summarizing what was generated and any assumptions.
 ```
 
----
+## What you get
 
-## 🛡️ Protections
-- Branch protections enforced on main (review + passing CI)
-- Tag rules block deletion and force-push on releases
+- `completed-docs/<project>/` → 22 enterprise documents (PRD, ADRs, risks, QA gates, test plan, release plan, etc.) + index.md
+- No Docker. No BMAD setup. Claude-only.
 
----
+## Repo layout
 
-## 🙏 Credit
+```
+~/ai-dev/
+├── professional-templates/   # 22 master templates (read-only)
+├── completed-docs/           # Your generated outputs (per project)
+├── working-mds/              # Ops reports / logs
+└── archive/                  # BMAD + legacy files (preserved)
+```
 
-This repo began with BMAD-METHOD and Stulogy's early work.
-We simplified and archived BMAD for later, and now deliver a zero-dependency Claude flow for anyone to use.
+## Verify
+
+```bash
+make verify
+```
+
+## Contributing
+
+PRs welcome. Please keep the 22 templates canonical; additions belong in a separate folder.
