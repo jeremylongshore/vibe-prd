@@ -32,6 +32,13 @@ My computer: [Mac/Windows/Linux]
 
 The AI will guide you through installation and first use. **[More AI prompts →](./AI_ASSISTANT_PROMPTS.md)**
 
+### Quick start
+1. Edit `vibe-prd/CLAUDE.md` with your project context.
+2. Run: `make prd`
+3. See generated docs in `/docs`.
+
+BMAD runs inside a pinned container defined in `.bmad-version`. Do not call BMAD directly.
+
 ## ⚡ Quick Install (30 seconds)
 
 **Step 1:** Copy this, paste in terminal:
