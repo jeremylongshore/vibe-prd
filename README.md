@@ -1,20 +1,31 @@
-# Professional Documentation Made Easy
+# 🚀 vibe-prd
 
-**Stop starting from blank documents. Get professional templates instantly.**
+![BMAD auto-updates](https://img.shields.io/badge/BMAD%20auto--updates-Enabled-brightgreen?style=for-the-badge&logo=docker)
+![Docs Verified](https://img.shields.io/github/actions/workflow/status/jeremylongshore/vibe-prd/container-ci.yml?label=Docs%20Verified&style=for-the-badge&logo=github)
+![Zero Sudo](https://img.shields.io/badge/Sudo-Free-success?style=for-the-badge&logo=linux)
 
-[![Container CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml) [![Release](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml)
+**Form in → BMAD natives + 22 pro docs out.** No version chasing. No root files.
 
-**Current Status:** ✅ **v0.2.0 - AI-Assisted Setup for Beginners**
-📦 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
-📋 **Latest:** [View releases →](https://github.com/jeremylongshore/vibe-prd/releases)
+## Usage
+1. `make ai-dev` → answer prompts
+2. `make prd` → outputs:
+   - `docs/bmad/` (BMAD originals)
+   - `docs/templates/` (22 professional docs)
+
+## Automatic BMAD Updates
+vibe-prd uses Renovate + CI to keep BMAD current:
+- Daily check for new container tags
+- PR bumps `.bmad-version` and refreshes `.bmad-lock`
+- CI must pass before merge
+➡️ You always run the latest verified BMAD.
 
 ## What This Does
 
 You know how you always start documentation with a blank page and think "wtf do I write?" This fixes that.
 
 **You get:** 22+ professional document templates (PRDs, API docs, tech specs, etc.)
-**You run:** One command
-**You get:** A pre-filled document with all the right sections
+**You run:** Two commands
+**You get:** BMAD native analysis + pre-filled professional documents
 
 No more googling "how to write a PRD" or copying random templates from the internet.
 

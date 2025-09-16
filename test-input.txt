@@ -1,0 +1,9 @@
+Quick demo project
+Target users: developers
+Value proposition for users
+Goals: Goal1 and Goal2
+Time and budget constraints
+HIPAA compliance requirements
+Technical and market risks
+Core assumptions about users
+Acceptance criteria for MVP
