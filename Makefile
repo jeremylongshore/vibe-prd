@@ -53,3 +53,31 @@ help:
 
 # Default target
 all: help
+
+# BMAD Integration
+BMAD_IMAGE := $(shell cat .bmad-version)
+OUT ?= docs
+CLAUDE_MD ?= vibe-prd/CLAUDE.md
+PWD_ABS := $(shell pwd)
+
+.PHONY: prd bmad-run bmad-lock check
+
+check:
+	@test -f .bmad-version || (echo ".bmad-version missing" && exit 1)
+	@test -f $(CLAUDE_MD) || (echo "$(CLAUDE_MD) missing" && exit 1)
+
+bmad-run: check
+	docker run --rm \
+	  -v $(PWD_ABS):/work \
+	  -w /work \
+	  -e CI=$(CI) \
+	  $(BMAD_IMAGE) \
+	  bmad generate --input $(CLAUDE_MD) --out /work/$(OUT)
+
+prd:
+	$(MAKE) bmad-run OUT=docs
+
+bmad-lock:
+	@docker pull $(BMAD_IMAGE) >/dev/null
+	@digest=$$(docker inspect --format='{{index .RepoDigests 0}}' $(BMAD_IMAGE) | sed 's/.*@//'); \
+	  echo $$digest > .bmad-lock; echo "Locked: $$digest"
