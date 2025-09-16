@@ -1,23 +1,20 @@
-name: Container CI
+name: ci
 on:
   push:
   pull_request:
 
-defaults:
-  run:
-    working-directory: ./
-
 jobs:
-  ci:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
-      - name: Generate docs (demo)
+
+      - name: Generate docs (demo run)
         run: |
-          make ai-dev <<EOF
-          Demo product now
+          make ai-dev <<'EOF'
+          Demo product
           Users; pain1, pain2, pain3
           Speed with quality
           - Goal1
@@ -29,11 +26,14 @@ jobs:
           MVP in 1 city
           EOF
           make prd
+
       - name: Verify suite
         run: make verify-outputs
+
       - name: Pack artifacts
         run: zip -qr artifacts.zip docs
-      - name: Upload artifacts
+
+      - name: Upload artifacts (90d)
         uses: actions/upload-artifact@v4
         with:
           name: docs-suite

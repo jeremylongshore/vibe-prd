@@ -1,10 +1,22 @@
-# 🚀 vibe-prd
+# vibe-prd 🚀
 
-![BMAD auto-updates](https://img.shields.io/badge/BMAD%20auto--updates-Enabled-brightgreen?style=for-the-badge&logo=docker)
+**Form → BMAD → 22 Pro Docs** (YC-style guardrails)
+
+## Why this system
+- BMAD alone generates — this repo **enforces**:
+  - No sudo; UID/GID-safe containers
+  - CI verifies exactly 22 templates match map
+  - Releases attach artifacts.zip every time
+  - Tag rewrites/deletes blocked (immutable releases)
+
+## Usage
+1. `make ai-dev` → answer prompts → `vibe-prd/CLAUDE.md`
+2. `make prd` → BMAD natives + 22 templates
+3. `make release-check` → verify + zip
+
+## Badges
 ![Docs Verified](https://img.shields.io/github/actions/workflow/status/jeremylongshore/vibe-prd/container-ci.yml?label=Docs%20Verified&style=for-the-badge&logo=github)
 ![Zero Sudo](https://img.shields.io/badge/Sudo-Free-success?style=for-the-badge&logo=linux)
-
-**Form in → BMAD natives + 22 pro docs out.** No version chasing. No root files.
 
 ## Usage
 1. `make ai-dev` → answer prompts
