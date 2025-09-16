@@ -1,1 +1,0 @@
-19_operational_readiness.md
