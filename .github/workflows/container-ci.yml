@@ -29,6 +29,14 @@ jobs:
           echo "MVP in 1 city" >> /tmp/demo-answers.txt
           node form-system/cli.js < /tmp/demo-answers.txt
           make prd
+      - name: Debug tree
+        run: |
+          echo "::group::docs layout"
+          find docs -maxdepth 2 -type f | sed 's#^#  - #'
+          echo "::endgroup::"
+          echo "::group::map.yaml"
+          cat form-system/map.yaml
+          echo "::endgroup::"
       - name: Verify suite
         run: make verify-outputs
       - name: Pack artifacts
