@@ -1,175 +1,174 @@
-# 🚀 vibe-prd
+# 🧠 AI-Dev — One-Paste Claude Documentation Pipeline
 
-![BMAD auto-updates](https://img.shields.io/badge/BMAD%20auto--updates-Enabled-brightgreen?style=for-the-badge&logo=docker)
-![Docs Verified](https://img.shields.io/github/actions/workflow/status/jeremylongshore/vibe-prd/container-ci.yml?label=Docs%20Verified&style=for-the-badge&logo=github)
-![Zero Sudo](https://img.shields.io/badge/Sudo-Free-success?style=for-the-badge&logo=linux)
+![Templates Verified](https://img.shields.io/github/actions/workflow/status/jeremylongshore/vibe-prd/container-ci.yml?label=Templates%20Verified&style=for-the-badge&logo=github)
+![Zero Dependencies](https://img.shields.io/badge/Dependencies-None-success?style=for-the-badge&logo=checkmarx)
+![22 Enterprise Templates](https://img.shields.io/badge/Templates-22%20Enterprise-brightgreen?style=for-the-badge&logo=markdown)
 
-**Form in → BMAD natives + 22 pro docs out.** No version chasing. No root files.
+**One prompt → Complete enterprise documentation suite.** No setup, no dependencies, just Claude Code.
 
-## Usage
-1. `make ai-dev` → answer prompts
-2. `make prd` → outputs:
-   - `docs/bmad/` (BMAD originals)
-   - `docs/templates/` (22 professional docs)
+## Quick Start
 
-## Automatic BMAD Updates
-vibe-prd uses Renovate + CI to keep BMAD current:
-- Daily check for new container tags
-- PR bumps `.bmad-version` and refreshes `.bmad-lock`
-- CI must pass before merge
-➡️ You always run the latest verified BMAD.
+### ⚡ One-Paste Claude Prompt
 
-## What This Does
+Paste the block below into **Claude Code CLI** (running in your terminal), then answer with a 1–3 sentence summary when asked. Claude will do the rest and put everything in `completed-docs/<your-project>/`.
 
-You know how you always start documentation with a blank page and think "wtf do I write?" This fixes that.
-
-**You get:** 22+ professional document templates (PRDs, API docs, tech specs, etc.)
-**You run:** Two commands
-**You get:** BMAD native analysis + pre-filled professional documents
-
-No more googling "how to write a PRD" or copying random templates from the internet.
-
-## 🤖 Complete Beginner? Let AI Help You
-
-**Never used GitHub or Docker?** Copy this repo URL and this prompt to Claude/ChatGPT:
+> **Copy from here ↓**
 
 ```
-I'm a complete beginner and found this repository: https://github.com/jeremylongshore/vibe-prd
+You are Claude Code, running in my terminal at `~/ai-dev`.
+**Your mission:** Generate a complete set of enterprise docs from the 22 enhanced templates in `professional-templates/`, **without asking me follow-up questions** beyond the initial summary.
 
-I want to use this "AI Development Tasks" system but don't know how to install or use it. Please walk me through everything step-by-step, assuming I know nothing about command line tools.
+**Rules:**
+- Work in `~/ai-dev`. No sudo. Don't modify `professional-templates/`.
+- Use reasoning to fill gaps. If info is unknown, make a sensible assumption and mark it as `{Assumption: …}` in the doc.
+- Output folder: `completed-docs/<project-slug>/`
+- Create an `index.md` with a table of contents, brief project recap, and file list.
 
-My computer: [Mac/Windows/Linux]
-```
+**Flow:**
+1) Ask me once: "**What's your project about? (1–3 sentences)**"
+2) Slugify the name → `<project-slug>`
+3) For each template `01_*.md` → `22_*.md`:
+   - Read template, generate project-specific content
+   - Save to `completed-docs/<project-slug>/<same-name>.md`
+4) Write `completed-docs/<project-slug>/index.md` summarizing the set
+5) Print final report:
+   - Location of folder
+   - List of files generated
+   - Any assumptions made
 
-The AI will guide you through installation and first use. **[More AI prompts →](./AI_ASSISTANT_PROMPTS.md)**
-
-### Quick start
-1. Edit `vibe-prd/CLAUDE.md` with your project context.
-2. Run: `make prd`
-3. See generated docs in `/docs`.
-
-BMAD runs inside a pinned container defined in `.bmad-version`. Do not call BMAD directly.
-
-## ⚡ Quick Install (30 seconds)
-
-**Step 1:** Copy this, paste in terminal:
+**Git (optional):**
+When done, run:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jeremylongshore/vibe-prd/main/ai-dev -o /usr/local/bin/ai-dev && chmod +x /usr/local/bin/ai-dev
+git add completed-docs/
+git commit -m "chore(output): generated docs for <project-name>"
+```
 ```
 
-**Step 2:** Test it works:
-```bash
-ai-dev make help
-```
+> **Copy to here ↑**
 
-**Done.** (Needs Docker installed, but you probably have that)
+### What Happens Next
 
-## How To Use It
+1. **You paste the prompt** into Claude Code CLI
+2. **Claude asks:** "What's your project about? (1–3 sentences)"
+3. **You answer:** Something like "An iOS app for youth soccer training with gamification"
+4. **Claude generates:** 22 professional documents tailored to your project
+5. **You get:** A complete `completed-docs/your-project/` folder with enterprise-grade documentation
 
-### Create Any Professional Document
-```bash
-# Go to your project folder
-cd ~/my-startup
+## What You Get (22 Enterprise Templates)
 
-# Create a Product Requirements Document (PRD)
-ai-dev make create T=create-prd.md N=user-login-feature.md
+### Core Product Documents
+- **01_prd.md** - Product Requirements Document
+- **02_adr.md** - Architecture Decision Records
+- **03_generate_tasks.md** - Implementation Task Breakdown
+- **04_process_task_list.md** - Task Processing Workflow
+- **05_market_research.md** - Market Analysis
 
-# Boom! You now have "user-login-feature.md" with proper PRD structure
-```
+### Technical Specifications
+- **06_architecture.md** - System Architecture
+- **07_competitor_analysis.md** - Competitive Analysis
+- **08_personas.md** - User Personas
+- **09_user_journeys.md** - User Journey Mapping
+- **10_user_stories.md** - User Story Templates
 
-### What You Get In That Document
-- Problem statement section
-- Success metrics section
-- User stories section
-- Technical requirements section
-- Risk assessment section
-- All the stuff that makes you look like you know what you're doing
+### Quality & Testing
+- **11_acceptance_criteria.md** - Acceptance Criteria
+- **12_qa_gate.md** - Quality Assurance Gates
+- **13_risk_register.md** - Risk Management
+- **14_project_brief.md** - Project Overview
+- **15_brainstorming.md** - Ideation Framework
 
-### Other Useful Documents You Can Create
-```bash
-# Technical specification (how to actually build it)
-ai-dev make create T=create-tech-spec.md N=login-api-spec.md
+### Development & Operations
+- **16_frontend_spec.md** - Frontend Specifications
+- **17_test_plan.md** - Testing Strategy
+- **18_release_plan.md** - Release Planning
+- **19_operational_readiness.md** - Operations Guide
+- **20_metrics_dashboard.md** - Success Metrics
 
-# API documentation (document your endpoints)
-ai-dev make create T=create-api-spec.md N=users-api.md
+### Post-Launch
+- **21_postmortem.md** - Incident Analysis
+- **22_playtest_usability.md** - User Testing & Feedback
 
-# Architecture decision (why you chose React over Vue)
-ai-dev make create T=adr-template.md N=why-we-use-postgres.md
+## Why This Works
 
-# Project breakdown (turn big ideas into tasks)
-ai-dev make create T=generate-tasks.md N=sprint-planning.md
-```
+### Before AI-Dev:
+❌ Start with blank documents
+❌ Google "how to write a PRD"
+❌ Copy random templates
+❌ Spend hours on structure
+❌ End up with inconsistent docs
 
-## Why This Is Actually Useful
-
-### Before This Tool:
-1. Google "how to write a PRD"
-2. Find some random blog post
-3. Copy/paste into blank doc
-4. Spend 2 hours figuring out what sections you need
-5. End up with amateur-looking docs
-
-### With This Tool:
-1. Run one command
-2. Get professional template instantly
-3. Fill in the blanks
-4. Look like you know what you're doing
-
-## What Documents You Can Create
-
-**The stuff every startup/project needs:**
-
-- **PRD** (Product Requirements) - What you're building and why
-- **Tech Spec** - How you're actually going to build it
-- **API Docs** - Document your endpoints so people can use them
-- **User Stories** - Features from the user's perspective
-- **Project Plans** - Break big ideas into actual tasks
-- **Decision Records** - Why you chose X over Y (for future you)
-- **Runbooks** - How to fix things when they break
-- **Post-mortems** - What went wrong and how to prevent it
-
-**And 14 more** for when you get fancy.
-
-## See All Available Templates
-```bash
-ai-dev make help
-```
-
-## Real Example
-
-Let's say you're building a login feature:
-
-```bash
-# 1. Write the requirements
-ai-dev make create T=create-prd.md N=login-feature.md
-
-# 2. Figure out how to build it
-ai-dev make create T=create-tech-spec.md N=login-implementation.md
-
-# 3. Document the API
-ai-dev make create T=create-api-spec.md N=auth-api.md
-
-# 4. Break it into tasks
-ai-dev make create T=generate-tasks.md N=login-sprint.md
-```
-
-Now you have 4 professional documents that make you look organized AF.
+### With AI-Dev:
+✅ **One prompt** → complete documentation suite
+✅ **22 enterprise templates** pre-filled with your project
+✅ **Professional structure** from day one
+✅ **Consistent formatting** across all documents
+✅ **Zero setup** or dependencies
 
 ## Who This Is For
 
-- **Startup founders** who need to look professional to investors
-- **Solo developers** who want to document stuff properly
-- **Small teams** who don't have dedicated PMs/tech writers
-- **Anyone** who's tired of starting docs from scratch
+- **Startup founders** needing investor-ready documentation
+- **Product managers** wanting comprehensive project specs
+- **Solo developers** building professional portfolios
+- **Small teams** without dedicated technical writers
+- **Anyone** tired of starting docs from scratch
 
-## What You Need
+## System Requirements
 
-- A computer with Docker (Mac/Windows/Linux all work)
-- 5 minutes to install
-- Basic ability to edit text files
+- **Claude Code CLI** (claude.ai/code)
+- **Git** (optional, for committing outputs)
+- **5 minutes** to paste and answer one question
 
-That's it. No coding skills needed.
+That's it. No Docker, no dependencies, no configuration files.
+
+## Example Output Structure
+
+After running the one-paste prompt, you'll get:
+
+```
+completed-docs/
+└── your-project-name/
+    ├── index.md                    # Table of contents + overview
+    ├── 01_prd.md                   # Product Requirements Document
+    ├── 02_adr.md                   # Architecture Decisions
+    ├── 03_generate_tasks.md        # Implementation Tasks
+    ├── ...                         # All 22 templates
+    └── 22_playtest_usability.md    # User Testing Framework
+```
+
+## Advanced Usage
+
+### Repository Commands
+```bash
+make verify    # Check template integrity
+make tree      # Show repository structure
+make clean     # Clean output directories
+```
+
+### Template Library
+Templates are stored in `professional-templates/` as read-only masters. Each template includes:
+- Professional structure and sections
+- Detailed guidance and examples
+- Industry best practices
+- Comprehensive coverage of the topic
+
+### Contributing
+1. Fork the repository
+2. Enhance templates in `professional-templates/`
+3. Test with the one-paste prompt
+4. Submit pull request
+
+## Example Projects
+
+Perfect for documenting:
+- **Mobile apps** - iOS/Android applications
+- **Web platforms** - SaaS products and websites
+- **APIs** - Backend services and integrations
+- **Startups** - MVP to enterprise documentation
+- **Open source** - Professional project documentation
 
 ---
 
-**Stop looking amateur. Get professional docs in 30 seconds.**
+**Stop starting from scratch. Get enterprise docs in one paste.**
+
+**Repository:** https://github.com/jeremylongshore/vibe-prd
+**Issues:** https://github.com/jeremylongshore/vibe-prd/issues
