@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-09-16T01:58:20.477Z",
+  "source": "fallback",
+  "overview": "Project overview not available from BMAD",
+  "target_users": "Target users not specified",
+  "value_prop": "Value proposition pending BMAD analysis",
+  "goals": "Project goals to be defined",
+  "constraints": "Constraints to be identified",
+  "compliance": "Compliance requirements to be assessed",
+  "risks": "Risk analysis pending",
+  "assumptions": "Assumptions to be validated",
+  "acceptance": "Success criteria to be defined",
+  "tech_stack": "Technology stack to be selected",
+  "architecture": "Architecture to be designed",
+  "bmad_analysis": null
+}
