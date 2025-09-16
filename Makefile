@@ -56,36 +56,36 @@ all: help
 
 # Phase 3: BMAD Native + Professional Templates
 BMAD_IMAGE := $(shell cat .bmad-version)
-OUT ?= output
-CLAUDE_MD ?= vibe-prd/CLAUDE.md
+UID ?= $(shell id -u)
+GID ?= $(shell id -g)
 PWD_ABS := $(shell pwd)
 BMAD_OUT := docs/bmad
 TPL_OUT := docs/templates
+CLAUDE_MD ?= vibe-prd/CLAUDE.md
 
-.PHONY: prd bmad-run collect-bmad extract-bmad fill-templates bmad-lock check
+.PHONY: prd bmad-run extract-bmad fill-templates verify-outputs fix-perms clean-docs bmad-lock check
 
 check:
 	@test -f .bmad-version || (echo ".bmad-version missing" && exit 1)
 	@test -f $(CLAUDE_MD) || (echo "$(CLAUDE_MD) missing" && exit 1)
 
+clean-docs:
+	@rm -rf $(BMAD_OUT) $(TPL_OUT)
+	@mkdir -p $(BMAD_OUT) $(TPL_OUT)
+
 bmad-run: check
-	@echo "🤖 Running BMAD container..."
+	@echo "🤖 Running BMAD container with proper permissions..."
+	@mkdir -p $(BMAD_OUT)
 	docker run --rm \
+	  -u $(UID):$(GID) \
 	  -v $(PWD_ABS):/work \
 	  -w /work \
-	  -e CI=$(CI) \
 	  $(BMAD_IMAGE) \
-	  bmad generate --input $(CLAUDE_MD) --out /work/$(OUT)
+	  bmad generate --input $(CLAUDE_MD) --out /work/$(BMAD_OUT)
 
-collect-bmad:
-	@echo "📁 Collecting BMAD native outputs..."
-	@mkdir -p $(BMAD_OUT)
-	@if [ -d "$(OUT)/docs/bmad" ]; then \
-	  cp -r $(OUT)/docs/bmad/* $(BMAD_OUT)/ 2>/dev/null || true; \
-	  echo "✅ BMAD docs collected in $(BMAD_OUT)/"; \
-	else \
-	  echo "⚠️  No BMAD native docs found"; \
-	fi
+fix-perms:
+	@docker run --rm -v $(PWD_ABS):/work alpine:3.20 \
+	  sh -c "chown -R $(UID):$(GID) /work/docs 2>/dev/null || true"
 
 extract-bmad:
 	@echo "🔍 Extracting BMAD data for template filling..."
@@ -95,7 +95,7 @@ fill-templates:
 	@echo "📝 Filling professional templates with BMAD insights..."
 	@node fill-templates.js
 
-prd: bmad-run collect-bmad extract-bmad fill-templates
+prd: bmad-run extract-bmad fill-templates verify-outputs
 	@echo ""
 	@echo "🎯 Phase 3 Complete: BMAD docs + Professional templates"
 	@echo "📁 BMAD native docs: $(BMAD_OUT)/"
@@ -114,15 +114,19 @@ ai-dev:
 	@node form-system/cli.js
 
 fallback-pack:
-	@mkdir -p $(OUT)
+	@mkdir -p $(TPL_OUT)
 	@for f in $(shell grep -o '[a-z-]*.md' form-system/map.yaml); do \
-	  cp form-system/fallback-templates/$$f $(OUT)/$$f; \
+	  cp form-system/fallback-templates/$$f $(TPL_OUT)/$$f; \
 	done
-	@echo "Fallback 22-doc pack created in $(OUT)/"
+	@echo "Fallback 22-doc pack created in $(TPL_OUT)/"
 
 verify-outputs:
-	@missing=0; \
-	for f in $(shell grep -o '[a-z-]*.md' form-system/map.yaml); do \
-	  if [ ! -f $(OUT)/$$f ]; then echo "Missing: $(OUT)/$$f"; missing=1; fi; \
-	done; \
-	[ $$missing -eq 0 ] || (echo "Some outputs missing"; exit 1)
+	@echo "📋 Verifying BMAD + templates suite..."
+	@test -d $(BMAD_OUT) || (echo "❌ Missing $(BMAD_OUT)/"; exit 1)
+	@expected=22; \
+	actual=$$(find $(TPL_OUT) -type f -maxdepth 1 | wc -l | tr -d ' '); \
+	echo "Templates: $$actual files (expected $$expected)"; \
+	[ "$$actual" = "$$expected" ] || (echo "❌ Need 22 template docs, got $$actual"; exit 1)
+	@comm -3 <(ls -1 $(TPL_OUT) | sort) <(grep -o '[a-z-]*.md' form-system/map.yaml | sort) | \
+	  (! read) || (echo "❌ Template name mismatch"; exit 1)
+	@echo "✅ Verification passed: BMAD natives + 22 templates"
