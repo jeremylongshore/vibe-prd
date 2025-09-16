@@ -19,16 +19,8 @@ jobs:
         with:
           name: docs-suite
           path: artifacts.zip
-      - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
+      - name: Create GitHub Release with asset
+        uses: softprops/action-gh-release@v2
         with:
-          tag: ${{ github.ref_name }}
-          name: vibe-prd ${{ github.ref_name }}
-          generateReleaseNotes: true
-          artifacts: artifacts.zip
-          artifactContentType: application/zip
-          body: |
-            Outputs:
-            - BMAD natives → docs/bmad/
-            - 22 pro docs → docs/templates/
-            Auto-updated BMAD via Renovate; digest locked for reproducibility.
+          files: artifacts.zip
+          generate_release_notes: true
