@@ -1,3 +1,10 @@
+# Force root to repo path
+ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+export ROOT
+
+# Always run from project root
+MAKEFLAGS += --directory=$(ROOT)
+
 WORKSPACE?=/workspace
 TPL=templates
 T?=create-prd.md
@@ -54,30 +61,62 @@ help:
 # Default target
 all: help
 
-# BMAD Integration
+# Phase 3: BMAD Native + Professional Templates
 BMAD_IMAGE := $(shell cat .bmad-version)
-OUT ?= docs
-CLAUDE_MD ?= vibe-prd/CLAUDE.md
+UID ?= $(shell id -u)
+GID ?= $(shell id -g)
 PWD_ABS := $(shell pwd)
+BMAD_OUT := docs/bmad
+TPL_OUT := docs/templates
+CLAUDE_MD ?= vibe-prd/CLAUDE.md
 
-.PHONY: prd bmad-run bmad-lock check
+.PHONY: ai-dev bmad-run collect-bmad extract-bmad fill-templates verify-outputs prd clean-docs fix-perms
 
-check:
-	@test -f .bmad-version || (echo ".bmad-version missing" && exit 1)
-	@test -f $(CLAUDE_MD) || (echo "$(CLAUDE_MD) missing" && exit 1)
+ai-dev:
+	@node cli.js
 
-bmad-run: check
-	docker run --rm \
-	  -v $(PWD_ABS):/work \
-	  -w /work \
-	  -e CI=$(CI) \
-	  $(BMAD_IMAGE) \
-	  bmad generate --input $(CLAUDE_MD) --out /work/$(OUT)
+bmad-run:
+	@mkdir -p $(BMAD_OUT)
+	docker run --rm -u $(UID):$(GID) -v $(PWD_ABS):/work -w /work $(BMAD_IMAGE) \
+	  bmad generate --input $(CLAUDE_MD) --out /work/$(BMAD_OUT) || true
 
-prd:
-	$(MAKE) bmad-run OUT=docs
+collect-bmad:
+	@node collect-bmad.js
+
+extract-bmad:
+	@node extract-bmad.js
+
+fill-templates:
+	@node fill-templates.js
+
+verify-outputs:
+	@test -d $(BMAD_OUT)
+	@expected=$$(awk '/^\s*-\s+/{print $$2}' map.yaml | wc -l); \
+	actual=$$(find $(TPL_OUT) -maxdepth 1 -type f | wc -l | tr -d ' '); \
+	echo "Templates: $$actual files (expect $$expected)"; \
+	[ "$$actual" = "$$expected" ] || (echo "Template count mismatch"; exit 1)
+
+prd: bmad-run collect-bmad extract-bmad fill-templates verify-outputs
+	@echo "Done. BMAD natives in $(BMAD_OUT) + 22 templates in $(TPL_OUT)"
+
+clean-docs:
+	@rm -rf $(BMAD_OUT) $(TPL_OUT)
+	@mkdir -p $(BMAD_OUT) $(TPL_OUT)
+
+fix-perms:
+	@docker run --rm -v $(PWD_ABS):/work alpine:3.20 sh -c "chown -R $(UID):$(GID) /work/docs 2>/dev/null || true"
 
 bmad-lock:
 	@docker pull $(BMAD_IMAGE) >/dev/null
 	@digest=$$(docker inspect --format='{{index .RepoDigests 0}}' $(BMAD_IMAGE) | sed 's/.*@//'); \
 	  echo $$digest > .bmad-lock; echo "Locked: $$digest"
+
+# Legacy Phase 2: Form-driven document generation (deprecated)
+.PHONY: fallback-pack
+
+fallback-pack:
+	@mkdir -p $(TPL_OUT)
+	@for f in $(shell grep -o '[a-z-]*.md' form-system/map.yaml); do \
+	  cp form-system/fallback-templates/$$f $(TPL_OUT)/$$f; \
+	done
+	@echo "Fallback 22-doc pack created in $(TPL_OUT)/"
