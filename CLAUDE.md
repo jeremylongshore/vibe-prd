@@ -2,9 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-**Last Updated:** 2025-09-15
+**Last Updated:** 2025-09-16
 **System Status:** ✅ Production Ready v0.2.0
 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
+**BMAD Integration:** `ghcr.io/jeremylongshore/bmad:5.1.3`
 
 ## System Overview
 
@@ -31,39 +32,80 @@ This is a **containerized AI development workflow system with AI assistant integ
 └── templates -> professional-templates/
 ```
 
-## Templates Available
+## Templates Available (40+ Professional Documents)
 
 ### Core Development Documents
 - `create-prd.md` - Product Requirements Document
 - `adr-template.md` - Architecture Decision Record
 - `create-tech-spec.md` - Technical Specification
 - `generate-tasks.md` - Implementation Task Breakdown
-- `create-api-spec.md` - API Documentation
-- `create-test-plan.md` - Testing Strategy
+- `create-api-spec.md` / `api-design.md` - API Documentation
+- `create-test-plan.md` / `test-plan.md` - Testing Strategy
+- `architecture.md` - System Architecture
+- `implementation-plan.md` - Development Planning
+- `data-model.md` - Data Structure Design
 
-### Project Management
+### Project Management & Planning
 - `create-project-charter.md` - Project Charter
 - `create-raci-matrix.md` - Responsibility Assignment
-- `create-risk-register.md` - Risk Management
-- `create-runbook.md` - Operational Procedures
+- `create-risk-register.md` / `risk-register.md` - Risk Management
+- `create-runbook.md` / `ops-runbook.md` - Operational Procedures
+- `roadmap.md` - Product Roadmap
+- `release-plan.md` - Release Planning
+- `deployment-plan.md` - Deployment Strategy
 
-### Business Documents
+### Business & Requirements
 - `create-brd.md` - Business Requirements Document
-- `create-user-story.md` - User Story Templates
+- `create-user-story.md` / `user-stories.md` - User Story Templates
+- `personas.md` - User Personas
+- `competitive-analysis.md` - Market Analysis
+- `metrics-kpis.md` - Success Metrics
+
+### Technical Documentation
 - `create-design-doc.md` - Design Documentation
-- `create-post-mortem.md` - Incident Analysis
+- `infra-diagram.md` - Infrastructure Design
+- `security-review.md` - Security Assessment
+- `compliance-plan.md` - Compliance Documentation
+- `sdlc-checklist.md` - Development Lifecycle
+
+### Process & Operations
+- `create-post-mortem.md` / `postmortem-template.md` - Incident Analysis
+- `create-sop.md` - Standard Operating Procedures
+- `create-rfc.md` - Request for Comments
+- `requirements-traceability.md` - Requirements Tracking
+- `faq.md` - Frequently Asked Questions
 
 ## Usage Commands
 
-### Common Development Commands
+### Primary Development Workflow
 ```bash
-cd ~/ai-dev
-make help                     # Show all commands
-make status                   # Show system status
-make create T=template N=name # Create document from template
+# Two-phase workflow: Form input → Document generation
+make ai-dev        # Interactive form to capture project context
+make prd          # Generate BMAD analysis + 22 professional templates
+
+# Output locations:
+# - docs/bmad/      (BMAD native analysis files)
+# - docs/templates/ (22 professional document templates)
 ```
 
-### Containerized Usage (Current)
+### BMAD Integration Commands
+```bash
+# Core BMAD workflow (runs automatically in make prd)
+make bmad-run           # Run BMAD container analysis
+make collect-bmad       # Process BMAD outputs
+make extract-bmad       # Extract structured data
+make fill-templates     # Populate template library
+make verify-outputs     # Validate generated documents
+```
+
+### System Management
+```bash
+make clean-docs         # Clean output directories
+make release-check      # Full validation pipeline
+make fix-perms         # Fix Docker permission issues
+```
+
+### Legacy Containerized Usage
 ```bash
 # Using global ai-dev command (if installed)
 ai-dev make help                          # Show all templates
@@ -90,17 +132,21 @@ When users need help with this system:
 3. **Troubleshooting**: Guide them through the troubleshooting prompts
 4. **Team Setup**: Use the organizational prompts for multiple users
 
-### Template Usage Pattern (Containerized)
+### Template Usage Pattern (BMAD-Integrated)
 ```bash
-# User requests: "Create PRD for new feature"
-# Modern approach:
-ai-dev make create T=create-prd.md N=feature-prd.md
-# Document appears in user's current directory
+# User requests: "Create comprehensive project documentation"
+# Modern BMAD workflow:
+cd ~/ai-dev
+make ai-dev    # Interactive form captures project context
+make prd       # BMAD analyzes + generates 40+ documents
 
-# OR from any project with setup-project.sh integration:
-cd ~/projects/my-project
-make create T=create-prd.md N=feature-prd.md
-# Routes to ~/ai-dev and creates ~/ai-dev/docs/feature-prd.md
+# Output structure:
+# docs/bmad/           - BMAD native analysis
+# docs/templates/      - 40+ populated professional templates
+
+# Legacy single-template approach:
+ai-dev make create T=create-prd.md N=feature-prd.md
+# Creates single document in current directory
 ```
 
 ### Project Integration
@@ -138,25 +184,31 @@ make create T=create-prd.md N=feature-prd.md
 - **Automation scripts** for project setup and workspace integration
 
 ### Key Components
-1. **Makefile** - Document creation and status commands
-2. **setup-project.sh** - Individual project integration
-3. **setup-workspace.sh** - Bulk workspace setup
-4. **Template library** - Enterprise-grade documentation templates
+1. **Makefile** - Core workflow orchestration (form input → BMAD → templates)
+2. **form-system/cli.js** - Interactive form interface for project context
+3. **BMAD integration** - AI-powered analysis via pinned container (`ghcr.io/jeremylongshore/bmad:5.1.3`)
+4. **Template library** - 40+ professional document templates in `professional-templates/`
+5. **CI/CD pipeline** - Automated testing and release via GitHub Actions
+6. **Version pinning** - `.bmad-version` and `.bmad-lock` ensure reproducible builds
 
 ### System Health Checks
 
 ```bash
-# Verify templates (should show 22+ templates)
+# Verify templates (should show 40+ templates)
 ls -la professional-templates/ | wc -l
 
-# Test automation
-./setup-scripts/setup-project.sh --help
+# Check BMAD integration
+cat .bmad-version  # Should show: ghcr.io/jeremylongshore/bmad:5.1.3
+cat .bmad-lock     # Should show SHA256 digest
 
-# Check documentation directories
-ls -la docs/ sop/
+# Test full workflow
+make clean-docs && make ai-dev && make prd
 
-# Verify symlink integrity
-ls -la templates/
+# Verify outputs
+make verify-outputs  # Validates template count and structure
+
+# Check form system
+node form-system/cli.js --help
 ```
 
 ## Integration Rules & Project Ecosystem

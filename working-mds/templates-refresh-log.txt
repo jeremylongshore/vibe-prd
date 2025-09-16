@@ -127,3 +127,44 @@ Untracked files:
 	working-mds/
 
 no changes added to commit (use "git add" and/or "git commit -a")
+[chore/templates-refresh 4f1a5ab] chore(templates): replace with enhanced BMAD+YC template pack
+ 6 files changed, 1352 insertions(+)
+ create mode 100644 working-mds/README.md
+ create mode 100644 working-mds/bmad-integration-report.md
+ create mode 100644 working-mds/bmad-inventory.txt
+ create mode 100644 working-mds/bmad-product-catalog.md
+ create mode 100644 working-mds/templates-refresh-log.txt
+ create mode 100644 working-mds/workspace-normalization-report.md
+remote: 
+remote: Create a pull request for 'chore/templates-refresh' on GitHub by visiting:        
+remote:      https://github.com/jeremylongshore/vibe-prd/pull/new/chore/templates-refresh        
+remote: 
+To https://github.com/jeremylongshore/vibe-prd.git
+ * [new branch]      chore/templates-refresh -> chore/templates-refresh
+branch 'chore/templates-refresh' set up to track 'origin/chore/templates-refresh'.
+Warning: 51 uncommitted changes
+https://github.com/jeremylongshore/vibe-prd/pull/16
+✅ PR created: https://github.com/jeremylongshore/vibe-prd/pull/16
+Refreshing checks status every 10 seconds. Press Ctrl+C to quit.
+
+ci	pending	0	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778790060/job/50533060820	
+ci	pending	0	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778792821/job/50533070628	
+Refreshing checks status every 10 seconds. Press Ctrl+C to quit.
+
+ci	pending	0	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778792821/job/50533070628	
+ci	pass	19s	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778790060/job/50533060820	
+ci	pass	19s	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778790060/job/50533060820	
+ci	pass	19s	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778792821/job/50533070628	
+ci	pass	19s	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778790060/job/50533060820	
+ci	pass	19s	https://github.com/jeremylongshore/vibe-prd/actions/runs/17778792821/job/50533070628	
+✅ All CI checks passed
+https://github.com/jeremylongshore/vibe-prd/pull/16#issuecomment-3300328479
+X Pull request #16 is not mergeable: the head branch is not up to date with the base branch.
+To have the pull request merged after all the requirements have been met, add the `--auto` flag.
+To use administrator privileges to immediately merge the pull request, add the `--admin` flag.
+error: cannot rebase: You have unstaged changes.
+error: Please commit or stash them.
+GraphQL: At least 1 approving review is required by reviewers with write access. Required status check "ci" is expected. (mergePullRequest)
+🔒 Merge requires approval. PR: https://github.com/jeremylongshore/vibe-prd/pull/16
+=== FINAL REPORT ===
+Session completed: $(date)

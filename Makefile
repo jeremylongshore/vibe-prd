@@ -3,11 +3,11 @@ GID ?= $(shell id -g)
 PWD_ABS := $(shell pwd)
 
 BMAD_IMAGE := $(shell cat .bmad-version)
-CLAUDE_MD ?= vibe-prd/CLAUDE.md
+CLAUDE_MD ?= vibe-prd-CLAUDE.md
 BMAD_OUT := docs/bmad
 TPL_OUT  := docs/templates
 
-.PHONY: ai-dev bmad-run collect-bmad extract-bmad fill-templates verify-outputs prd clean-docs fix-perms release-check
+.PHONY: ai-dev bmad-run collect-bmad extract-bmad fill-templates verify-outputs prd clean-docs fix-perms release-check bmad-method
 
 ai-dev:
 	@node form-system/cli.js
@@ -46,6 +46,9 @@ clean-docs:
 
 fix-perms:
 	@docker run --rm -v $(PWD_ABS):/work alpine:3.20 sh -c "chown -R $(UID):$(GID) /work/docs 2>/dev/null || true"
+
+bmad-method:
+	@cd bmad && npm run build
 
 release-check:
 	@$(MAKE) clean-docs ai-dev prd verify-outputs
