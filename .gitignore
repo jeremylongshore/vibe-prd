@@ -59,4 +59,10 @@ __pycache__/
 .pytest_cache/
 
 # Don't ignore the tasks directory structure but ignore specific generated files
-# tasks/*.md will be generated per project 
+# tasks/*.md will be generated per project
+
+# Archive and generated content
+archive/*/node_modules
+bmad/node_modules
+completed-docs/
+.DS_Store

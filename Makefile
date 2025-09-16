@@ -1,53 +1,38 @@
-UID ?= $(shell id -u)
-GID ?= $(shell id -g)
-PWD_ABS := $(shell pwd)
+# AI-Dev Simplified Workflow
+# Minimal Makefile for one-paste Claude workflow
 
-BMAD_IMAGE := $(shell cat .bmad-version)
-CLAUDE_MD ?= vibe-prd/CLAUDE.md
-BMAD_OUT := docs/bmad
-TPL_OUT  := docs/templates
+.PHONY: help verify tree clean
 
-.PHONY: ai-dev bmad-run collect-bmad extract-bmad fill-templates verify-outputs prd clean-docs fix-perms release-check
+help:
+	@echo "AI-Dev Simplified Workflow"
+	@echo ""
+	@echo "Targets:"
+	@echo "  verify      - basic repo verification"
+	@echo "  tree        - print repo tree depth 2"
+	@echo "  clean       - clean output directories"
+	@echo ""
+	@echo "One-Paste Workflow:"
+	@echo "  Use Claude Code CLI with the prompt from README.md"
+	@echo "  Output will be in completed-docs/<project-slug>/"
 
-ai-dev:
-	@node form-system/cli.js
+verify:
+	@test -d professional-templates || (echo "❌ missing professional-templates/"; exit 1)
+	@test -d completed-docs || (mkdir -p completed-docs && echo "✅ created completed-docs/")
+	@test -d working-mds || (mkdir -p working-mds && echo "✅ created working-mds/")
+	@template_count=$$(find professional-templates -name "*.md" -type f | wc -l); \
+	if [ $$template_count -lt 20 ]; then \
+		echo "⚠️  Only $$template_count templates found (expected 22+)"; \
+	else \
+		echo "✅ $$template_count templates found"; \
+	fi
+	@echo "✅ basic verify passed"
 
-bmad-run:
-	@mkdir -p $(BMAD_OUT)
-	docker run --rm -u $(UID):$(GID) -v $(PWD_ABS):/work -w /work $(BMAD_IMAGE) \
-	  bmad generate --input $(CLAUDE_MD) --out /work/$(BMAD_OUT) || true
+tree:
+	@echo "Repository structure:"
+	@find . -maxdepth 2 -type d | sort | sed 's|^\./||' | grep -v '^\.git' | head -20
 
-collect-bmad:
-	@node collect-bmad.js
-
-extract-bmad:
-	@node extract-bmad.js
-
-fill-templates:
-	@node fill-templates.js
-
-verify-outputs:
-	@test -d $(BMAD_OUT)
-	@expected=$$(awk '/^  - /{print $$2}' form-system/map.yaml | wc -l); \
-	actual=$$(find $(TPL_OUT) -maxdepth 1 -type f | wc -l | tr -d ' '); \
-	[ "$$actual" = "$$expected" ] || { echo "FAIL: need $$expected templates, got $$actual"; exit 1; }; \
-	ls -1 $(TPL_OUT) | sort > /tmp/actual.txt; \
-	awk '/^  - /{print $$2}' form-system/map.yaml | sort > /tmp/expected.txt; \
-	diff -q /tmp/actual.txt /tmp/expected.txt >/dev/null || { echo "FAIL: template names mismatch"; exit 1; }; \
-	touch $(TPL_OUT)/.permcheck && rm -f $(TPL_OUT)/.permcheck
-
-prd: bmad-run collect-bmad extract-bmad fill-templates verify-outputs
-	@echo "BMAD natives → $(BMAD_OUT)"
-	@echo "22 templates → $(TPL_OUT)"
-
-clean-docs:
-	@rm -rf $(BMAD_OUT) $(TPL_OUT)
-	@mkdir -p $(BMAD_OUT) $(TPL_OUT)
-
-fix-perms:
-	@docker run --rm -v $(PWD_ABS):/work alpine:3.20 sh -c "chown -R $(UID):$(GID) /work/docs 2>/dev/null || true"
-
-release-check:
-	@$(MAKE) clean-docs ai-dev prd verify-outputs
-	@zip -qr artifacts.zip docs
-	@echo "READY: artifacts.zip with BMAD natives + 22 templates"
+clean:
+	@echo "Cleaning output directories..."
+	@rm -rf completed-docs/* 2>/dev/null || true
+	@rm -rf working-mds/* 2>/dev/null || true
+	@echo "✅ Cleaned completed-docs/ and working-mds/"
