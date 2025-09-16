@@ -1,0 +1,31 @@
+sections:
+  - id: overview
+    title: Project Overview
+    questions:
+      - key: overview
+        prompt: "In 3–5 sentences, what are you building and why now?"
+      - key: target_users
+        prompt: "Who are your target users and what are their top 3 pains?"
+      - key: value_prop
+        prompt: "What's your one-sentence value proposition?"
+  - id: scope
+    title: Scope & Constraints
+    questions:
+      - key: goals
+        prompt: "List your top 3 measurable goals."
+      - key: constraints
+        prompt: "Budget, timeline, and technology constraints?"
+      - key: compliance
+        prompt: "Any compliance or privacy requirements?"
+  - id: risks
+    title: Risks & Assumptions
+    questions:
+      - key: risks
+        prompt: "List 3 main risks and mitigations."
+      - key: assumptions
+        prompt: "Critical assumptions to validate?"
+  - id: acceptance
+    title: Acceptance Criteria
+    questions:
+      - key: acceptance
+        prompt: "What conditions must be met to call this project a success?"
