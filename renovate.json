@@ -10,7 +10,7 @@
     {
       "fileMatch": ["^\\.bmad-version$"],
       "matchStrings": [
-        "^(?<depName>ghcr\\.io\\/[^\\s:]+\\/[^\\s:]+):(?<currentValue>\\S+)\\s*$"
+        "^(?<depName>ghcr\\.io\\/jeremylongshore\\/bmad):(?<currentValue>\\S+)\\s*$"
       ],
       "datasourceTemplate": "docker"
     }
@@ -18,8 +18,10 @@
   "packageRules": [
     {
       "matchManagers": ["regex"],
-      "matchPackageNames": ["ghcr.io/bmad-org/bmad"],
-      "automerge": false,
+      "matchPackageNames": ["ghcr.io/jeremylongshore/bmad"],
+      "automerge": true,
+      "automergeType": "pr",
+      "requiredStatusChecks": ["Container CI"],
       "prBodyNotes": [
         "This PR updates `.bmad-version` and runs `make bmad-lock` to refresh the digest."
       ],
