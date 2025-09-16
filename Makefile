@@ -10,7 +10,7 @@ TPL_OUT  := docs/templates
 .PHONY: ai-dev bmad-run collect-bmad extract-bmad fill-templates verify-outputs prd clean-docs fix-perms release-check
 
 ai-dev:
-	@node form-system/cli.js
+	@node ai-dev/cli.js
 
 bmad-run:
 	@mkdir -p $(BMAD_OUT)
@@ -18,22 +18,20 @@ bmad-run:
 	  bmad generate --input $(CLAUDE_MD) --out /work/$(BMAD_OUT) || true
 
 collect-bmad:
-	@node collect-bmad.js
+	@node ai-dev/collect-bmad.js
 
 extract-bmad:
-	@node extract-bmad.js
+	@node ai-dev/extract-bmad.js
 
 fill-templates:
-	@node fill-templates.js
+	@node ai-dev/fill-templates.js
 
 verify-outputs:
 	@test -d $(BMAD_OUT)
-	@expected=$$(awk '/^\s*-\s+/{print $$2}' form-system/map.yaml | wc -l); \
+	@expected=$$(awk '/^- /{print $$2}' ai-dev/map.yaml | wc -l); \
 	actual=$$(find $(TPL_OUT) -maxdepth 1 -type f | wc -l | tr -d ' '); \
-	[ "$$actual" = "$$expected" ] || { echo "FAIL: need $$expected templates, got $$actual"; exit 1; }; \
-	ls -1 $(TPL_OUT) | sort > /tmp/actual.txt; \
-	awk '/^\s*-\s+/{print $$2}' form-system/map.yaml | sort > /tmp/expected.txt; \
-	diff -q /tmp/actual.txt /tmp/expected.txt >/dev/null || { echo "FAIL: template names mismatch"; exit 1; }; \
+	[ "$$actual" = "$$expected" ] || (echo "FAIL: need $$expected templates, got $$actual"; exit 1); \
+	diff -u <(ls -1 $(TPL_OUT) | sort) <(awk '/^- /{print $$2}' ai-dev/map.yaml | sort) >/dev/null || (echo "FAIL: template names mismatch"; exit 1); \
 	touch $(TPL_OUT)/.permcheck && rm -f $(TPL_OUT)/.permcheck
 
 prd: bmad-run collect-bmad extract-bmad fill-templates verify-outputs
