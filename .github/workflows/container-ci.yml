@@ -1,4 +1,4 @@
-name: Container CI
+name: Repository CI
 on:
   push:
   pull_request:
@@ -8,34 +8,19 @@ defaults:
     working-directory: ./
 
 jobs:
-  ci:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - name: Generate docs (demo)
+      - name: Verify repository structure
+        run: make verify
+      - name: Check template count
         run: |
-          make ai-dev <<EOF
-          Demo product now
-          Users; pain1, pain2, pain3
-          Speed with quality
-          - Goal1
-          - Goal2
-          Budget 10k; 6 months; web+mobile
-          None
-          Risk1; Risk2; Risk3
-          Assumption1; Assumption2
-          MVP in 1 city
-          EOF
-          make prd
-      - name: Verify suite
-        run: make verify-outputs
-      - name: Pack artifacts
-        run: zip -qr artifacts.zip docs
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: docs-suite
-          path: artifacts.zip
-          retention-days: 90
+          template_count=$(find professional-templates -name "*.md" -type f | wc -l)
+          echo "Found $template_count templates"
+          if [ $template_count -lt 20 ]; then
+            echo "❌ Expected at least 20 templates, found $template_count"
+            exit 1
+          fi
+      - name: Display repository tree
+        run: make tree
