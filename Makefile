@@ -30,8 +30,10 @@ verify-outputs:
 	@test -d $(BMAD_OUT)
 	@expected=$$(awk '/^- /{print $$2}' form-system/map.yaml | wc -l); \
 	actual=$$(find $(TPL_OUT) -maxdepth 1 -type f | wc -l | tr -d ' '); \
-	[ "$$actual" = "$$expected" ] || (echo "FAIL: need $$expected templates, got $$actual"; exit 1); \
-	diff -u <(ls -1 $(TPL_OUT) | sort) <(awk '/^- /{print $$2}' form-system/map.yaml | sort) >/dev/null || (echo "FAIL: template names mismatch"; exit 1); \
+	[ "$$actual" = "$$expected" ] || { echo "FAIL: need $$expected templates, got $$actual"; exit 1; }; \
+	ls -1 $(TPL_OUT) | sort > /tmp/actual.txt; \
+	awk '/^- /{print $$2}' form-system/map.yaml | sort > /tmp/expected.txt; \
+	diff -q /tmp/actual.txt /tmp/expected.txt >/dev/null || { echo "FAIL: template names mismatch"; exit 1; }; \
 	touch $(TPL_OUT)/.permcheck && rm -f $(TPL_OUT)/.permcheck
 
 prd: bmad-run collect-bmad extract-bmad fill-templates verify-outputs
