@@ -1,12 +1,67 @@
-# Professional Documentation Made Easy
+# 🚀 vibe-prd
 
-**Stop starting from blank documents. Get professional templates instantly.**
+![BMAD auto-updates](https://img.shields.io/badge/BMAD%20auto--updates-Enabled-brightgreen?style=for-the-badge&logo=docker)
+![Docs Verified](https://img.shields.io/github/actions/workflow/status/jeremylongshore/vibe-prd/container-ci.yml?label=Docs%20Verified&style=for-the-badge&logo=github)
+![Made with AI](https://img.shields.io/badge/Made%20with-AI-blueviolet?style=for-the-badge&logo=openai)
+![Zero Sudo](https://img.shields.io/badge/Sudo-Free-success?style=for-the-badge&logo=linux)
 
-[![Container CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/container-ci.yml) [![Release](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/release.yml)
+**vibe-prd** is the **one-command AI dev stack**:
+Form in → **BMAD's native analysis** + **22 pro-grade templates out**.
+No setup headaches. No version chasing. Just outputs that slap.
 
-**Current Status:** ✅ **v0.2.0 - AI-Assisted Setup for Beginners**
-📦 **Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
-📋 **Latest:** [View releases →](https://github.com/jeremylongshore/vibe-prd/releases)
+---
+
+## ⚡ Why vibe-prd slaps
+
+- **BMAD native + pro docs** → Get the raw BMAD insights *and* a polished 22-doc suite.
+- **Auto-updating core** → Renovate + CI keep BMAD pinned and fresh. You never touch a version string.
+- **Zero sudo, zero tears** → Containers run under your UID/GID. No root-owned files.
+- **CI-gated** → Every PR runs `make prd` and verifies outputs. Broken docs can't land.
+- **Developer vibe** → Minimal commands, maximum output. You focus on ideas, vibe-prd does the paperwork.
+
+---
+
+## 🛠️ How it works
+
+1. **Fill the form**
+   ```bash
+   make ai-dev
+   ```
+   Answer 9 simple questions about your project.
+
+2. **Generate docs**
+   ```bash
+   make prd
+   ```
+   - `docs/bmad/` → BMAD's native analysis (their voice, their insights).
+   - `docs/templates/` → 22 professional docs auto-filled with BMAD's output.
+
+3. **Ship confidently**
+   - Always on the latest BMAD.
+   - Always reproducible (`.bmad-lock` digest pinned).
+   - Always verified by CI.
+
+---
+
+## 🧬 Tech Stack Magic
+- **Dockerized BMAD** — runs as a pinned container, UID-safe.
+- **Renovate Bot** — auto bumps BMAD versions daily.
+- **GitHub Actions** — container CI, docs verification, release flow.
+- **Makefile UX** — one-liners for prd, ai-dev, verify-outputs.
+- **Templates** — your 22-doc suite wired for BMAD JSON/Markdown extraction.
+
+---
+
+## 🔮 The Vision
+
+From a simple prompt to a full product spec,
+vibe-prd turns **ideas → docs → action**.
+
+You walk in with nothing but an idea.
+You walk out with BMAD's raw intelligence and a C-suite-ready document suite.
+No grind, no excuses, just execution.
+
+---
 
 ## What This Does
 
