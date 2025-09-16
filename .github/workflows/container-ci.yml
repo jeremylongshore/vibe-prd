@@ -1,58 +1,40 @@
 name: Container CI
 on:
   push:
-    branches: [main]
-    tags: ['v*']
   pull_request:
 
 defaults:
   run:
     working-directory: ./
 
-permissions:
-  contents: read
-  packages: write
-
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  container-ci:
-    name: Container CI
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
-
-      - name: Generate docs
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - name: Generate docs (demo)
         run: |
-          make ai-dev <<EOF
-          Quick demo
-          Seniors; pain: complexity, trust, support
-          Reliable deliveries with simple UX
-          - Onboard 500 users
-          - 95% on-time delivery
-          - <$10k MoM
-          10k budget, 6 months; web+mobile
-          HIPAA-lite
-          - Adoption
-          - Logistics
-          - Data
-          Validate demand; partners; CAC
-          MVP in one city, NPS>=50
-          EOF
+          echo "Demo product now" > /tmp/demo-answers.txt
+          echo "Users; pain1, pain2, pain3" >> /tmp/demo-answers.txt
+          echo "Speed with quality" >> /tmp/demo-answers.txt
+          echo "- Goal1" >> /tmp/demo-answers.txt
+          echo "- Goal2" >> /tmp/demo-answers.txt
+          echo "Budget 10k; 6 months; web+mobile" >> /tmp/demo-answers.txt
+          echo "None" >> /tmp/demo-answers.txt
+          echo "Risk1; Risk2; Risk3" >> /tmp/demo-answers.txt
+          echo "Assumption1; Assumption2" >> /tmp/demo-answers.txt
+          echo "MVP in 1 city" >> /tmp/demo-answers.txt
+          node form-system/cli.js < /tmp/demo-answers.txt
           make prd
-
       - name: Verify suite
-        run: |
-          test -d docs/bmad
-          n=$(find docs/templates -maxdepth 1 -type f | wc -l | tr -d ' ')
-          exp=$(awk '/^\s*-\s+/{print $2}' map.yaml | wc -l | tr -d ' ')
-          [ "$n" = "$exp" ] || { echo "Need $exp templates, got $n"; exit 1; }
-
-      - name: Upload docs artifact
+        run: make verify-outputs
+      - name: Pack artifacts
+        run: zip -qr artifacts.zip docs
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: prd-docs
-          path: docs/
+          name: docs-suite
+          path: artifacts.zip
