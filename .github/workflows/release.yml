@@ -24,3 +24,6 @@ jobs:
         with:
           files: artifacts.zip
           generate_release_notes: true
+        with:
+          files: artifacts.zip
+          generate_release_notes: true
