@@ -21,7 +21,7 @@
       "matchPackageNames": ["ghcr.io/jeremylongshore/bmad"],
       "automerge": true,
       "automergeType": "pr",
-      "requiredStatusChecks": ["Container CI"],
+      "requiredStatusChecks": ["container-ci"],
       "prBodyNotes": [
         "This PR updates `.bmad-version` and runs `make bmad-lock` to refresh the digest."
       ],
