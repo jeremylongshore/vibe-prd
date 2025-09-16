@@ -1,3 +1,10 @@
+# Force root to repo path
+ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+export ROOT
+
+# Always run from project root
+MAKEFLAGS += --directory=$(ROOT)
+
 WORKSPACE?=/workspace
 TPL=templates
 T?=create-prd.md
@@ -122,11 +129,17 @@ fallback-pack:
 
 verify-outputs:
 	@echo "📋 Verifying BMAD + templates suite..."
-	@test -d $(BMAD_OUT) || (echo "❌ Missing $(BMAD_OUT)/"; exit 1)
+	@test -d $(BMAD_OUT) || { echo "❌ Missing $(BMAD_OUT)/"; exit 1; }
 	@expected=22; \
 	actual=$$(find $(TPL_OUT) -type f -maxdepth 1 | wc -l | tr -d ' '); \
 	echo "Templates: $$actual files (expected $$expected)"; \
-	[ "$$actual" = "$$expected" ] || (echo "❌ Need 22 template docs, got $$actual"; exit 1)
-	@comm -3 <(ls -1 $(TPL_OUT) | sort) <(grep -o '[a-z-]*.md' form-system/map.yaml | sort) | \
-	  (! read) || (echo "❌ Template name mismatch"; exit 1)
+	[ "$$actual" = "$$expected" ] || { echo "❌ Need 22 template docs, got $$actual"; exit 1; }
+	@ls -1 $(TPL_OUT) | sort > /tmp/actual.txt
+	@grep -o '[a-z-]*.md' form-system/map.yaml | sort > /tmp/expected.txt
+	@if ! diff -q /tmp/actual.txt /tmp/expected.txt >/dev/null; then \
+	  echo "❌ Template name mismatch"; \
+	  echo "Expected:"; cat /tmp/expected.txt; \
+	  echo "Actual:"; cat /tmp/actual.txt; \
+	  exit 1; \
+	fi
 	@echo "✅ Verification passed: BMAD natives + 22 templates"
