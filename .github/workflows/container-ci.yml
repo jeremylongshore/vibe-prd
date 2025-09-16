@@ -12,22 +12,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with: { node-version: '20' }
       - name: Generate docs (demo)
         run: |
-          echo "Demo product now" > /tmp/demo-answers.txt
-          echo "Users; pain1, pain2, pain3" >> /tmp/demo-answers.txt
-          echo "Speed with quality" >> /tmp/demo-answers.txt
-          echo "- Goal1" >> /tmp/demo-answers.txt
-          echo "- Goal2" >> /tmp/demo-answers.txt
-          echo "Budget 10k; 6 months; web+mobile" >> /tmp/demo-answers.txt
-          echo "None" >> /tmp/demo-answers.txt
-          echo "Risk1; Risk2; Risk3" >> /tmp/demo-answers.txt
-          echo "Assumption1; Assumption2" >> /tmp/demo-answers.txt
-          echo "MVP in 1 city" >> /tmp/demo-answers.txt
-          node form-system/cli.js < /tmp/demo-answers.txt
+          make ai-dev <<EOF
+          Demo product now
+          Users; pain1, pain2, pain3
+          Speed with quality
+          - Goal1
+          - Goal2
+          Budget 10k; 6 months; web+mobile
+          None
+          Risk1; Risk2; Risk3
+          Assumption1; Assumption2
+          MVP in 1 city
+          EOF
           make prd
       - name: Verify suite
         run: make verify-outputs
@@ -38,3 +38,4 @@ jobs:
         with:
           name: docs-suite
           path: artifacts.zip
+          retention-days: 90
