@@ -29,7 +29,7 @@ Then follow steps 2-4 in `.cursorrules/`
 ## What you get
 
 - **22 enterprise documents** (PRD, ADRs, risks, QA gates, test plan, release plan, etc.)
-- **No Docker/BMAD setup** required
+- **No Docker or complex setup** required
 - **Works with both Claude and Cursor**
 
 ## Repo layout
@@ -39,7 +39,7 @@ Then follow steps 2-4 in `.cursorrules/`
 ├── professional-templates/   # 22 master templates (read-only)
 ├── completed-docs/           # Your generated outputs (per project)
 ├── working-mds/              # Ops reports / logs
-└── archive/                  # BMAD + legacy files (preserved)
+└── archive/                  # Legacy files (preserved)
 ```
 
 ## Verify
