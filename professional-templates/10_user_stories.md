@@ -1,7 +1,7 @@
 # 📝 User Stories & Acceptance Criteria Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 09_user_journeys.md, feeds 11_acceptance_criteria.md, 03_generate_tasks.md
 

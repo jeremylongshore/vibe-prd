@@ -1,7 +1,7 @@
 # 📋 Product Requirements Document (PRD)
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 03_generate_tasks.md, 04_process_task_list.md, 06_architecture.md
 

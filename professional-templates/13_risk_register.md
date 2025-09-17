@@ -1,7 +1,7 @@
 # 🎯 Enterprise Risk Register & Management Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 01_prd.md, 06_architecture.md, feeds 18_release_plan.md, 21_postmortem.md
 

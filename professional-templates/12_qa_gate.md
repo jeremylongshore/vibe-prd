@@ -1,7 +1,7 @@
 # 🛡️ Quality Assurance Gate & Release Readiness Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 11_acceptance_criteria.md, feeds 18_release_plan.md, 17_test_plan.md
 

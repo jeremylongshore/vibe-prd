@@ -1,7 +1,7 @@
 # 🏛️ System Architecture Design
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 
 > **🎯 Purpose**

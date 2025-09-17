@@ -1,7 +1,7 @@
 # 🏗️ Architecture Decision Record (ADR)
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 06_architecture.md
 

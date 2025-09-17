@@ -1,7 +1,7 @@
 # 🎮 Enterprise User Experience Research & Usability Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 08_personas.md, 09_user_journeys.md, 20_metrics_dashboard.md
 

@@ -1,7 +1,7 @@
 # 🔄 Task Generation & Breakdown Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Uses 01_prd.md → feeds 04_process_task_list.md
 

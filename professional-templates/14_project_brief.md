@@ -1,7 +1,7 @@
 # 📊 Executive Project Brief
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 03_generate_tasks.md, 11_roadmap.md, 13_implementation_plan.md
 

@@ -1,7 +1,7 @@
 # 🛡️ Enterprise Operational Readiness Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 18_release_plan.md, 17_test_plan.md, 20_metrics_dashboard.md
 

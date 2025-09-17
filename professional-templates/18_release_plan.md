@@ -1,7 +1,7 @@
 # 🚀 Enterprise Release Management Plan
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 17_test_plan.md, 19_operational_readiness.md, 12_qa_gate.md
 

@@ -1,7 +1,7 @@
 # Comprehensive Test Plan
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 06_architecture.md, 12_qa_gate.md
 

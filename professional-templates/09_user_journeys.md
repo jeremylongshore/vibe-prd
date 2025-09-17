@@ -1,7 +1,7 @@
 # 🗺️ User Journey Mapping & Experience Flow Analysis
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 08_personas.md, feeds 10_user_stories.md, 11_acceptance_criteria.md
 

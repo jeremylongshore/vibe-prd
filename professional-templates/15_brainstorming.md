@@ -1,7 +1,7 @@
 # 🧠 Strategic Brainstorming & Innovation Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 14_project_brief.md, 11_roadmap.md, 17_competitive_analysis.md
 

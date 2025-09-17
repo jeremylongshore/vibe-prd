@@ -1,7 +1,7 @@
 # ✅ Acceptance Criteria Library & Validation Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 10_user_stories.md, feeds 12_qa_gate.md, 17_test_plan.md
 

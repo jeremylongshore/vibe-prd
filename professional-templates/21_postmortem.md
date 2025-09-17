@@ -1,7 +1,7 @@
 # 🔍 Enterprise Incident Postmortem & Learning Framework
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: 01_prd.md, 19_operational_readiness.md, 18_release_plan.md, 17_test_plan.md
 

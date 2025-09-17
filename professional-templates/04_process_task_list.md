@@ -1,7 +1,7 @@
 # 📊 Agile Task Execution & Process Management
 
 **Metadata**
-- Last Updated: 2025-09-16
+- Last Updated: {{DATE}}
 - Maintainer: AI-Dev Toolkit
 - Related Docs: Consumes 03_generate_tasks.md, gates 17_test_plan.md
 
