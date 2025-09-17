@@ -1,6 +1,8 @@
 # 🏛️ System Architecture Design
-**Last Updated:** {{DATE}}
-**Upstream (BMAD):** fullstack-architecture-tmpl.yaml / front-end-architecture-tmpl.yaml
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
 
 > **🎯 Purpose**
 > Comprehensive system architecture specification covering technical design, security framework, performance requirements, and scalability considerations. This template ensures robust, maintainable, and enterprise-ready system design.

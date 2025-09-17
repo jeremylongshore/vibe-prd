@@ -1,8 +1,9 @@
 # 🎯 Enterprise Risk Register & Management Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** risk-register-tmpl.yaml → docs/risk-register.md
-**Cross-links:** Consumes 01_prd.md, 06_architecture.md; feeds 18_release_plan.md, 21_postmortem.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Consumes 01_prd.md, 06_architecture.md, feeds 18_release_plan.md, 21_postmortem.md
 
 > **🎯 Purpose**
 > Comprehensive enterprise risk management framework for identifying, assessing, tracking, and mitigating project risks across technical, business, and operational domains. This register enables proactive risk management and informed decision-making throughout the project lifecycle.

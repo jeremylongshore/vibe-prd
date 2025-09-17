@@ -1,8 +1,9 @@
 # ✅ Acceptance Criteria Library & Validation Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** acceptance-criteria-tmpl.yaml → docs/acceptance-criteria.md
-**Cross-links:** Consumes 10_user_stories.md; feeds 12_qa_gate.md, 17_test_plan.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Consumes 10_user_stories.md, feeds 12_qa_gate.md, 17_test_plan.md
 
 > **🎯 Purpose**
 > Comprehensive acceptance criteria patterns and validation framework ensuring consistent, testable, and complete requirements definition. This library provides enterprise-grade criteria templates that eliminate ambiguity and enable automated testing validation.

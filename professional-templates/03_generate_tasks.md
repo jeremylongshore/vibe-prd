@@ -1,8 +1,9 @@
 # 🔄 Task Generation & Breakdown Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** story-tmpl.yaml / qa-gate-tmpl.yaml
-**Cross-links:** Uses 01_prd.md → feeds 04_process_task_list.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Uses 01_prd.md → feeds 04_process_task_list.md
 
 > **🎯 Purpose**
 > Systematic breakdown of PRD features into actionable, estimable tasks with clear dependencies and acceptance criteria. This template ensures comprehensive coverage and realistic estimation for successful project delivery.

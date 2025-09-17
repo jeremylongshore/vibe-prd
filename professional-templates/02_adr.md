@@ -1,8 +1,9 @@
 # 🏗️ Architecture Decision Record (ADR)
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** architecture-tmpl.yaml → docs/architecture.md
-**Cross-links:** See 06_architecture.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: 06_architecture.md
 
 > **🎯 Purpose**
 > This ADR documents a significant architectural decision, providing context, rationale, alternatives considered, and consequences. It serves as a historical record for future architectural discussions and evolution.

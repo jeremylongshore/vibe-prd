@@ -1,8 +1,9 @@
 # 🛡️ Quality Assurance Gate & Release Readiness Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** qa-gate-tmpl.yaml → docs/qa-gate.md
-**Cross-links:** Consumes 11_acceptance_criteria.md; feeds 18_release_plan.md, 17_test_plan.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Consumes 11_acceptance_criteria.md, feeds 18_release_plan.md, 17_test_plan.md
 
 > **🎯 Purpose**
 > Comprehensive quality gate framework ensuring enterprise-grade software quality through multi-layered validation. This framework establishes mandatory quality checkpoints that prevent defects from reaching production while maintaining development velocity.

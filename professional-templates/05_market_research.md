@@ -1,6 +1,8 @@
 # 📊 Market Research & Competitive Intelligence
-**Last Updated:** {{DATE}}
-**Upstream (BMAD):** market-research-tmpl.yaml
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
 
 > **🎯 Purpose**
 > Comprehensive market analysis providing data-driven insights for product strategy, positioning, and competitive advantage. This template guides thorough market research to inform product decisions and validate market opportunities.

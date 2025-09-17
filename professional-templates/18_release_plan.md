@@ -1,8 +1,9 @@
 # 🚀 Enterprise Release Management Plan
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** release-plan-output-tmpl.yaml → docs/release-plan-output.md
-**Cross-links:** See 01_prd.md, 17_test_plan.md, 19_operational_readiness.md, 12_qa_gate.md
+
+**Metadata**
+- Last Updated: 2025-09-16
+- Maintainer: AI-Dev Toolkit
+- Related Docs: 01_prd.md, 17_test_plan.md, 19_operational_readiness.md, 12_qa_gate.md
 
 > **🎯 Executive Summary**
 > A comprehensive, enterprise-grade release management framework ensuring zero-downtime deployments with automated quality gates, progressive rollouts, and immediate rollback capabilities. This plan orchestrates multi-channel releases across development, staging, and production environments with full observability and compliance tracking.
@@ -989,5 +990,5 @@ Compliance Documentation:
 **Release Manager Sign-off:** [Release manager approval and date]
 **Business Sponsor Sign-off:** [Executive sponsor approval and date]
 **Version:** 2.0
-**Last Comprehensive Review:** {{DATE}}
+**Last Comprehensive Review:** 2025-09-16
 **Release Management Maturity:** CMMI Level 4
