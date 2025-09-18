@@ -1,8 +1,9 @@
 # 📋 Product Requirements Document (PRD)
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** prd-tmpl.yaml → docs/prd.md
-**Cross-links:** See 03_generate_tasks.md, 04_process_task_list.md, 06_architecture.md
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
+- Related Docs: 03_generate_tasks.md, 04_process_task_list.md, 06_architecture.md
 
 > **🎯 Executive Summary**
 > This PRD defines the product vision, objectives, and detailed requirements for successful product delivery. It serves as the single source of truth for engineering, design, product, and business stakeholders.

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-IMAGE="${AI_DEV_IMAGE:-ghcr.io/jeremylongshore/ai-dev-tasks:0.1.0}"
-docker run --rm \
-  -v "$PWD":/workspace -w /workspace \
-  -v "$HOME/.gitconfig":/root/.gitconfig:ro \
-  "$IMAGE" "${@:-make help}"

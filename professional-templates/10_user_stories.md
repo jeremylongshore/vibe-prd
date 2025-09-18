@@ -1,8 +1,9 @@
 # 📝 User Stories & Acceptance Criteria Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** story-tmpl.yaml → docs/user-stories.md
-**Cross-links:** Consumes 09_user_journeys.md; feeds 11_acceptance_criteria.md, 03_generate_tasks.md
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Consumes 09_user_journeys.md, feeds 11_acceptance_criteria.md, 03_generate_tasks.md
 
 > **🎯 Purpose**
 > Comprehensive user story framework that translates user journeys and personas into actionable development requirements. Stories follow INVEST principles with detailed acceptance criteria, enabling precise development estimation and quality validation.

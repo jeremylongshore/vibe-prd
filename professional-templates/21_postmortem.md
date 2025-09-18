@@ -1,8 +1,9 @@
 # 🔍 Enterprise Incident Postmortem & Learning Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** postmortem-output-tmpl.yaml → docs/postmortem-output.md
-**Cross-links:** See 01_prd.md, 19_operational_readiness.md, 18_release_plan.md, 17_test_plan.md
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
+- Related Docs: 01_prd.md, 19_operational_readiness.md, 18_release_plan.md, 17_test_plan.md
 
 > **🎯 Executive Summary**
 > A comprehensive incident postmortem framework designed to transform failures into organizational learning opportunities. This structured approach enables systematic analysis of incidents, root cause identification, and implementation of preventive measures to build system resilience and operational excellence while fostering a blameless culture focused on continuous improvement.
@@ -1119,5 +1120,3 @@ function validateActionItemSuccess(actionItem) {
 **Next Review Date:** [When to revisit lessons learned and improvements]
 **Confidentiality Level:** [Internal/Confidential/Public]
 **Version:** 1.0
-**Last Updated:** {{DATE}}
-**Learning Index:** [Score representing knowledge value and improvement potential]

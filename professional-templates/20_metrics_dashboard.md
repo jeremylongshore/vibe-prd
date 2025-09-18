@@ -1,8 +1,9 @@
 # 📊 Enterprise Metrics & Analytics Dashboard Framework
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** metrics-dashboard-output-tmpl.yaml → docs/metrics-dashboard-output.md
-**Cross-links:** See 01_prd.md, 19_operational_readiness.md, 18_release_plan.md, 17_test_plan.md
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
+- Related Docs: 01_prd.md, 19_operational_readiness.md, 18_release_plan.md, 17_test_plan.md
 
 > **🎯 Executive Summary**
 > A comprehensive enterprise metrics and analytics framework providing real-time business intelligence, operational insights, and predictive analytics. This dashboard system enables data-driven decision making across all organizational levels with automated alerting, trend analysis, and actionable insights for strategic planning and operational excellence.
@@ -1364,12 +1365,6 @@ function generatePerformanceDashboard(timeframe) {
 ---
 
 **Metrics Dashboard Status:** [Development/Testing/Production]
-**Last Updated:** {{DATE}}
-**Dashboard Administrator:** [Name and contact information]
-**Data Refresh Frequency:** [Real-time/Hourly/Daily schedules]
-**Compliance Certification:** [SOC 2, GDPR, CCPA compliance status]
-**Performance SLA:** [Dashboard availability and response time commitments]
-
 ---
 
 **Stakeholder Access Matrix:**

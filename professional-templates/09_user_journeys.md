@@ -1,8 +1,9 @@
 # 🗺️ User Journey Mapping & Experience Flow Analysis
-**Last Updated:** {{DATE}}
-**Maintainer:** AI-Dev Toolkit
-**Upstream (BMAD):** user-journey-tmpl.yaml → docs/user-journeys.md
-**Cross-links:** Consumes 08_personas.md; feeds 10_user_stories.md, 11_acceptance_criteria.md
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
+- Related Docs: Consumes 08_personas.md, feeds 10_user_stories.md, 11_acceptance_criteria.md
 
 > **🎯 Purpose**
 > Comprehensive user journey mapping that traces end-to-end user experiences across all touchpoints, identifying pain points, emotional states, and optimization opportunities. These journeys inform feature prioritization, UX improvements, and business process optimization.

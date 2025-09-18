@@ -1,6 +1,8 @@
 # 🏁 Competitive Analysis & Market Intelligence
-**Last Updated:** {{DATE}}
-**Upstream (BMAD):** competitor-analysis-tmpl.yaml
+
+**Metadata**
+- Last Updated: {{DATE}}
+- Maintainer: AI-Dev Toolkit
 
 > **🎯 Purpose**
 > Comprehensive competitive landscape analysis providing strategic insights for positioning, differentiation, and competitive advantage. This framework guides systematic competitor evaluation and strategic response planning.
