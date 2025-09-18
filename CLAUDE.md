@@ -2,151 +2,132 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-**Last Updated:** 2025-09-16
-**System Status:** ✅ Production Ready v0.2.0
-**Container:** `ghcr.io/jeremylongshore/vibe-prd:v0.2.0`
-**BMAD Integration:** `ghcr.io/jeremylongshore/bmad:5.1.3`
+**Last Updated:** 2025-09-18
+**System Status:** ✅ Production Ready - Simplified Template System
+
+## Current Branch Status
+- **Branch:** chore/normalize-template-metadata
+- **Status:** Recently cleaned up - legacy files archived, directory structure normalized
+- **Template Count:** 22 verified templates with {{DATE}} placeholders
 
 ## System Overview
 
-This is a **containerized AI development workflow system with AI assistant integration**. It provides professional templates via Docker container and includes guided AI prompts for users of all skill levels - from complete beginners to experienced developers.
+This is an **AI development workflow system with dual AI assistant integration**. It provides 22 professional templates with guided prompts for users of all skill levels - from complete beginners to experienced developers. Works with both Claude Code CLI and Cursor IDE.
 
 ## Directory Structure
 
 ```
-~/ai-dev/                         # 🎯 CONTAINERIZED AI DEVELOPMENT SYSTEM
+~/ai-dev/                         # 🎯 AI DEVELOPMENT WORKFLOW SYSTEM
 ├── professional-templates/       # Master template library (22 templates)
-├── .github/workflows/            # CI/CD: Container build + release automation
-├── examples/                     # Usage examples and demos
-├── archive/                     # Legacy directories (cli-workflow, etc.)
-├── docs-archive/                # Extra documentation (GETTING_STARTED, etc.)
+├── completed-docs/              # Generated project documentation
+├── working-mds/                 # Reports and working documents
+├── archive/                     # Legacy files preserved
+├── form-system/                 # Interactive form tools (Node.js CLI)
+├── .cursorrules/                # Cursor IDE integration (4 rule files)
+├── .github/workflows/           # CI/CD workflows (template verification)
 ├── CLAUDE.md                    # This file - AI assistant guidance
-├── README.md                    # Quick start + AI prompt integration
-├── SOP.md                       # Standard procedures (containerized)
-├── USER_MANUAL.md               # Complete user guide (containerized)
-├── AI_ASSISTANT_PROMPTS.md      # 🤖 6 AI prompts for different skill levels
-├── BEGINNER_SETUP.md           # 🤖 Complete beginner AI guidance
-├── Dockerfile                   # Container definition
-├── Makefile                     # Document creation logic (WORKSPACE?= fix)
-├── ai-dev                       # CLI wrapper script
-└── templates -> professional-templates/
+├── README.md                    # Quick start guide
+├── Makefile                     # Basic utilities (verify, tree, clean)
+└── templates -> professional-templates/  # Symlink for compatibility
 ```
 
-## Templates Available (40+ Professional Documents)
+## Templates Available (22 Professional Documents)
 
-### Core Development Documents
-- `create-prd.md` - Product Requirements Document
-- `adr-template.md` - Architecture Decision Record
-- `create-tech-spec.md` - Technical Specification
-- `generate-tasks.md` - Implementation Task Breakdown
-- `create-api-spec.md` / `api-design.md` - API Documentation
-- `create-test-plan.md` / `test-plan.md` - Testing Strategy
-- `architecture.md` - System Architecture
-- `implementation-plan.md` - Development Planning
-- `data-model.md` - Data Structure Design
+**All templates include `{{DATE}}` placeholders for dynamic date insertion.**
 
-### Project Management & Planning
-- `create-project-charter.md` - Project Charter
-- `create-raci-matrix.md` - Responsibility Assignment
-- `create-risk-register.md` / `risk-register.md` - Risk Management
-- `create-runbook.md` / `ops-runbook.md` - Operational Procedures
-- `roadmap.md` - Product Roadmap
-- `release-plan.md` - Release Planning
-- `deployment-plan.md` - Deployment Strategy
+### Complete Template List (22 Documents)
 
-### Business & Requirements
-- `create-brd.md` - Business Requirements Document
-- `create-user-story.md` / `user-stories.md` - User Story Templates
-- `personas.md` - User Personas
-- `competitive-analysis.md` - Market Analysis
-- `metrics-kpis.md` - Success Metrics
+1. **01_prd.md** - Product Requirements Document
+2. **02_adr.md** - Architecture Decision Record
+3. **03_generate_tasks.md** - Implementation Task Breakdown
+4. **04_process_task_list.md** - Task Processing & Management
+5. **05_market_research.md** - Market Research & Analysis
+6. **06_architecture.md** - System Architecture Documentation
+7. **07_competitor_analysis.md** - Competitive Analysis
+8. **08_personas.md** - User Personas & Profiles
+9. **09_user_journeys.md** - User Journey Mapping
+10. **10_user_stories.md** - User Story Templates
+11. **11_acceptance_criteria.md** - Acceptance Criteria Definition
+12. **12_qa_gate.md** - Quality Assurance Gates
+13. **13_risk_register.md** - Risk Management Registry
+14. **14_project_brief.md** - Project Brief & Charter
+15. **15_brainstorming.md** - Brainstorming & Ideation
+16. **16_frontend_spec.md** - Frontend Technical Specification
+17. **17_test_plan.md** - Testing Strategy & Plan
+18. **18_release_plan.md** - Release Planning & Strategy
+19. **19_operational_readiness.md** - Operational Readiness
+20. **20_metrics_dashboard.md** - Metrics & KPI Dashboard
+21. **21_postmortem.md** - Post-Mortem Analysis
+22. **22_playtest_usability.md** - Usability & Playtest Documentation
 
-### Technical Documentation
-- `create-design-doc.md` - Design Documentation
-- `infra-diagram.md` - Infrastructure Design
-- `security-review.md` - Security Assessment
-- `compliance-plan.md` - Compliance Documentation
-- `sdlc-checklist.md` - Development Lifecycle
-
-### Process & Operations
-- `create-post-mortem.md` / `postmortem-template.md` - Incident Analysis
-- `create-sop.md` - Standard Operating Procedures
-- `create-rfc.md` - Request for Comments
-- `requirements-traceability.md` - Requirements Tracking
-- `faq.md` - Frequently Asked Questions
+**Template Features:**
+- All templates include standardized **Metadata** blocks
+- Dynamic `{{DATE}}` placeholders for automatic date insertion
+- Cross-references to related documents
+- Professional formatting with consistent structure
 
 ## Usage Commands
 
-### Primary Development Workflow
-```bash
-# Two-phase workflow: Form input → Document generation
-make ai-dev        # Interactive form to capture project context
-make prd          # Generate BMAD analysis + 22 professional templates
+### Primary Workflows
 
-# Output locations:
-# - docs/bmad/      (BMAD native analysis files)
-# - docs/templates/ (22 professional document templates)
+#### Claude Code CLI (Simple One-Paste)
+```
+Create a new folder in completed-docs/ named after my project, then generate all 22 docs using the templates in professional-templates/. Ask me for a single free-form project summary (I can paste as much as I want). Use deductive reasoning to fill gaps. Output all final docs into completed-docs/<my-project>/ and include an index.md summarizing what was generated and any assumptions.
 ```
 
-### BMAD Integration Commands
-```bash
-# Core BMAD workflow (runs automatically in make prd)
-make bmad-run           # Run BMAD container analysis
-make collect-bmad       # Process BMAD outputs
-make extract-bmad       # Extract structured data
-make fill-templates     # Populate template library
-make verify-outputs     # Validate generated documents
+#### Cursor IDE (Structured)
 ```
+Use @.cursorrules/01-create-prd.mdc
+Here's my feature: [describe it]
+```
+Then follow steps 2-4 in `.cursorrules/` (PRD creation follows junior developer-friendly format)
 
 ### System Management
 ```bash
-make clean-docs         # Clean output directories
-make release-check      # Full validation pipeline
-make fix-perms         # Fix Docker permission issues
+make verify      # Verify 22 templates exist
+make tree        # Show repository layout
+make clean       # Clean build artifacts (none in this system)
 ```
 
-### Legacy Containerized Usage
+### Form System (Interactive)
 ```bash
-# Using global ai-dev command (if installed)
-ai-dev make help                          # Show all templates
-ai-dev make create T=create-prd.md N=my-feature.md
-
-# Or direct container usage
-docker run --rm -v "$PWD":/workspace -w /workspace \
-  ghcr.io/jeremylongshore/vibe-prd:v0.2.0 \
-  make create T=create-prd.md N=my-feature.md
+node form-system/cli.js           # Interactive form interface for structured input
+# Note: Requires questions.yaml and CLAUDE.template.md in vibe-prd directory
 ```
 
 ## AI Assistant Guidelines
 
 ### When Working with This System
 1. **Templates are READ-ONLY** - Never modify professional-templates/ files
-2. **Containerized workflow** - Documents created via Docker container
+2. **Dual AI workflow** - Supports both Claude Code CLI and Cursor IDE
 3. **AI Assistant Integration** - Use AI_ASSISTANT_PROMPTS.md for user guidance
 4. **Multiple user types supported** - Beginners to expert developers
 
 ### AI Assistant User Support
 When users need help with this system:
-1. **Complete Beginners**: Direct them to BEGINNER_SETUP.md or the README AI prompt
-2. **Developers**: Use the technical prompts in AI_ASSISTANT_PROMPTS.md
-3. **Troubleshooting**: Guide them through the troubleshooting prompts
-4. **Team Setup**: Use the organizational prompts for multiple users
+1. **Complete Beginners**: Direct them to the README one-paste Claude workflow
+2. **Developers**: Use the structured Cursor IDE workflow
+3. **Interactive Setup**: Guide them to use form-system/cli.js for structured input
+4. **Template Reference**: All 22 templates in professional-templates/ directory
 
-### Template Usage Pattern (BMAD-Integrated)
+### Template Usage Patterns
+
+#### For Claude Code CLI Users
 ```bash
 # User requests: "Create comprehensive project documentation"
-# Modern BMAD workflow:
 cd ~/ai-dev
-make ai-dev    # Interactive form captures project context
-make prd       # BMAD analyzes + generates 40+ documents
+# Paste the one-liner prompt from README.md
+# Provide project description when asked
+# All 22 docs generated in completed-docs/<project-name>/
+```
 
-# Output structure:
-# docs/bmad/           - BMAD native analysis
-# docs/templates/      - 40+ populated professional templates
-
-# Legacy single-template approach:
-ai-dev make create T=create-prd.md N=feature-prd.md
-# Creates single document in current directory
+#### For Cursor IDE Users
+```bash
+# User requests: structured development workflow
+cd ~/ai-dev
+# Use @.cursorrules/01-create-prd.mdc
+# Follow structured steps 1-4
+# Generated docs appear in appropriate directories
 ```
 
 ### Project Integration
@@ -172,43 +153,46 @@ ai-dev make create T=create-prd.md N=feature-prd.md
 ## GitHub Integration
 
 - **Origin:** https://github.com/jeremylongshore/vibe-prd.git
-- **Branch:** feat/workspace-pipeline
+- **Branch:** chore/normalize-template-metadata
 - **Purpose:** Public methodology sharing (templates can be public, working docs stay private)
 
 ## Architecture & Key Features
 
 ### Template System Architecture
-- **22 professional templates** in `professional-templates/` directory
-- **Read-only templates** that generate working documents in `docs/`
-- **Centralized workflow** - all projects route documentation to `~/ai-dev/`
-- **Automation scripts** for project setup and workspace integration
+- **22 professional templates** in `professional-templates/` directory with `{{DATE}}` placeholders
+- **Read-only templates** that generate working documents in `completed-docs/`
+- **Dual AI support** - Works with both Claude Code CLI and Cursor IDE
+- **Simple workflow** - No complex dependencies or containerization required
 
 ### Key Components
-1. **Makefile** - Core workflow orchestration (form input → BMAD → templates)
-2. **form-system/cli.js** - Interactive form interface for project context
-3. **BMAD integration** - AI-powered analysis via pinned container (`ghcr.io/jeremylongshore/bmad:5.1.3`)
-4. **Template library** - 40+ professional document templates in `professional-templates/`
-5. **CI/CD pipeline** - Automated testing and release via GitHub Actions
-6. **Version pinning** - `.bmad-version` and `.bmad-lock` ensure reproducible builds
+1. **Template library** - 22 professional document templates in `professional-templates/`
+2. **form-system/cli.js** - Interactive form interface for structured input
+3. **Dual AI integration** - Claude one-paste workflow and Cursor structured workflow
+4. **Makefile** - Basic utilities (verify, tree, clean)
+5. **CI/CD pipeline** - Automated template verification via GitHub Actions (ci.yml)
+6. **Date placeholders** - All templates use `{{DATE}}` for dynamic date insertion
+7. **Legacy cleanup** - Recent archival of confusing directories, normalized structure
 
 ### System Health Checks
 
 ```bash
-# Verify templates (should show 40+ templates)
-ls -la professional-templates/ | wc -l
+# Verify templates (should show 22 templates)
+make verify
 
-# Check BMAD integration
-cat .bmad-version  # Should show: ghcr.io/jeremylongshore/bmad:5.1.3
-cat .bmad-lock     # Should show SHA256 digest
+# Check template count
+ls -1 professional-templates/ | wc -l  # Should return 22
 
-# Test full workflow
-make clean-docs && make ai-dev && make prd
+# Check for {{DATE}} placeholders in templates
+grep -r "{{DATE}}" professional-templates/ | wc -l  # Should be > 0
 
-# Verify outputs
-make verify-outputs  # Validates template count and structure
+# Verify no BMAD references outside archive
+grep -r "BMAD" . --exclude-dir=archive 2>/dev/null | grep -v INIT_FOR_NEXT_SESSION.md
 
-# Check form system
-node form-system/cli.js --help
+# Check form system (requires vibe-prd directory structure)
+node form-system/cli.js
+
+# View repository structure
+make tree
 ```
 
 ## Integration Rules & Project Ecosystem

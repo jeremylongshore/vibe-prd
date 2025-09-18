@@ -1,0 +1,258 @@
+---
+description: Intelligent Documentation Generator - Transform any project idea into comprehensive documentation
+globs:
+alwaysApply: false
+---
+
+# Rule: /new-project - Intelligent Documentation Generator
+
+## Goal
+
+Guide users through intelligent documentation generation by classifying their project, recommending appropriate documentation tier, and generating professional templates with adaptive questioning.
+
+## Process Overview
+
+1. **Project Classification** - Detect project type, team context, and scope requirements
+2. **Tier Recommendation** - Suggest MVP/Standard/Enterprise documentation level
+3. **Adaptive Questioning** - Generate contextual questions based on classification
+4. **Document Generation** - Create cross-referenced professional documentation
+5. **Quality Validation** - Ensure completeness and coherence
+
+## Phase 1: Project Classification
+
+### Initial Questions (Ask All Three)
+
+**Question 1 - Project Type:**
+"Are you working on:
+- **Greenfield**: Starting something completely new
+- **Brownfield**: Enhancing/expanding an existing system
+
+If Brownfield, briefly describe what you're building on."
+
+**Question 2 - Team Context:**
+"What describes your situation best:
+- **Solo/Startup**: Solo founder or 2-5 person startup
+- **Business Team**: 6-50 person established business
+- **Enterprise**: 50+ person organization with formal processes
+- **Open Source**: Community-driven project"
+
+**Question 3 - Documentation Goal:**
+"What's your primary objective:
+- **Quick Validation**: MVP planning, rapid iteration
+- **Business Alignment**: Stakeholder communication, planning
+- **Comprehensive Planning**: Compliance, audit requirements, full documentation"
+
+## Phase 2: Tier Recommendation Logic
+
+Based on responses, recommend:
+
+### MVP Tier (3-5 minutes, 4 documents)
+**Recommend if:**
+- Solo/Startup + Quick Validation
+- Greenfield + limited resources
+- Rapid prototyping focus
+
+**Documents Generated:**
+- 01_prd.md (simplified format)
+- 03_generate_tasks.md
+- 14_project_brief.md
+- 15_brainstorming.md
+
+### Standard Tier (8-12 minutes, 12 documents)
+**Recommend if:**
+- Business Team + Business Alignment
+- Established company launching new feature
+- Need stakeholder buy-in
+
+**Documents Generated:**
+- All MVP documents plus:
+- 02_adr.md, 05_market_research.md, 08_personas.md
+- 09_user_journeys.md, 10_user_stories.md, 11_acceptance_criteria.md
+- 16_frontend_spec.md, 17_test_plan.md
+
+### Enterprise Tier (15-20 minutes, 22 documents)
+**Recommend if:**
+- Enterprise + Comprehensive Planning
+- Compliance/audit requirements
+- Complex system integration needs
+
+**Documents Generated:**
+- All 22 professional templates from professional-templates/
+
+### Present Recommendation
+"Based on your responses, I recommend **[TIER] Tier**:
+- **Time**: ~[X] minutes
+- **Documents**: [Y] professional templates
+- **Best for**: [Context-specific reasoning]
+
+Proceed with this recommendation, or would you prefer a different tier?"
+
+## Phase 3: Adaptive Questioning
+
+### Core Question Framework
+
+Generate 5-8 questions based on classification. Always include:
+
+#### Universal Questions (Ask everyone)
+1. **Problem Statement**: "What problem are you solving, and who has this problem?"
+2. **Solution Overview**: "Describe your solution approach in 2-3 sentences"
+
+#### Context-Specific Questions
+
+**For Greenfield Projects:**
+- "Who is your target user/customer?"
+- "What's your business model or revenue approach?"
+- "What technical constraints or preferences do you have?"
+
+**For Brownfield Projects:**
+- "What existing system are you building on?"
+- "What limitations or constraints from the current system matter?"
+- "What's driving this enhancement/change?"
+
+**For Solo/Startup Context:**
+- "What's your go-to-market strategy?"
+- "How will you validate market demand?"
+- "What are your resource constraints?"
+
+**For Business Team Context:**
+- "Who are the key stakeholders for approval?"
+- "What success metrics matter most?"
+- "Any integration requirements with existing tools?"
+
+**For Enterprise Context:**
+- "What compliance or regulatory requirements apply?"
+- "What's the approval process for this project?"
+- "Any security or audit considerations?"
+
+**For Open Source Context:**
+- "What's your vision for community involvement?"
+- "How will you attract and onboard contributors?"
+- "What's your project governance model?"
+
+### Question Guidelines
+- Ask one question at a time for better UX
+- Provide examples when questions might be unclear
+- Allow "I'll figure this out later" for optional details
+- Adapt follow-up questions based on previous answers
+
+## Phase 4: Document Generation
+
+### Setup Project Structure
+```bash
+# Create project directory
+mkdir -p ~/ai-dev/completed-docs/[PROJECT-NAME]
+cd ~/ai-dev/completed-docs/[PROJECT-NAME]
+```
+
+### Template Processing Rules
+1. **Source Templates**: Use files from `~/ai-dev/professional-templates/`
+2. **Date Replacement**: Replace all `{{DATE}}` with current date (YYYY-MM-DD format)
+3. **Content Filling**: Use user responses to populate template sections intelligently
+4. **Cross-References**: Update "Related Docs" metadata to reflect generated documents
+
+### Content Population Strategy
+
+**For each template section:**
+- **If user provided specific info**: Use their exact details
+- **If user provided general info**: Expand with reasonable specifics
+- **If no user info**: Create placeholder content with [CUSTOMIZE] markers
+
+**Example Content Adaptation:**
+- User says: "Mobile fitness app"
+- PRD expands to: "Mobile fitness application targeting health-conscious individuals aged 25-45..."
+- User Stories include: "As a fitness enthusiast, I want to track workouts..."
+
+### Quality Standards
+- All generated content must be professional and coherent
+- No template boilerplate should remain unfilled
+- Cross-references between documents must be accurate
+- Content should be project-specific, not generic
+
+## Phase 5: Completion & Validation
+
+### Generate Index Document
+Create `index.md` with:
+```markdown
+# [PROJECT-NAME] Documentation Suite
+
+**Generated**: [Current Date]
+**Tier**: [MVP/Standard/Enterprise]
+**Templates Used**: [X] of 22 available
+
+## Generated Documents
+[List each document with one-line description]
+
+## Key Assumptions Made
+[List any assumptions made due to incomplete user input]
+
+## Recommended Next Steps
+[Provide 3-5 specific next actions based on project type and tier]
+
+## Customization Notes
+[Explain which sections likely need user customization]
+```
+
+### Completion Message
+```
+✅ **Documentation Generation Complete!**
+
+📁 **Location**: ~/ai-dev/completed-docs/[PROJECT-NAME]/
+📋 **Generated**: [X] professional documents
+⏱️  **Time**: [Y] minutes
+🎯 **Tier**: [MVP/Standard/Enterprise]
+
+**Your Documents:**
+[List key documents with brief descriptions]
+
+**Next Steps:**
+1. Review documents in your project folder
+2. Customize [CUSTOMIZE] sections as needed
+3. Share with team/stakeholders
+4. Iterate: Run /new-project again as project evolves
+
+**Need help?** Check EXAMPLES.md for similar projects or open an issue.
+```
+
+## Error Handling
+
+### Insufficient Information
+- Provide specific examples of what you're looking for
+- Offer multiple choice options when user seems stuck
+- Allow graceful skipping with "I'll add this later"
+
+### Template Failures
+- Report specific template that failed to generate
+- Continue with remaining templates
+- Provide manual template paths for self-service
+
+### User Confusion
+- Offer to restart classification if user seems unsure
+- Provide EXAMPLES.md references for similar projects
+- Break down complex questions into simpler parts
+
+## Advanced Features
+
+### Smart Follow-ups
+If user mentions specific industries/technologies, ask relevant follow-ups:
+- **FinTech**: "Any regulatory compliance requirements?"
+- **HealthTech**: "HIPAA or other healthcare regulations?"
+- **AI/ML**: "What's your model deployment strategy?"
+- **Mobile**: "iOS, Android, or cross-platform?"
+
+### Integration Awareness
+Reference existing ai-dev ecosystem:
+- "You can also use the form-system for structured input"
+- "All templates work with both Claude Code CLI and Cursor IDE"
+- "Generated docs integrate with your existing workflow"
+
+## Success Validation
+
+Track completion through user feedback:
+- Did user complete the full flow?
+- Were generated documents immediately useful?
+- Did user customize or regenerate?
+- Any confusion points in the process?
+
+---
+
+**This rule transforms Cursor IDE into an intelligent documentation assistant, providing the same powerful /new-project experience as Claude Code CLI but optimized for IDE-based workflows.**

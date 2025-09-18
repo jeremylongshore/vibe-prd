@@ -1,0 +1,335 @@
+name: Template Validation & Testing
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly to catch any drift
+    - cron: '0 0 * * 0'
+
+jobs:
+  template-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'form-system/package*.json'
+
+    - name: Install dependencies (if package.json exists)
+      run: |
+        if [ -f form-system/package.json ]; then
+          cd form-system
+          npm ci
+        fi
+
+    - name: Verify template count
+      run: |
+        echo "Checking professional-templates directory..."
+        if [ ! -d "professional-templates" ]; then
+          echo "❌ professional-templates directory not found"
+          exit 1
+        fi
+
+        template_count=$(find professional-templates -maxdepth 1 -type f -name '*.md' | wc -l)
+        echo "Found $template_count templates"
+
+        if [ "$template_count" -ne 22 ]; then
+          echo "❌ Expected 22 templates, found $template_count"
+          exit 1
+        fi
+
+        echo "✅ Template count validation passed"
+
+    - name: Validate template structure
+      run: |
+        echo "Validating template file structure..."
+        missing_templates=()
+
+        # Check for expected template files
+        expected_templates=(
+          "01_prd.md"
+          "02_adr.md"
+          "03_generate_tasks.md"
+          "04_process_task_list.md"
+          "05_market_research.md"
+          "06_architecture.md"
+          "07_competitor_analysis.md"
+          "08_personas.md"
+          "09_user_journeys.md"
+          "10_user_stories.md"
+          "11_acceptance_criteria.md"
+          "12_qa_gate.md"
+          "13_risk_register.md"
+          "14_project_brief.md"
+          "15_brainstorming.md"
+          "16_frontend_spec.md"
+          "17_test_plan.md"
+          "18_release_plan.md"
+          "19_operational_readiness.md"
+          "20_metrics_dashboard.md"
+          "21_postmortem.md"
+          "22_playtest_usability.md"
+        )
+
+        for template in "${expected_templates[@]}"; do
+          if [ ! -f "professional-templates/$template" ]; then
+            missing_templates+=("$template")
+          fi
+        done
+
+        if [ ${#missing_templates[@]} -ne 0 ]; then
+          echo "❌ Missing templates:"
+          printf '%s\n' "${missing_templates[@]}"
+          exit 1
+        fi
+
+        echo "✅ All expected templates found"
+
+    - name: Check for {{DATE}} placeholders
+      run: |
+        echo "Checking for {{DATE}} placeholders in templates..."
+        templates_with_date=$(grep -r "{{DATE}}" professional-templates/ | wc -l)
+
+        if [ "$templates_with_date" -eq 0 ]; then
+          echo "❌ No {{DATE}} placeholders found in templates"
+          exit 1
+        fi
+
+        echo "✅ Found $templates_with_date {{DATE}} placeholders"
+
+    - name: Validate template content structure
+      run: |
+        echo "Validating template content structure..."
+
+        # Check that templates have basic markdown structure
+        for template in professional-templates/*.md; do
+          if [ ! -s "$template" ]; then
+            echo "❌ Template $template is empty"
+            exit 1
+          fi
+
+          # Check for basic markdown structure (headers)
+          if ! grep -q "^#" "$template"; then
+            echo "❌ Template $template missing markdown headers"
+            exit 1
+          fi
+        done
+
+        echo "✅ Template content structure validation passed"
+
+    - name: Check symlink integrity
+      run: |
+        echo "Checking templates symlink..."
+        if [ -L "templates" ]; then
+          if [ ! -e "templates" ]; then
+            echo "❌ Broken symlink: templates -> $(readlink templates)"
+            exit 1
+          fi
+          echo "✅ Templates symlink is valid"
+        else
+          echo "ℹ️  No templates symlink found (optional)"
+        fi
+
+    - name: Validate Cursor IDE rules
+      run: |
+        echo "Validating Cursor IDE integration..."
+        if [ ! -d ".cursorrules" ]; then
+          echo "❌ .cursorrules directory not found"
+          exit 1
+        fi
+
+        # Check for main integration file
+        if [ ! -f ".cursorrules/new-project.mdc" ]; then
+          echo "❌ Main Cursor rule file not found"
+          exit 1
+        fi
+
+        echo "✅ Cursor IDE integration validated"
+
+    - name: Test form system (if available)
+      run: |
+        echo "Testing form system..."
+        if [ -f "form-system/cli.js" ]; then
+          cd form-system
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+
+            // Test basic file structure
+            if (!fs.existsSync('cli.js')) {
+              process.exit(1);
+            }
+
+            // Test that file is valid JavaScript
+            try {
+              require('./cli.js');
+            } catch (e) {
+              if (!e.message.includes('Missing form-system/questions.yaml')) {
+                console.error('Script validation failed:', e.message);
+                process.exit(1);
+              }
+            }
+
+            console.log('✅ Form system basic validation passed');
+          "
+        else
+          echo "ℹ️  Form system not found (optional)"
+        fi
+
+    - name: Validate GitHub community files
+      run: |
+        echo "Checking GitHub community standards..."
+
+        # Check for essential community files
+        community_files=(
+          "README.md"
+          "SECURITY.md"
+          "CODE_OF_CONDUCT.md"
+          "CONTRIBUTING.md"
+        )
+
+        missing_files=()
+        for file in "${community_files[@]}"; do
+          if [ ! -f "$file" ]; then
+            missing_files+=("$file")
+          fi
+        done
+
+        if [ ${#missing_files[@]} -ne 0 ]; then
+          echo "⚠️  Missing community files (non-blocking):"
+          printf '%s\n' "${missing_files[@]}"
+        else
+          echo "✅ All community files present"
+        fi
+
+    - name: Test Makefile commands
+      run: |
+        echo "Testing Makefile commands..."
+        if [ -f "Makefile" ]; then
+          make verify
+          make tree
+          make clean
+          echo "✅ Makefile commands executed successfully"
+        else
+          echo "❌ Makefile not found"
+          exit 1
+        fi
+
+    - name: Generate test documentation
+      run: |
+        echo "Testing documentation generation..."
+
+        # Create a test project directory
+        mkdir -p completed-docs/ci-test-project
+
+        # Test template processing with simple substitution
+        cd completed-docs/ci-test-project
+
+        # Copy a simple template and test date substitution
+        cp ../../professional-templates/01_prd.md ./test-prd.md
+
+        # Replace {{DATE}} with current date (basic test)
+        current_date=$(date '+%Y-%m-%d')
+        sed -i "s/{{DATE}}/$current_date/g" test-prd.md
+
+        # Verify substitution worked
+        if grep -q "{{DATE}}" test-prd.md; then
+          echo "❌ Date substitution failed"
+          exit 1
+        fi
+
+        echo "✅ Basic template processing test passed"
+
+        # Cleanup
+        cd ../..
+        rm -rf completed-docs/ci-test-project
+
+  accessibility-check:
+    runs-on: ubuntu-latest
+    needs: template-validation
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Check markdown accessibility
+      run: |
+        echo "Checking markdown accessibility..."
+
+        # Check for proper heading hierarchy
+        for file in *.md professional-templates/*.md; do
+          if [ -f "$file" ]; then
+            # Check that headers start with h1 and don't skip levels
+            python3 -c "
+import re
+import sys
+
+def check_heading_hierarchy(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    headings = re.findall(r'^(#{1,6})', content, re.MULTILINE)
+    if not headings:
+        return True  # No headings is OK
+
+    levels = [len(h) for h in headings]
+
+    # Should start with h1
+    if levels[0] != 1:
+        print(f'❌ {filename}: Should start with h1, starts with h{levels[0]}')
+        return False
+
+    # Check for level skipping
+    for i in range(1, len(levels)):
+        if levels[i] > levels[i-1] + 1:
+            print(f'❌ {filename}: Heading level jumps from h{levels[i-1]} to h{levels[i]}')
+            return False
+
+    return True
+
+if not check_heading_hierarchy('$file'):
+    sys.exit(1)
+            "
+          fi
+        done
+
+        echo "✅ Markdown accessibility check passed"
+
+  performance-test:
+    runs-on: ubuntu-latest
+    needs: template-validation
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Performance benchmarks
+      run: |
+        echo "Running performance benchmarks..."
+
+        start_time=$(date +%s%N)
+
+        # Test template counting performance
+        for i in {1..100}; do
+          find professional-templates -name "*.md" | wc -l > /dev/null
+        done
+
+        end_time=$(date +%s%N)
+        duration_ms=$(( (end_time - start_time) / 1000000 ))
+
+        echo "Template counting (100x): ${duration_ms}ms"
+
+        if [ $duration_ms -gt 5000 ]; then
+          echo "⚠️  Performance warning: Template counting took > 5s"
+        else
+          echo "✅ Performance test passed"
+        fi
