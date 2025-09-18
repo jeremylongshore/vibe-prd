@@ -138,14 +138,15 @@ Generate 5-8 questions based on classification. Always include:
 ## Phase 4: Document Generation
 
 ### Setup Project Structure
-```bash
-# Create project directory
-mkdir -p ~/ai-dev/completed-docs/[PROJECT-NAME]
-cd ~/ai-dev/completed-docs/[PROJECT-NAME]
+Create a project directory structure:
+```
+completed-docs/[PROJECT-NAME]/
+├── index.md
+└── [generated templates based on tier]
 ```
 
 ### Template Processing Rules
-1. **Source Templates**: Use files from `~/ai-dev/professional-templates/`
+1. **Self-Contained Generation**: Create templates directly without requiring source files
 2. **Date Replacement**: Replace all `{{DATE}}` with current date (YYYY-MM-DD format)
 3. **Content Filling**: Use user responses to populate template sections intelligently
 4. **Cross-References**: Update "Related Docs" metadata to reflect generated documents
