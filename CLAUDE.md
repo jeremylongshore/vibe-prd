@@ -3,12 +3,13 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 **Last Updated:** 2025-09-18
-**System Status:** ✅ Production Ready - Simplified Template System
+**System Status:** ✅ Production Ready - Enterprise Pipeline Deployed
 
-## Current Branch Status
-- **Branch:** chore/normalize-template-metadata
-- **Status:** Recently cleaned up - legacy files archived, directory structure normalized
+## Current Status
+- **Release:** v1.0.9 - Enterprise Documentation Pipeline
+- **Enterprise E2E:** ✅ Operational with CI/CD integration
 - **Template Count:** 22 verified templates with {{DATE}} placeholders
+- **Enterprise Pipeline:** ✅ 17-question intake CLI with governance controls
 
 ## System Overview
 
@@ -81,6 +82,19 @@ Use @.cursorrules/01-create-prd.mdc
 Here's my feature: [describe it]
 ```
 Then follow steps 2-4 in `.cursorrules/` (PRD creation follows junior developer-friendly format)
+
+#### Enterprise Pipeline (Governance & CI/CD)
+```bash
+make enterprise PROJECT="my-project"                    # Interactive 17-question intake
+make enterprise-ci PROJECT="my-project" ANSWERS="..."   # CI/automation mode
+```
+
+**Enterprise Features:**
+- **17-question structured intake** with multi-input modes (interactive, file, stdin)
+- **Automated header injection** with project metadata and cross-references
+- **CI/CD integration** via `.github/workflows/enterprise-e2e.yml`
+- **Governance controls** with CODEOWNERS protection and PR templates
+- **Output validation** with `scripts/verify-enterprise-output.mjs`
 
 ### System Management
 ```bash

@@ -1,5 +1,6 @@
 # vibe-prd — AI Documentation Generator
 
+[![Enterprise E2E](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml)
 [![CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/jeremylongshore/vibe-prd?display_name=tag)](https://github.com/jeremylongshore/vibe-prd/releases)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -28,6 +29,20 @@ For Cursor IDE users. Structured workflow integration.
 1. Copy `.cursorrules/new-project.mdc` to your project's `.cursorrules/` directory
 2. Use command: `@new-project "my-app" mvp`
 3. Documentation generates under `completed-docs/`
+
+### Enterprise Pipeline
+For organizations requiring structured intake and governance.
+
+```bash
+make enterprise PROJECT="my-project"                    # Interactive 17-question intake
+make enterprise-ci PROJECT="my-project" ANSWERS="..."   # CI/automation with fixture data
+```
+
+✅ **Enterprise Features:**
+- **17-question structured intake** with multi-input modes (interactive, file, stdin)
+- **Automated header injection** with project metadata and cross-references
+- **CI/CD integration** via GitHub Actions workflow
+- **Governance controls** with CODEOWNERS and PR templates
 
 ### Manual Setup
 Traditional clone and configure approach.
@@ -186,6 +201,24 @@ Contributions welcome:
 - **Cursor Setup**: See `.cursorrules/vibe-basics.md`
 - **Template Reference**: All 22 templates in `professional-templates/`
 - **AI Integration**: See `CLAUDE.md` for AI assistant guidance
+
+## Governance (Enterprise)
+
+**🏢 Enterprise Pipeline Protection:**
+- Enterprise-critical paths require **@jeremylongshore** review via [CODEOWNERS](.github/CODEOWNERS)
+- All changes must pass **Enterprise E2E** workflow before merge
+- Branch protection enforces linear history and conversation resolution
+- See [Branch Protection Guide](docs/branch-protection-enterprise.md) for complete governance details
+
+**🔒 Protected Paths:**
+```
+/.github/workflows/enterprise-e2e.yml
+/scripts/run-enterprise.mjs
+/scripts/generate-enterprise.mjs
+/form-system/enterprise-cli.js
+/form-system/enterprise-questions.yaml
+/completed-docs/
+```
 
 ## Star History
 

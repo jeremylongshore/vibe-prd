@@ -15,4 +15,4 @@ enterprise:
 	@node scripts/run-enterprise.mjs --project "$(PROJECT)"
 
 enterprise-ci:
-	@node scripts/run-enterprise.mjs --project "$(PROJECT)" --answers "$(ANSWERS)" --force
+	@node scripts/run-enterprise.mjs --project "$(PROJECT)" --answers "$(ANSWERS)"
