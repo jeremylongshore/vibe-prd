@@ -147,16 +147,25 @@ Then follow the guided workflow in `.cursorrules/` for structured documentation.
 ## Repository Structure
 
 ```
-~/ai-dev/
-├── professional-templates/   # 22 master templates (read-only)
-│   ├── 01_prd.md            # Product Requirements Document
-│   ├── 02_adr.md            # Architecture Decision Record
-│   ├── 03_generate_tasks.md # Task breakdown templates
-│   └── ... (19 more)        # Complete enterprise suite
-├── completed-docs/          # Your generated project documentation
-├── .cursorrules/           # Cursor IDE integration workflows
-├── form-system/            # Interactive form interface
-└── working-mds/            # Development reports & logs
+~/ai-dev/                         # 🎯 Clean, organized AI development workspace
+├── professional-templates/       # 22 master templates (read-only)
+│   ├── 01_prd.md                 # Product Requirements Document
+│   ├── 02_adr.md                 # Architecture Decision Record
+│   ├── 03_generate_tasks.md      # Task breakdown templates
+│   └── ... (19 more)             # Complete enterprise suite
+├── completed-docs/               # Generated project documentation
+│   ├── <your-project>/          # Individual project folders
+│   └── index.md                 # Project summaries
+├── docs/                        # 📚 Comprehensive documentation
+│   ├── guides/                  # User guides (Claude CLI, Cursor IDE, Quick Start)
+│   ├── examples/                # Real-world examples and templates
+│   ├── AI_ASSISTANT_PROMPTS.md  # AI integration guidance
+│   └── SOP.md                   # Development standards
+├── .cursorrules/               # Cursor IDE integration workflows
+├── form-system/                # Interactive form interface
+├── scripts/                    # Automation scripts
+├── archive/                    # Legacy files (preserved for reference)
+└── working-mds/               # Development reports & session logs
 ```
 
 ## Key Features
