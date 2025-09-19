@@ -66,3 +66,5 @@ archive/*/node_modules
 bmad/node_modules
 completed-docs/
 .DS_Store
+# Archive directory
+archive/
