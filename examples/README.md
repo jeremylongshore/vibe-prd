@@ -74,7 +74,7 @@ This directory contains real usage demonstrations of the `/new-project` command 
    - **Scope:** mvp vs standard vs comprehensive
 
 4. **Get professional documentation:**
-   - Output location: `~/ai-dev/vibe-prd/completed-docs/<your-project>/`
+   - Output location: `~/ai-dev/completed-docs/<your-project>/`
    - Start with `index.md` for navigation
    - All documents cross-referenced and dated
 

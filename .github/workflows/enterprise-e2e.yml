@@ -13,6 +13,8 @@ jobs:
         with: { node-version: '18' }
       - name: Install dependencies
         run: npm install
+      - name: Create required directories
+        run: mkdir -p completed-docs
       - name: Run enterprise generator (noninteractive)
         run: |
           node scripts/run-enterprise.mjs \

@@ -15,7 +15,7 @@
 
 ## Implementation (run these on acceptance)
 - Ensure repo path:
-  cd ~/ai-dev/vibe-prd
+  cd ~/ai-dev
 
 - Determine template list:
   case "$scope" in

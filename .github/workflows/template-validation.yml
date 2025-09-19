@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
 
       - name: Install deps
         run: |
@@ -28,14 +27,15 @@ jobs:
             npm ci || npm install
           fi
 
+      - name: Create required directories
+        run: mkdir -p completed-docs
+
       - name: Verify templates
         run: |
           if make -q verify 2>/dev/null; then
             make verify
           elif [ -f scripts/verify-enterprise-output.mjs ]; then
             node scripts/verify-enterprise-output.mjs --mode=templates
-          elif [ -f scripts/template-validation.mjs ]; then
-            node scripts/template-validation.mjs
           else
             echo "No validation script found"; exit 1
           fi
