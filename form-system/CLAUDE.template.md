@@ -1,49 +1,102 @@
-# {{PROJECT_NAME}} — Project Documentation
+# {{project_name}} — Project Documentation
 
 **Generated:** {{DATE}}
 **Form Responses:** {{RESPONSES_COUNT}} questions answered
-**Templates Used:** {{TEMPLATE_LIST}}
+**Project Type:** {{project_type}}
 
 ---
 
 ## Project Overview
 
-{{OVERVIEW}}
+**Problem Statement:** {{problem_statement}}
 
-### Target Users
-{{TARGET_USERS}}
+**Solution Overview:** {{overview}}
 
-### Value Proposition
-{{VALUE_PROP}}
+**Value Proposition:** {{value_prop}}
 
 ---
 
-## Scope & Constraints
+## Target Audience & Users
 
-### Goals
-{{GOALS}}
+**Primary Users:** {{target_users}}
 
-### Constraints
-{{CONSTRAINTS}}
+**Key Pain Points:** {{user_pains}}
 
-### Compliance Requirements
-{{COMPLIANCE}}
+**User Personas:** {{user_personas}}
 
----
+**User Journey:** {{user_journey}}
 
-## Risk Analysis
-
-### Primary Risks
-{{RISKS}}
-
-### Key Assumptions
-{{ASSUMPTIONS}}
+**User Success Criteria:** {{user_success}}
 
 ---
 
-## Success Criteria
+## Technical Scope & Architecture
 
-{{ACCEPTANCE}}
+**Technology Stack:** {{tech_stack}}
+
+**System Integrations:** {{integrations}}
+
+**Data Requirements:** {{data_requirements}}
+
+**Scalability Requirements:** {{scalability}}
+
+**Security Requirements:** {{security_requirements}}
+
+---
+
+## Business Context & Goals
+
+**Business Goals:** {{business_goals}}
+
+**Success Metrics:** {{success_metrics}}
+
+**Competitive Landscape:** {{competitive_landscape}}
+
+**Market Opportunity:** {{market_size}}
+
+**Revenue Model:** {{revenue_model}}
+
+---
+
+## Project Constraints & Resources
+
+**Timeline:** {{timeline}}
+
+**Budget:** {{budget}}
+
+**Team Size:** {{team_size}}
+
+**Dependencies:** {{dependencies}}
+
+**Compliance Requirements:** {{compliance}}
+
+---
+
+## Risk Analysis & Assumptions
+
+### Technical Risks
+{{technical_risks}}
+
+### Business Risks
+{{business_risks}}
+
+### Critical Assumptions
+{{assumptions}}
+
+### Fallback Plans
+{{fallback_plans}}
+
+---
+
+## Success Criteria & Acceptance
+
+**Acceptance Criteria:** {{acceptance_criteria}}
+
+**User Acceptance:** {{user_acceptance}}
+
+**Performance Criteria:** {{performance_criteria}}
+
+**Rollback Criteria:** {{rollback_criteria}}
 
 ---
 

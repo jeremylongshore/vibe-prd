@@ -2,9 +2,11 @@
 
 [![CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/jeremylongshore/vibe-prd?display_name=tag)](https://github.com/jeremylongshore/vibe-prd/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-informational.svg)](LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/issues)
 [![PRs](https://img.shields.io/github/issues-pr/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/commits/main)
+[![Template Count](https://img.shields.io/badge/Templates-22-green.svg)](professional-templates/)
 [![Stars](https://img.shields.io/github/stars/jeremylongshore/vibe-prd?style=social)](https://github.com/jeremylongshore/vibe-prd/stargazers)
 
 Generate 22 enterprise-grade project documents using AI assistants. Works with Claude Code CLI and Cursor IDE with no dependencies or complex setup required.
