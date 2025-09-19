@@ -1,4 +1,4 @@
-.PHONY: verify tree clean enterprise enterprise-ci
+.PHONY: verify tree clean enterprise enterprise-ci release-check
 
 verify:
 	@./scripts/verify-templates.sh
@@ -15,3 +15,11 @@ enterprise:
 
 enterprise-ci:
 	@node scripts/run-enterprise.mjs --project "$(PROJECT)" --answers "$(ANSWERS)"
+
+release-check:
+	@echo "Release validation starting..."
+	@./scripts/verify-templates.sh
+	@echo "Creating release artifact..."
+	@mkdir -p release-artifacts
+	@zip -r artifacts.zip professional-templates/ README.md CLAUDE.md LICENSE
+	@echo "✅ Release check passed - artifacts.zip created"
