@@ -21,7 +21,7 @@ For Claude Code users. Zero setup required.
 
 1. Open Claude Code and paste the contents of **CLAUDE_ONE_PASTE.md**
 2. Type `/new-project` and answer 3 questions
-3. Documentation generates under `~/ai-dev/vibe-prd/completed-docs/<project-name>/`
+3. Documentation generates under `~/ai-dev/completed-docs/<project-name>/`
 
 ### /new-project Command
 **Intelligent conversation-based documentation generator for Claude Code users.**

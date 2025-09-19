@@ -32,7 +32,7 @@ function render(tpl, data) {
 
 (async function main() {
   if (!fs.existsSync(QFILE) || !fs.existsSync(TPLFILE)) {
-    console.error('Missing form-system/questions.yaml or vibe-prd/CLAUDE.template.md');
+    console.error('Missing form-system/questions.yaml or CLAUDE.template.md');
     process.exit(2);
   }
   const qs = parseYAML(fs.readFileSync(QFILE, 'utf8'));

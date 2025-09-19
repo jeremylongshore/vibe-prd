@@ -55,10 +55,10 @@ User: Tiered SaaS subscription model: Starter ($29/month), Professional ($79/mon
 
 Claude: Excellent! I'm generating 12 comprehensive documents for your business-focused, standard-scope project.
 
-[Generates 12 professional documents in ~/ai-dev/vibe-prd/completed-docs/customer-support-saas/]
+[Generates 12 professional documents in ~/ai-dev/completed-docs/customer-support-saas/]
 
 Documentation generated successfully!
-📁 Output: ~/ai-dev/vibe-prd/completed-docs/customer-support-saas/
+📁 Output: ~/ai-dev/completed-docs/customer-support-saas/
 📋 Files: 12 documents including PRD, market research, personas, technical architecture
 🔗 Index: Start with index.md for navigation and project overview
 ⏱️ Generation time: 28 seconds

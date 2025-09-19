@@ -37,10 +37,10 @@ User: chat-ai-customer-support
 
 Claude: Great! I'm generating documentation for your business-focused, standard-scope project.
 
-[generates 12 professional documents in ~/ai-dev/vibe-prd/completed-docs/chat-ai-customer-support/]
+[generates 12 professional documents in ~/ai-dev/completed-docs/chat-ai-customer-support/]
 
 Documentation generated successfully!
-📁 Output: ~/ai-dev/vibe-prd/completed-docs/chat-ai-customer-support/
+📁 Output: ~/ai-dev/completed-docs/chat-ai-customer-support/
 📋 Files: 12 documents including PRD, architecture, personas, user stories, and test plan
 🔗 Index: Start with index.md for navigation and project overview
 ```

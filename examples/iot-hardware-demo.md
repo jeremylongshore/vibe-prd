@@ -59,10 +59,10 @@ User: Hardware sales ($500-1500 per sensor node) plus SaaS platform subscription
 
 Claude: Outstanding! I'm generating all 22 comprehensive enterprise documents for your IoT agriculture project. This will include full compliance documentation, technical specifications, and business analysis.
 
-[Generates 22 professional documents in ~/ai-dev/vibe-prd/completed-docs/agri-sensor-network/]
+[Generates 22 professional documents in ~/ai-dev/completed-docs/agri-sensor-network/]
 
 Documentation generated successfully!
-📁 Output: ~/ai-dev/vibe-prd/completed-docs/agri-sensor-network/
+📁 Output: ~/ai-dev/completed-docs/agri-sensor-network/
 📋 Files: Complete 22-document enterprise suite
 🔗 Index: Start with index.md for executive overview
 ⏱️ Generation time: 47 seconds
