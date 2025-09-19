@@ -7,6 +7,8 @@
 [![PRs](https://img.shields.io/github/issues-pr/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/pulls)
 [![Last Commit](https://img.shields.io/github/last-commit/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/commits/main)
 [![Template Count](https://img.shields.io/badge/Templates-22-green.svg)](professional-templates/)
+[![Contributors](https://img.shields.io/github/contributors/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/graphs/contributors)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Stars](https://img.shields.io/github/stars/jeremylongshore/vibe-prd?style=social)](https://github.com/jeremylongshore/vibe-prd/stargazers)
 
 Generate 22 enterprise-grade project documents using AI assistants. Works with Claude Code CLI and Cursor IDE with no dependencies or complex setup required.
@@ -188,6 +190,13 @@ Contributions welcome:
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=jeremylongshore/vibe-prd&type=Timeline)](https://star-history.com/#jeremylongshore/vibe-prd&Timeline)
+
+## 👥 Contributors
+[![Contributors](https://contrib.rocks/image?repo=jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/graphs/contributors)
+
+- **[Stuology](https://github.com/stulogy)** — Core Contributor ⚡
+
+Contributions of any size are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Support & Contact
 
