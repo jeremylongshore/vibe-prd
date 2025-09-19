@@ -1,0 +1,45 @@
+name: Performance Audit (optional)
+on:
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: "Public URL to audit (https://...)"
+        required: false
+  schedule:
+    - cron: "0 4 * * 1"   # weekly, 04:00 UTC Mondays
+permissions:
+  contents: read
+jobs:
+  perf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SITE_URL: ${{ inputs.site_url || vars.SITE_URL || secrets.SITE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "18", cache: "npm" }
+
+      - name: Skip if no URL
+        run: |
+          if [ -z "${SITE_URL}" ]; then
+            echo "No SITE_URL provided (workflow input, repo var, or secret). Skipping performance audit."
+            exit 0
+          fi
+
+      - name: Install Lighthouse CI
+        run: npm i -g @lhci/cli
+
+      - name: Run Lighthouse CI
+        run: |
+          lhci collect --url="${SITE_URL}" --numberOfRuns=3 --timeout=120000 || true
+          lhci assert --preset=lighthouse:recommended || true
+          lhci upload --target=temporary-public-storage || true
+
+      - name: Upload LHCI artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-artifacts
+          path: ".lighthouseci/*"
+          if-no-files-found: ignore

@@ -1,0 +1,51 @@
+name: Accessibility Audit (optional)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * 1"   # weekly, 05:00 UTC Mondays
+permissions:
+  contents: read
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "18", cache: "npm" }
+
+      # Install pa11y-ci if repo declares it; otherwise fall back to markdown link check.
+      - name: Detect tooling
+        id: detect
+        run: |
+          if [ -f package.json ] && jq -e '.devDependencies["pa11y-ci"] // .dependencies["pa11y-ci"]' package.json >/dev/null; then
+            echo "tool=pa11y" >> $GITHUB_OUTPUT
+          else
+            echo "tool=mdcheck" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install deps (if package.json present)
+        run: |
+          if [ -f package-lock.json ] || [ -f package.json ]; then
+            npm ci || npm i
+          fi
+
+      - name: Run pa11y-ci
+        if: steps.detect.outputs.tool == 'pa11y'
+        run: npx pa11y-ci || exit 1
+
+      - name: Markdown link check (fallback)
+        if: steps.detect.outputs.tool == 'mdcheck'
+        run: |
+          npx -y markdown-link-check README.md --quiet || true
+          echo "No pa11y config found. Performed basic link check and exiting 0."
+
+      - name: Upload reports (if any)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-reports
+          path: |
+            ./pa11y/*.json
+            ./reports/**/*.*
+          if-no-files-found: ignore
