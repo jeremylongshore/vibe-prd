@@ -23,6 +23,29 @@ For Claude Code users. Zero setup required.
 2. Type `/new-project` and answer 3 questions
 3. Documentation generates under `~/ai-dev/vibe-prd/completed-docs/<project-name>/`
 
+### /new-project Command
+**Intelligent conversation-based documentation generator for Claude Code users.**
+
+#### Setup (One-time)
+1. Copy the command file to your Claude commands directory:
+   ```bash
+   cp ~/ai-dev/commands/new-project.md ~/.claude/commands/
+   ```
+
+#### Usage
+1. **In any Claude Code conversation**, type: `/new-project`
+2. **Answer 3 questions:**
+   - **Starting Point:** `greenfield` (new project) or `brownfield` (existing project)
+   - **Audience:** `startup`, `business`, or `enterprise`
+   - **Scope:** `mvp` (4 docs), `standard` (12 docs), or `comprehensive` (22 docs)
+3. **Claude automatically generates** the appropriate documentation set
+4. **Files created** in `completed-docs/<your-project-name>/` with index and metadata
+
+#### What You Get
+- **MVP (4 docs):** PRD, Tasks, Project Brief, Brainstorming
+- **Standard (12 docs):** Core product, technical, and UX documentation
+- **Comprehensive (22 docs):** Complete enterprise documentation suite
+
 ### Cursor IDE Quickstart
 For Cursor IDE users. Structured workflow integration.
 
@@ -74,6 +97,7 @@ Then follow the guided workflow in `.cursorrules/` for structured documentation.
 | **Enterprise Quality** | Professional templates | Basic formats | Inconsistent quality |
 | **Setup Complexity** | Zero dependencies | Docker/complex setup | N/A |
 | **Template Coverage** | 22 comprehensive docs | 5-10 basic templates | Start from scratch |
+| **Workflow Options** | 4 methods (One-Paste, /new-project, Cursor, Enterprise) | 1-2 basic options | Start from scratch |
 
 ## Documentation Suite (22 Templates)
 
