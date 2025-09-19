@@ -201,3 +201,11 @@ We welcome contributions! Here's how to get involved:
 [![Follow on GitHub](https://img.shields.io/github/followers/jeremylongshore?style=social&label=Follow)](https://github.com/jeremylongshore)
 
 *Built with ❤️ for the developer community*
+## ⚡ Option B: Claude One-Paste Quickstart
+For Claude Code users. Zero setup.
+
+- Open Claude Code and paste the contents of **CLAUDE_ONE_PASTE.md**.
+- Then type `/new-project` and answer 3 questions.
+- Output: `~/ai-dev/vibe-prd/completed-docs/<project-name>/index.md`
+
+The classic workflow remains available below.
