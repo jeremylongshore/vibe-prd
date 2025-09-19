@@ -12,20 +12,50 @@
 
 ## ⚡ Quick Start (60 seconds)
 
-### Step 1: Clone & Setup
+### 🚀 Claude One-Paste Quickstart
+
+**NEW!** The easiest way to get started - just paste this into Claude Code:
+
+```
+https://github.com/jeremylongshore/vibe-prd.git
+Claude, do the following on my machine:
+1. If ~/ai-dev is missing, clone the repo there:
+   • if [ -d ~/ai-dev/.git ]; then cd ~/ai-dev && git fetch --all && git checkout feature/new-project-command && git pull; else git clone --branch feature/new-project-command https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev && cd ~/ai-dev; fi
+2. Verify Node 18+: node -v
+3. Write ~/.claude/commands/new-project.md using docs/claude_commands/new-project.md from this repo.
+4. Run: node scripts/test-new-project.mjs
+5. Tell the user: "Ready. Type /new-project to begin."
+```
+
+Then type `/new-project` anywhere and enjoy intelligent AI documentation generation!
+
+**[📋 Full One-Paste Instructions →](CLAUDE_ONE_PASTE.md)**
+
+---
+
+### Alternative Setup Methods
+
+#### Step 1: Manual Clone & Setup
 ```bash
 git clone https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev
 cd ~/ai-dev
 make verify  # Confirms all 22 templates are ready
 ```
 
-### Step 2: Choose Your AI Assistant
+#### Step 2: Choose Your AI Assistant
 
-#### 🤖 Claude Code CLI (One-Paste Magic)
+#### 🤖 Claude Code CLI (Original One-Paste Magic)
 Perfect for rapid prototyping and comprehensive documentation:
 ```
 Create a new folder in completed-docs/ named after my project, then generate all 22 docs using the templates in professional-templates/. Ask me for a single free-form project summary (I can paste as much as I want). Use deductive reasoning to fill gaps. Output all final docs into completed-docs/<my-project>/ and include an index.md summarizing what was generated and any assumptions.
 ```
+
+#### 🆕 Claude Code CLI (/new-project Command)
+**NEW!** Intelligent conversation with automatic project classification:
+1. Copy `docs/claude_commands/new-project.md` to `~/.claude/commands/`
+2. Type `/new-project` in any Claude Code session
+3. Describe your project naturally - Claude automatically detects type and complexity
+4. Get perfectly tailored documentation (MVP/Standard/Enterprise tiers)
 
 #### ⚡ Cursor IDE (Structured Workflow)
 Ideal for enterprise development teams:
