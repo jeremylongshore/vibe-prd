@@ -1,105 +1,106 @@
-# 🚀 vibe-prd — AI Documentation Generator
+# vibe-prd — AI Documentation Generator
 
-[![GitHub stars](https://img.shields.io/github/stars/jeremylongshore/vibe-prd?style=social)](https://github.com/jeremylongshore/vibe-prd/stargazers)
-[![AI-Powered](https://img.shields.io/badge/AI-Powered-blue)](https://github.com/jeremylongshore/vibe-prd)
-[![Claude Code](https://img.shields.io/badge/Claude-Code-orange)](https://claude.ai/code)
-[![Cursor IDE](https://img.shields.io/badge/Cursor-IDE-purple)](https://cursor.sh)
-[![Enterprise Ready](https://img.shields.io/badge/Enterprise-Ready-green)](https://github.com/jeremylongshore/vibe-prd)
+[![CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/jeremylongshore/vibe-prd?display_name=tag)](https://github.com/jeremylongshore/vibe-prd/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-informational.svg)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/issues)
+[![PRs](https://img.shields.io/github/issues-pr/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/pulls)
+[![Stars](https://img.shields.io/github/stars/jeremylongshore/vibe-prd?style=social)](https://github.com/jeremylongshore/vibe-prd/stargazers)
 
-**Generate 22 enterprise-grade project documents in seconds using AI assistants.** Works seamlessly with both **Claude Code CLI** and **Cursor IDE** — no Docker, no complex setup, just professional documentation at AI speed.
+Generate 22 enterprise-grade project documents using AI assistants. Works with Claude Code CLI and Cursor IDE with no dependencies or complex setup required.
 
-> 🔥 **Trending:** Join 1000+ developers already using vibe-prd for AI-powered documentation workflows
+## Quick Start
 
-## ⚡ Quick Start (60 seconds)
+### Claude One-Paste Quickstart
+For Claude Code users. Zero setup required.
 
-### Step 1: Clone & Setup
+1. Open Claude Code and paste the contents of **CLAUDE_ONE_PASTE.md**
+2. Type `/new-project` and answer 3 questions
+3. Documentation generates under `~/ai-dev/vibe-prd/completed-docs/<project-name>/`
+
+### Cursor IDE Quickstart
+For Cursor IDE users. Structured workflow integration.
+
+1. Copy `.cursorrules/new-project.mdc` to your project's `.cursorrules/` directory
+2. Use command: `@new-project "my-app" mvp`
+3. Documentation generates under `completed-docs/`
+
+### Manual Setup
+Traditional clone and configure approach.
+
 ```bash
 git clone https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev
 cd ~/ai-dev
 make verify  # Confirms all 22 templates are ready
 ```
 
-### Step 2: Choose Your AI Assistant
-
-#### 🤖 Claude Code CLI (One-Paste Magic)
-Perfect for rapid prototyping and comprehensive documentation:
+#### Claude Code CLI
 ```
 Create a new folder in completed-docs/ named after my project, then generate all 22 docs using the templates in professional-templates/. Ask me for a single free-form project summary (I can paste as much as I want). Use deductive reasoning to fill gaps. Output all final docs into completed-docs/<my-project>/ and include an index.md summarizing what was generated and any assumptions.
 ```
 
-#### ⚡ Cursor IDE (Structured Workflow)
-Ideal for enterprise development teams:
+#### Cursor IDE
 ```
 Use @.cursorrules/01-create-prd.mdc
 Here's my feature: [describe your feature]
 ```
 Then follow the guided workflow in `.cursorrules/` for structured documentation.
 
-## 🎯 What Makes vibe-prd Different
+## Features
 
 | Feature | vibe-prd | Traditional Tools | Manual Documentation |
 |---------|----------|-------------------|---------------------|
-| **Speed** | 22 docs in 60 seconds | Hours per document | Days/weeks |
+| **Speed** | 22 docs in minutes | Hours per document | Days/weeks |
 | **AI Integration** | Claude + Cursor native | Limited AI support | No AI assistance |
 | **Enterprise Quality** | Professional templates | Basic formats | Inconsistent quality |
 | **Setup Complexity** | Zero dependencies | Docker/complex setup | N/A |
 | **Template Coverage** | 22 comprehensive docs | 5-10 basic templates | Start from scratch |
 
-## 📋 Complete Documentation Suite (22 Templates)
+## Documentation Suite (22 Templates)
 
-### 🚀 **Product & Strategy (5 docs)**
+### Product & Strategy (5 docs)
 - **PRD** - Product Requirements Document
 - **Market Research** - Competitive analysis & market sizing
 - **Competitor Analysis** - SWOT analysis & positioning
 - **User Personas** - Target audience profiling
 - **Project Brief** - Executive summary & charter
 
-### 🏗️ **Technical Architecture (4 docs)**
+### Technical Architecture (4 docs)
 - **Architecture Decision Records (ADR)** - Technical decisions & rationale
 - **System Architecture** - Technical design & infrastructure
 - **Frontend Specification** - UI/UX technical requirements
 - **Operational Readiness** - Production deployment checklist
 
-### 👥 **User Experience (3 docs)**
+### User Experience (3 docs)
 - **User Stories** - Feature requirements from user perspective
 - **User Journeys** - End-to-end user experience mapping
 - **Acceptance Criteria** - Definition of done for features
 
-### ⚙️ **Development Workflow (5 docs)**
+### Development Workflow (5 docs)
 - **Task Generation** - Implementation breakdown
 - **Task Processing** - Development workflow management
 - **Risk Register** - Risk identification & mitigation
 - **Brainstorming** - Ideation & concept development
 - **Metrics Dashboard** - KPI tracking & analytics
 
-### 🧪 **Quality Assurance (5 docs)**
+### Quality Assurance (5 docs)
 - **Test Plan** - Comprehensive testing strategy
 - **QA Gates** - Quality checkpoints & criteria
 - **Release Plan** - Deployment strategy & rollout
 - **Post-Mortem** - Issue analysis & lessons learned
 - **Usability Testing** - User testing protocols & playbooks
 
-## 🏆 Why Developers Choose vibe-prd
 
-> *"Reduced our documentation time from 2 weeks to 2 hours. Game-changer for our sprint planning."*
-> — **Sarah Chen, Tech Lead @ Startup Unicorn**
+## Use Cases
 
-> *"Finally, documentation that doesn't suck. The AI questioning is incredibly smart."*
-> — **Marcus Rodriguez, Senior Developer**
+- **Startup Teams** - Rapid documentation without sacrificing quality
+- **Enterprise Organizations** - Standardize documentation across teams
+- **Solo Developers** - Professional docs without enterprise overhead
+- **Product Managers** - Comprehensive requirements gathering
+- **UX Teams** - User research and journey documentation
+- **DevOps Teams** - Operational readiness and deployment planning
 
-> *"Enterprise-quality templates that actually understand our workflow."*
-> — **Jennifer Kim, Engineering Manager**
-
-## 🎯 Perfect For
-
-- **🚀 Startup Teams** - Move fast without sacrificing documentation quality
-- **🏢 Enterprise Organizations** - Standardize documentation across teams
-- **👨‍💻 Solo Developers** - Professional docs without the enterprise overhead
-- **📋 Product Managers** - Comprehensive requirements gathering
-- **🎨 UX Teams** - User research and journey documentation
-- **⚙️ DevOps Teams** - Operational readiness and deployment planning
-
-## 🛠️ Repository Structure
+## Repository Structure
 
 ```
 ~/ai-dev/
@@ -114,24 +115,24 @@ Then follow the guided workflow in `.cursorrules/` for structured documentation.
 └── working-mds/            # Development reports & logs
 ```
 
-## 🚀 Advanced Features
+## Key Features
 
-### 🤖 Intelligent AI Questioning
-vibe-prd doesn't just fill templates — it asks smart follow-up questions to extract the information needed for comprehensive documentation.
+### AI Questioning
+Asks targeted follow-up questions to extract information needed for comprehensive documentation.
 
-### 📅 Dynamic Date Management
-All templates include `{{DATE}}` placeholders for automatic timestamp insertion, keeping your documentation current.
+### Dynamic Date Management
+All templates include `{{DATE}}` placeholders for automatic timestamp insertion.
 
-### 🔄 Dual AI Workflow
+### Dual AI Workflow
 - **Claude Code CLI**: Free-form input with AI deductive reasoning
 - **Cursor IDE**: Structured workflows with guided prompts
 
-### 🏢 Enterprise Integration
+### Enterprise Integration
 - No vendor lock-in
 - Works with existing development workflows
 - Scales from solo projects to enterprise teams
 
-## 📊 Verification & Quality
+## Verification & Quality
 
 ```bash
 make verify      # Verify all 22 templates exist
@@ -139,35 +140,35 @@ make tree        # Show complete repository structure
 ls -la professional-templates/ | wc -l  # Should show 22 templates
 ```
 
-## 🌟 Getting Started Examples
+## Examples
 
-### Example 1: SaaS Product Documentation
+### SaaS Product Documentation
 ```bash
 # Input: "Building a customer support chatbot with Slack integration"
 # Output: 22 comprehensive documents including PRD, architecture, test plans, and deployment strategies
 ```
 
-### Example 2: Mobile App Documentation
+### Mobile App Documentation
 ```bash
 # Input: "iOS fitness tracking app with social features"
 # Output: Complete documentation suite from user personas to technical architecture
 ```
 
-## 🤝 Contributing & Community
+## Contributing
 
-We welcome contributions! Here's how to get involved:
+Contributions welcome:
 
-- **⭐ Star this repo** if vibe-prd helped your team
-- **🐛 Report issues** to help us improve
-- **💡 Suggest templates** for new documentation types
-- **📖 Improve docs** to help other developers
+- Report issues and bugs
+- Suggest new template types
+- Submit documentation improvements
+- Propose feature enhancements
 
 ### Contribution Guidelines
 - Keep the 22 core templates canonical
 - New template additions belong in separate folders
 - Follow our documentation standards
 
-## 📈 Roadmap
+## Roadmap
 
 - [ ] **VS Code Extension** - Native IDE integration
 - [ ] **Team Collaboration** - Multi-user project documentation
@@ -175,37 +176,48 @@ We welcome contributions! Here's how to get involved:
 - [ ] **API Integration** - Programmatic documentation generation
 - [ ] **More AI Providers** - Gemini, GPT-4, and Anthropic Claude support
 
-## 📝 Documentation Links
+## Documentation Links
 
-- **📚 Detailed Workflow**: See `UNIFIED_AI_WORKFLOW.md`
-- **⚙️ Cursor Setup**: See `.cursorrules/vibe-basics.md`
-- **🎯 Template Reference**: All 22 templates in `professional-templates/`
-- **🤖 AI Integration**: See `CLAUDE.md` for AI assistant guidance
+- **Detailed Workflow**: See `UNIFIED_AI_WORKFLOW.md`
+- **Cursor Setup**: See `.cursorrules/vibe-basics.md`
+- **Template Reference**: All 22 templates in `professional-templates/`
+- **AI Integration**: See `CLAUDE.md` for AI assistant guidance
 
-## 🏆 Star History
+## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=jeremylongshore/vibe-prd&type=Timeline)](https://star-history.com/#jeremylongshore/vibe-prd&Timeline)
 
-## 📬 Support & Contact
+## Support & Contact
 
-- **🐛 Issues**: [GitHub Issues](https://github.com/jeremylongshore/vibe-prd/issues)
-- **💬 Discussions**: [GitHub Discussions](https://github.com/jeremylongshore/vibe-prd/discussions)
-- **📧 Email**: [jeremy@intentionsolutions.com](mailto:jeremy@intentionsolutions.com)
+- **Issues**: [GitHub Issues](https://github.com/jeremylongshore/vibe-prd/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/jeremylongshore/vibe-prd/discussions)
+- **Email**: [jeremy@intentionsolutions.com](mailto:jeremy@intentionsolutions.com)
+
+## Why This Repo?
+
+- **22 professional templates** covering product strategy through deployment
+- **Multiple workflows** - Claude One-Paste, manual setup, or Cursor IDE integration
+- **Zero dependencies** - no Docker, complex installs, or vendor lock-in
+- **Proven patterns** - enterprise-grade documentation structure
+- **AI-assisted** - intelligent questioning flows and template population
+
+## Extend & Customize
+
+- **Templates**: Add or adjust in `professional-templates/` (keep originals canonical; add variants under a new folder).
+- **Claude Command**: Edit `commands/new-project.md` for new intake logic or tiers.
+- **Cursor**: Explore `.cursorrules/` to guide IDE-first users.
+- **Form System**: Change questions in `form-system/questions.yaml` to fit your org.
+
+> PRs welcome. Keep changes scoped and tested. See CONTRIBUTING.md.
+
+## Status & Support
+
+- **Issues**: [GitHub Issues](https://github.com/jeremylongshore/vibe-prd/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/jeremylongshore/vibe-prd/discussions)
+- **Email**: [jeremy@intentionsolutions.com](mailto:jeremy@intentionsolutions.com)
 
 ---
 
-**⭐ Star us on GitHub** — it helps other developers discover vibe-prd!
-
 [![GitHub stars](https://img.shields.io/github/stars/jeremylongshore/vibe-prd?style=social&label=Star)](https://github.com/jeremylongshore/vibe-prd/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/jeremylongshore/vibe-prd?style=social&label=Fork)](https://github.com/jeremylongshore/vibe-prd/network/members)
-[![Follow on GitHub](https://img.shields.io/github/followers/jeremylongshore?style=social&label=Follow)](https://github.com/jeremylongshore)
-
-*Built with ❤️ for the developer community*
-## ⚡ Option B: Claude One-Paste Quickstart
-For Claude Code users. Zero setup.
-
-- Open Claude Code and paste the contents of **CLAUDE_ONE_PASTE.md**.
-- Then type `/new-project` and answer 3 questions.
-- Output: `~/ai-dev/vibe-prd/completed-docs/<project-name>/index.md`
-
-The classic workflow remains available below.
+[![Follow on GitHub](https://img.shields.io/github/followers/jeremylongshore?style=social&label=Follow)](https://github.com/jeremylongshore/vibe-prd)
