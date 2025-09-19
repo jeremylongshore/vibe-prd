@@ -2,6 +2,7 @@
 
 [![Enterprise E2E](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml)
 [![CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml)
+[![Template Validation](https://github.com/jeremylongshore/vibe-prd/actions/workflows/template-validation.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/template-validation.yml)
 [![Release](https://img.shields.io/github/v/release/jeremylongshore/vibe-prd?display_name=tag)](https://github.com/jeremylongshore/vibe-prd/releases)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/jeremylongshore/vibe-prd)](https://github.com/jeremylongshore/vibe-prd/issues)

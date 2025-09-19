@@ -1,144 +1,149 @@
-# Contributor SOP — vibe-prd
+# Contributing to vibe-prd
 
-## Ground rules
-- No sudo. Ever.
-- Containers run as your UID/GID.
-- Outputs live only in docs/bmad/ and docs/templates/.
-- End state = BMAD natives + 22 templates. Not 44.
+Thank you for considering contributing to vibe-prd! This document outlines the process for contributing to our AI documentation generator.
 
-## Local setup
+## Ground Rules
 
-```bash
-git clone https://github.com/jeremylongshore/vibe-prd
-cd vibe-prd
-make ai-dev     # fill brief (interactive)
-make prd        # generate BMAD + 22 templates
-```
+- Keep the 22 core templates canonical
+- New template additions belong in separate folders
+- Follow our documentation standards
+- Test all changes with the enterprise pipeline
+- No breaking changes to existing workflows
 
-Expect:
-- docs/bmad/ contains BMAD-native files.
-- docs/templates/ contains exactly 22 files.
+## Getting Started
 
-## Branch + commit
-- Branch: feat/<slug>, fix/<slug>, or chore/<slug>.
-- Commits: Conventional Commits.
-  - `feat: add extraction for personas`
-  - `fix: run container with uid:gid`
-  - `chore: bump BMAD 5.1.4`
-
-## PR checklist (must pass)
-- ✅ `make prd` succeeds locally.
-- ✅ docs/bmad/ exists.
-- ✅ docs/templates/ has 22 files. Names match map.yaml.
-- ✅ No root-owned files (ls -l shows your user).
-- ✅ CI: "Container CI" green.
-
-## CI gates (what runs)
-- Build CLAUDE brief demo.
-- `make prd`.
-- Verify:
-  - docs/bmad/ exists.
-  - docs/templates/ count == 22 and names match.
-- Fails fast on mismatch.
-
-## Auto-updates (BMAD)
-- Renovate checks daily.
-- New BMAD tag → PR bumps .bmad-version and refreshes .bmad-lock.
-- CI must pass. Auto-merge enabled.
-- You do nothing.
-
-## Manual BMAD bump (rare)
+### Local Setup
 
 ```bash
-sed -i 's/bmad:5.1.3/bmad:5.1.4/' .bmad-version
-make bmad-lock
-git add .bmad-version .bmad-lock
-git commit -m "bump: BMAD 5.1.4"
-git push
+git clone https://github.com/jeremylongshore/vibe-prd.git ~/ai-dev
+cd ~/ai-dev
+make verify  # Confirm all 22 templates are present
 ```
 
-## Release flow
+### Testing Your Changes
+
+Before submitting a PR, run the full test suite:
 
 ```bash
-# after merge to main
-git pull
-git tag vX.Y.Z
-git push origin vX.Y.Z
-# GitHub Actions creates a Release with artifacts
+# Verify templates
+make verify
+
+# Test enterprise pipeline
+make enterprise-ci PROJECT="_test_contribution" ANSWERS=".github/fixtures/enterprise_answers.ci.txt"
+
+# Confirm outputs
+ls completed-docs/_test_contribution/  # Should show 22+ files
 ```
 
-## File ownership fix (if you break it)
+## Branch & Commit Guidelines
 
+### Branch Naming
+- `feat/<description>` - New features
+- `fix/<description>` - Bug fixes
+- `chore/<description>` - Maintenance tasks
+- `docs/<description>` - Documentation updates
+
+### Commit Messages
+Follow [Conventional Commits](https://conventionalcommits.org/):
+
+```
+feat: add new user journey template
+fix: correct date placeholder in PRD template
+docs: update quick start instructions
+chore: update dependencies
+```
+
+## Pull Request Process
+
+### Before Submitting
+1. ✅ `make verify` passes locally
+2. ✅ Enterprise pipeline test succeeds
+3. ✅ All CI workflows are green
+4. ✅ Documentation updated if needed
+5. ✅ PR template checklist completed
+
+### PR Template Requirements
+Your PR must include:
+- Clear summary of changes
+- Enterprise checklist completion
+- Local test run outputs
+- Screenshots/logs as evidence
+
+### Review Process
+1. All CI checks must pass
+2. Enterprise E2E workflow must succeed
+3. Code review by maintainers
+4. Template integrity verification
+
+## Types of Contributions
+
+### 🎯 Most Wanted
+- **Bug fixes** in existing templates
+- **Documentation improvements**
+- **Example additions** for new use cases
+- **CI/CD enhancements**
+
+### 📝 Template Contributions
+- Keep core 22 templates unchanged
+- New templates go in `additional-templates/` (create if needed)
+- Include clear use case documentation
+- Provide example outputs
+
+### 🔧 Infrastructure
+- GitHub Actions improvements
+- Makefile enhancements
+- Development tooling
+
+## Code Standards
+
+### Template Guidelines
+- Use `{{DATE}}` for dynamic dates
+- Include proper metadata blocks
+- Follow existing formatting patterns
+- Test with real project data
+
+### Documentation
+- Clear, concise language
+- No marketing fluff
+- Professional tone
+- Include examples
+
+## Testing Requirements
+
+### Template Validation
 ```bash
-make fix-perms
-# or:
-docker run --rm -v "$PWD":/work alpine:3.20 \
-  sh -c "chown -R $(id -u):$(id -g) /work/docs 2>/dev/null || true"
+# Template count and structure
+make verify
+
+# Enterprise pipeline end-to-end
+node scripts/run-enterprise.mjs --project "_test" --answers ".github/fixtures/enterprise_answers.ci.txt"
+
+# Verify outputs
+ls completed-docs/_test/
+cat completed-docs/_test/index.md
 ```
 
-## Working directory rule
-- Work in repo root.
-- In workflows, set:
-  ```yaml
-  defaults:
-    run:
-      working-directory: ./
-  ```
-- In manual runs, `cd /path/to/vibe-prd` before commands.
+### CI Requirements
+All PRs must pass:
+- Enterprise E2E workflow
+- Template validation workflow
+- Repository CI checks
 
-## Directory layout
+## Getting Help
 
-```
-vibe-prd/
-  cli.js                  # form → CLAUDE.md
-  questions.yaml
-  map.yaml                # 22 template filenames
-  templates/              # your 22 templates
-  collect-bmad.js         # normalize BMAD outputs
-  extract-bmad.js         # BMAD → summary.json
-  fill-templates.js       # summary.json → 22 docs
-docs/
-  bmad/                   # BMAD natives (source of truth)
-  templates/              # 22 filled docs (user-facing)
-vibe-prd/
-  CLAUDE.template.md
-  CLAUDE.md               # generated by form
-.bmad-version             # container tag
-.bmad-lock                # container digest
-Makefile                  # all commands
-```
+- 📖 **Documentation**: Check [README.md](README.md) and [CLAUDE.md](CLAUDE.md)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/jeremylongshore/vibe-prd/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/jeremylongshore/vibe-prd/discussions)
+- 📧 **Direct**: [jeremy@intentionsolutions.com](mailto:jeremy@intentionsolutions.com)
 
-## Makefile targets (what to run)
+## Code of Conduct
 
-- `make ai-dev` - interactive form → CLAUDE.md
-- `make prd` - BMAD run + collect + extract + fill + verify
-- `make clean-docs` - reset docs folders
-- `make fix-perms` - fix ownership if needed
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md). Please read and follow it in all interactions.
 
-## Troubleshooting
-- **Template count < 22**: Check map.yaml names. Ensure matching files in templates/.
-- **BMAD natives missing**: Container tag wrong. Update .bmad-version, then `make bmad-lock`.
-- **Permission denied**: Run `make fix-perms`. Ensure Makefile uses `-u $(id -u):$(id -g)`.
-- **Claude "cwd reset"**: Always set working-directory in workflows or cd before commands.
+## License
 
-## PR commands (fast path)
-
-```bash
-git checkout -b feat/<slug>
-git add -A
-git commit -m "feat: <what you changed>"
-git push -u origin feat/<slug>
-gh pr create --fill
-gh pr checks --watch
-gh pr merge --squash --delete-branch   # when green
-```
-
-## Non-negotiables
-- Do not use sudo.
-- Do not write to output/. Use docs/bmad and docs/templates only.
-- Do not promise "44 docs." Deliver BMAD natives + 22 templates.
-- Do not bypass CI gates.
+By contributing, you agree that your contributions will be licensed under the Apache 2.0 License.
 
 ---
 
-**Done. Users will cruise.**
+**Thank you for contributing to vibe-prd!** 🎉
