@@ -1,0 +1,46 @@
+# GitHub Pages Configuration for vibe-prd
+
+title: "vibe-prd — AI Documentation Generator"
+description: "Generate 22 enterprise-grade project documents using AI assistants. Works with Claude Code CLI and Cursor IDE."
+
+# GitHub Pages settings
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+# Repository info
+github:
+  repository_url: https://github.com/jeremylongshore/vibe-prd
+
+# Navigation
+header_pages:
+  - index.md
+  - examples.md
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections and defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - .git
+  - .github

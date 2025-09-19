@@ -4,8 +4,8 @@ const path = require('path');
 const readline = require('readline');
 
 const QFILE = path.join(__dirname, 'questions.yaml');
-const TPLFILE = path.join(process.cwd(), 'vibe-prd', 'CLAUDE.template.md');
-const OUTFILE = path.join(process.cwd(), 'vibe-prd', 'CLAUDE.md');
+const TPLFILE = path.join(__dirname, 'CLAUDE.template.md');
+const OUTFILE = path.join(__dirname, '..', 'completed-docs', 'form-generated-project.md');
 
 function parseYAML(str) {
   const lines = str.split(/\r?\n/);

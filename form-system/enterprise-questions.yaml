@@ -1,0 +1,35 @@
+questions:
+  - id: existing_system_stack
+    prompt: "Describe the existing system (language, frameworks, DB, hosting, users)."
+  - id: integration_scope
+    prompt: "What systems/APIs/services are in scope for this integration?"
+  - id: data_classification
+    prompt: "What data classes are touched (PII, PHI, PCI, internal, public)?"
+  - id: compliance_requirements
+    prompt: "List applicable regulations/standards (SOX, GDPR, HIPAA, ISO27001, SOC2)."
+  - id: security_controls
+    prompt: "Required security controls (encryption, key mgmt, secrets, DLP, zero trust)?"
+  - id: identity_access
+    prompt: "AuthN/AuthZ model (SSO/OIDC/SAML, RBAC/ABAC, least privilege, break-glass)?"
+  - id: audit_logging
+    prompt: "Audit requirements (events, retention, immutability, SIEM integration)?"
+  - id: sla_rto_rpo
+    prompt: "SLA targets and DR objectives (SLA, RTO, RPO, regions, HA)?"
+  - id: change_management
+    prompt: "Change control (environments, approvals, CAB, release windows)?"
+  - id: environments
+    prompt: "Env map (dev/test/stage/prod), data movement, config strategy."
+  - id: dependencies
+    prompt: "Key dependencies (internal services, 3rd-party SDKs, runtimes, versions)."
+  - id: data_migration
+    prompt: "Migration/seed/backfill plan and rollback strategy."
+  - id: third_party_vendors
+    prompt: "Vendors/processors involved; contracts and DPAs status."
+  - id: risk_areas
+    prompt: "Top 5 risks and mitigations (security, compliance, performance, people)."
+  - id: stakeholders_approvals
+    prompt: "Stakeholders & approvers (roles, sign-off gates, audit trail needs)."
+  - id: rollout_strategy
+    prompt: "Rollout plan (phased/canary, feature flags, comms, training)."
+  - id: success_metrics
+    prompt: "Success criteria & KPIs (leading/lagging, dashboards, owners)."

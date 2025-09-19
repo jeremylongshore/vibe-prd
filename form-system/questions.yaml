@@ -1,31 +1,94 @@
 sections:
-  - id: overview
-    title: Project Overview
+  - id: project_basics
+    title: Project Basics
     questions:
+      - key: project_name
+        prompt: "What is your project name? (e.g., 'customer-portal', 'mobile-app-v2')"
+      - key: project_type
+        prompt: "Is this a greenfield (new) or brownfield (existing system) project?"
       - key: overview
-        prompt: "In 3–5 sentences, what are you building and why now?"
-      - key: target_users
-        prompt: "Who are your target users and what are their top 3 pains?"
+        prompt: "In 3-5 sentences, what are you building and why now?"
       - key: value_prop
         prompt: "What's your one-sentence value proposition?"
-  - id: scope
-    title: Scope & Constraints
+      - key: problem_statement
+        prompt: "What specific problem does this solve that existing solutions don't?"
+
+  - id: audience_users
+    title: Target Audience & Users
     questions:
-      - key: goals
-        prompt: "List your top 3 measurable goals."
-      - key: constraints
-        prompt: "Budget, timeline, and technology constraints?"
+      - key: target_users
+        prompt: "Who are your primary target users? (roles, demographics, tech-savviness)"
+      - key: user_pains
+        prompt: "What are their top 3 pain points this project addresses?"
+      - key: user_personas
+        prompt: "Describe 2-3 key user personas (name, role, goals, frustrations)"
+      - key: user_journey
+        prompt: "How will users typically discover and use your solution?"
+      - key: user_success
+        prompt: "What does success look like from the user's perspective?"
+
+  - id: technical_scope
+    title: Technical Scope & Architecture
+    questions:
+      - key: tech_stack
+        prompt: "What's your planned technology stack? (languages, frameworks, databases)"
+      - key: integrations
+        prompt: "What systems need to integrate with this project?"
+      - key: data_requirements
+        prompt: "What data will you collect, store, and process?"
+      - key: scalability
+        prompt: "What are your expected user/traffic volumes and growth projections?"
+      - key: security_requirements
+        prompt: "What security, privacy, or compliance requirements apply?"
+
+  - id: business_context
+    title: Business Context & Goals
+    questions:
+      - key: business_goals
+        prompt: "List your top 3 measurable business goals with specific metrics"
+      - key: success_metrics
+        prompt: "How will you measure success? (KPIs, conversion rates, user engagement)"
+      - key: competitive_landscape
+        prompt: "Who are your main competitors and how will you differentiate?"
+      - key: market_size
+        prompt: "What's your addressable market size and opportunity?"
+      - key: revenue_model
+        prompt: "How will this generate revenue or reduce costs?"
+
+  - id: project_constraints
+    title: Project Constraints & Resources
+    questions:
+      - key: timeline
+        prompt: "What's your target launch date and key milestones?"
+      - key: budget
+        prompt: "What's your budget range and resource constraints?"
+      - key: team_size
+        prompt: "How many people will work on this and what are their roles?"
+      - key: dependencies
+        prompt: "What external dependencies or blockers could impact delivery?"
       - key: compliance
-        prompt: "Any compliance or privacy requirements?"
-  - id: risks
+        prompt: "Any regulatory, legal, or industry compliance requirements?"
+
+  - id: risks_assumptions
     title: Risks & Assumptions
     questions:
-      - key: risks
-        prompt: "List 3 main risks and mitigations."
+      - key: technical_risks
+        prompt: "What are your top 3 technical risks and mitigation strategies?"
+      - key: business_risks
+        prompt: "What are your top 3 business/market risks and mitigation strategies?"
       - key: assumptions
-        prompt: "Critical assumptions to validate?"
-  - id: acceptance
-    title: Acceptance Criteria
+        prompt: "What critical assumptions need validation before or during development?"
+      - key: fallback_plans
+        prompt: "What's your plan B if key assumptions prove wrong?"
+
+  - id: success_criteria
+    title: Success Criteria & Acceptance
     questions:
-      - key: acceptance
+      - key: acceptance_criteria
         prompt: "What conditions must be met to call this project a success?"
+      - key: user_acceptance
+        prompt: "How will you validate user acceptance and satisfaction?"
+      - key: performance_criteria
+        prompt: "What performance benchmarks must be met (speed, uptime, etc.)?"
+      - key: rollback_criteria
+        prompt: "Under what conditions would you roll back or pause the project?"

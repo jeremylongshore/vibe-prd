@@ -1,0 +1,26 @@
+name: Enterprise E2E
+on:
+  pull_request:
+  push:
+    branches: [ main, feature/**, chore/**, release/** ]
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '18' }
+      - name: Run enterprise generator (noninteractive)
+        run: |
+          node scripts/run-enterprise.mjs \
+            --project _ci_enterprise \
+            --answers .github/fixtures/enterprise_answers.ci.txt \
+            --force
+      - name: Verify output
+        run: node scripts/verify-enterprise-output.mjs _ci_enterprise
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: enterprise-docs
+          path: completed-docs/_ci_enterprise
