@@ -226,6 +226,26 @@ Contributions welcome:
 - **Template Reference**: All 22 templates in `professional-templates/`
 - **AI Integration**: See `CLAUDE.md` for AI assistant guidance
 
+## Optional Audits
+
+[![Accessibility](https://github.com/jeremylongshore/vibe-prd/actions/workflows/accessibility.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/accessibility.yml)
+[![Performance](https://github.com/jeremylongshore/vibe-prd/actions/workflows/performance.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/performance.yml)
+
+**Advisory-only workflows that do not block PRs:**
+
+### Accessibility Audit
+- **Runs:** Weekly (Mondays 05:00 UTC) or manually via "Run workflow"
+- **Purpose:** Checks for accessibility issues and markdown link validation
+- **Note:** Safe fallback to basic link checking if pa11y tools not configured
+
+### Performance Audit
+- **Runs:** Weekly (Mondays 04:00 UTC) or manually via "Run workflow"
+- **Purpose:** Lighthouse CI performance analysis of public site
+- **Usage:** Provide `site_url` input when running manually, or configure `SITE_URL` repo variable/secret
+- **Note:** Skips gracefully if no URL provided
+
+Both audits upload artifacts when available and never gate merges.
+
 ## Governance (Enterprise)
 
 **🏢 Enterprise Pipeline Protection:**
