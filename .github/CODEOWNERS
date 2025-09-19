@@ -1,0 +1,8 @@
+# Enterprise-critical paths require @jeremylongshore review
+/.github/workflows/enterprise-e2e.yml      @jeremylongshore
+/scripts/run-enterprise.mjs                @jeremylongshore
+/scripts/generate-enterprise.mjs           @jeremylongshore
+/scripts/verify-enterprise-output.mjs      @jeremylongshore
+/form-system/enterprise-cli.js             @jeremylongshore
+/form-system/enterprise-questions.yaml     @jeremylongshore
+/completed-docs/                           @jeremylongshore
