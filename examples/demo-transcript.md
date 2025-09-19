@@ -1,6 +1,7 @@
 # Example: /new-project Demo Session
 
 **Demo:** Chat AI mobile app for customer support
+**Tier:** Standard (12 documents)
 **Generated:** 2025-09-18
 
 ---
