@@ -31,11 +31,4 @@ jobs:
         run: mkdir -p completed-docs
 
       - name: Verify templates
-        run: |
-          if make -q verify 2>/dev/null; then
-            make verify
-          elif [ -f scripts/verify-enterprise-output.mjs ]; then
-            node scripts/verify-enterprise-output.mjs --mode=templates
-          else
-            echo "No validation script found"; exit 1
-          fi
+        run: make verify
