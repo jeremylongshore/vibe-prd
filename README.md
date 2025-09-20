@@ -1,5 +1,7 @@
 # vibe-prd — AI Documentation Generator
 
+*Last Updated: September 19, 2025*
+
 [![Enterprise E2E](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/enterprise-e2e.yml)
 [![CI](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/ci.yml)
 [![Template Validation](https://github.com/jeremylongshore/vibe-prd/actions/workflows/template-validation.yml/badge.svg)](https://github.com/jeremylongshore/vibe-prd/actions/workflows/template-validation.yml)
